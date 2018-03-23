@@ -29,7 +29,7 @@ Register
 <div class="container textsmall">
     <!--Content Section Start -->
     <div class="row">
-        <div class="box col-sm-4 col-xs-12 animation flipInX">
+        <div class="box col-sm-6 col-xs-12 animation flipInX">
             
             <!-- Notifications -->
             @include('notifications')
@@ -38,11 +38,10 @@ Register
                     <div class="text-danger">{{ $error }}</div>
                 @endforeach
             @endif
+
             <form action="{{ route('register') }}" method="POST">
                 <!-- CSRF Token -->
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
-                
 
                 <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
                     <label class="sr-only"> First Name</label>
@@ -98,6 +97,16 @@ Register
             </form>
         </div>
         @include('register_menu')
+        <br>
+        <br>
+        <div class="col-sm-6 col-xs-12 ">
+            <ul>
+                <li><a href="{{ route('auth.getSocialAuth','google') }}">Register By Google</a></li>
+                <li><a href="{{ route('auth.getSocialAuth','facebook') }}">Register By Facebook</a></li>
+                <li><a href="{{ route('auth.getSocialAuth','twitter') }}">Register By Twitter</a></li>
+                <li><a href="{{ route('auth.getSocialAuth','linkedin') }}">Register By Linkedin</a></li>
+            </ul>
+        </div>
     </div>
     <!-- //Content Section End -->
 </div>

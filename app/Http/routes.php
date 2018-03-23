@@ -10,7 +10,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('anouncement_delete/{announcement_id}',array('as' => 'anouncement_delete','uses' => 'Event_anouncementsController@deleteanouncement'));
 
 
-
     
     Route::group(array('prefix' => 'api'), function () {
     // Customer API Routes
@@ -440,25 +439,19 @@ Route::get('currency/{currency}', function ($currency) {
         Route::put('my-account', 'FrontEndController@update');
     });
     Route::get('logout', array('as' => 'logout', 'uses' => 'FrontEndController@getLogout'));
-# contact form
-Route::post('contact', array('as' => 'contact', 'uses' => 'FrontEndController@postContact'));
-   /* Route::post('contact', array('as' => 'contact', 'uses' => 'FrontEndController@postContact'));
-    Route::post('partner', array('as' => 'partner', 'uses' => 'FrontEndController@postPartner'));
-    Route::post('investor', array('as' => 'investor', 'uses' => 'FrontEndController@postInvestor'));
-    Route::post('career', array('as' => 'career', 'uses' => 'FrontEndController@postcareer'));*/
 
-#frontend views
-   /* Route::get('/', array('as' => 'home', function () {
-        //return View::make('index');
-        return View::make('index');
-    }));*/
+
+
+    # newsletter form
+    Route::post('post-news-letter-email', array('as' => 'post.news.letter.email', 'uses' => 'FrontEndController@postNewsLetterEmail'));
+
 
     Route::get('/',array('as'=>'home','uses'=>'FrontEndController@home'));
 
-    /*Route::get('blog', array('as' => 'blog', 'uses' => 'BlogController@getIndexFrontend'));
-    Route::get('blog/{slug}/tag', 'BlogController@getBlogTagFrontend');
-    Route::get('blogitem/{slug?}', 'BlogController@getBlogFrontend');
-    Route::post('blogitem/{blog}/comment', 'BlogController@storeCommentFrontend');*/
+    Route::get('site-map', array('as' => 'site.map', 'uses' => 'FrontEndController@getSiteMap'));
+    Route::get('terms-and-conditions', array('as' => 'terms.conditions', 'uses' => 'FrontEndController@getTermsConditions'));
+    Route::get('privacy-policy', array('as' => 'privacy.policy', 'uses' => 'FrontEndController@getPrivacyPolicy'));
+    Route::get('contact-us', array('as' => 'contact.us', 'uses' => 'FrontEndController@getContactUs'));
 
     Route::get('news', array('as' => 'news', 'uses' => 'NewsController@getIndexFrontend'));
     Route::get('news/{slug}/tag', 'NewsController@getNewsTagFrontend');
@@ -473,6 +466,9 @@ Route::post('contact', array('as' => 'contact', 'uses' => 'FrontEndController@po
     Route::get('list-ads/{slug?}', array('as' => 'list-ads', 'uses' => 'AdsController@ads'));
     Route::get('ads-detail/{slug?}', array('as' => 'ads-detail', 'uses' => 'AdsController@adsdetail'));
     Route::get('list-ads-category',array('as'=>'ads-category','uses'=>'AdsController@listadscategory'));
+
+
+
 
 
 

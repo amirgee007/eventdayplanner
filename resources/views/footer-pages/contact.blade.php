@@ -1,4 +1,4 @@
-@extends('layouts/default')
+@extends('layouts.eventday')
 
 {{-- Page title --}}
 @section('title')
@@ -27,9 +27,6 @@ Contact
                     <a href="#">Contact</a>
                 </li>
             </ol>
-            <div class="pull-right">
-                <i class="livicon icon3" data-name="cellphone" data-size="20" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i> Contact
-            </div>
         </div>
     </div>
 @stop
@@ -39,7 +36,7 @@ Contact
 @section('content')
     <!-- Map Section Start -->
     <div class="">
-        <div id="map" style="width:100%; height:400px;"></div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6759.039608889927!2d72.65009212667256!3d32.10926146244241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392176f3c21fabed%3A0x7fceccc42306c7d5!2sAziz+Bhatti+Town%2C+Sargodha%2C+Pakistan!5e0!3m2!1sen!2s!4v1521829256965" width="100%" height="400px"  frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
     <!-- //map Section End -->
     <!-- Container Section Start -->
@@ -62,6 +59,7 @@ Contact
                     <div class="form-group">
                         <textarea name="contact-msg" class="form-control input-lg no-resize" rows="6" placeholder="Your comment" required></textarea>
                     </div>
+                    <br>
                     <div class="input-group">
                         <button class="btn btn-primary" type="submit">submit</button>
                         <button class="btn btn-danger" type="reset">cancel</button>
@@ -113,8 +111,8 @@ Contact
 {{-- page level scripts --}}
 @section('footer_scripts')
     <!-- page level js starts-->
-    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/frontend/gmap.js') }}"></script>
+    {{--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>--}}
+{{--    <script type="text/javascript" src="{{ asset('assets/js/frontend/gmap.js') }}"></script>--}}
     <!--page level js ends-->
 
 @stop
