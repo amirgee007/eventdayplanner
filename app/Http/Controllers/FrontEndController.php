@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Activation;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
+use App\NewsLetterEmail;
 use App\User;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
@@ -43,7 +44,6 @@ class FrontEndController extends JoshController
         $this->frontarray['OurExpertServices']=Page::where('type','Our Expert Services')->get();
         $this->frontarray['quicklinks']=Page::where('type','quick links')->get();
     }
-    
 
     /*
      * $user_activation set to false makes the user activation via user registered email
@@ -51,8 +51,20 @@ class FrontEndController extends JoshController
      */
     private $user_activation = true;
 
-    public function index(){
-        return View::make('welcome');
+    public function getContactUs(){
+        return view('footer-pages.contact');
+    }
+
+    public function getSiteMap(){
+        return view('footer-pages.site-map');
+    }
+
+    public function getTermsConditions(){
+        return view('footer-pages.terms-conditions');
+    }
+
+    public function getPrivacyPolicy(){
+        return view('footer-pages.privacy-policy');
     }
 
     public function home(Request $request){
@@ -62,7 +74,6 @@ class FrontEndController extends JoshController
         $date->modify('-50 minutes');
         $formatted_date = $date->format('Y-m-d H:i:s');
         $filtereventbyprice = session('filtereventbyprice');
-
 
 
         if($filtereventbyprice && $filtereventbyprice!='-1'){
@@ -88,19 +99,12 @@ class FrontEndController extends JoshController
         $sponsoredevents=Event::where('issponsored','1')->where('type','Public')->where('date','>',$formatted_date)->orderByRaw("RAND()")->limit(6)->get();
 
 
-        
-        
-        
         $newss = News::latest()->simplePaginate(6);
         $newss->setPath('news');
 
         $ads_category = Ads_category::where('homepage',true)->get();
 
         $testimonial=\App\Testimonial::inRandomOrder()->first();
-
-
-        //print_r($this->frontarray);exit;
-
 
         //$tags = $this->tags;
         return View::make('index',compact('ads_category','popularevents','sponsoredevents','testimonial'))->with('events',$events)->with('news',$newss);
@@ -145,11 +149,9 @@ class FrontEndController extends JoshController
                // return Redirect::intended('/');
 
 
-
                 if(Session::get('bookData'))
                    return Redirect::intended('ads/book');
 
-               
 
                 if(Sentinel::inRole('event-organizer'))
                     return redirect()->intended('my-account-event-organizer')->with('success', Lang::get('auth/message.login.success'));
@@ -771,44 +773,30 @@ class FrontEndController extends JoshController
      * @param Request $request
      * @return Redirect
      */
-    public function postContact(Request $request)
+    public function postNewsLetterEmail(Request $request)
     {
 
-        /*$subscribes=$request->get('subscribe');
-        $subscribed='';
-        if(count($subscribes))
-        foreach($subscribes as $s){
-            $subscribed =$s;
-        }*/
+        try{
 
-        //echo $subscribed;exit;
-        
+            $email = $request->email;
+            Newsletter::subscribe($email);
 
-        // Data to be used on the email view
-        $data = array(
-            ///'contact-name' => $request->get('contact-name'),
-            'contact-email' => $request->get('contact-email'),
-            //'contact-msg' => $subscribed,
-        );
+            NewsLetterEmail::firstOrCreate($request->except('_token'));
 
-        if($data['contact-email']==''){
-            
-             return redirect()->route("home")->with('error','Please fill the form!!');
+//        Mail::send('emails.contact', compact('data'), function ($m) use ($email) {
+//            $m->from($email);
+//            $m->to('karki.kuber@gmail.com', 'Event Day Planner');
+//            $m->subject('Subscribed a mail from ' . $email);
+//        });
 
-         }
+            session()->flash('app_message', 'You are subscribed to our News Letter successfully.');
+        }
+        catch (\Exception $e){
+            session()->flash('app_error', 'Some thing went wrong please try again later.');
+        }
 
-         Newsletter::subscribe($data['contact-email']);
+        return back();
 
-        
-        Mail::send('emails.contact', compact('data'), function ($m) use ($data) {
-            $m->from($data['contact-email']);
-            $m->to('karki.kuber@gmail.com', 'Event Day Planner');
-            $m->subject('Subscribed a mail from ' . $data['contact-email']);
-
-        });
-
-        //Redirect to contact page
-        return Redirect::to("/")->with('success','Thankyou!!');
     }
 
     /**
