@@ -8,7 +8,7 @@ return array(
     'no'  			=> 'No',
     'noresults'  	=> 'No Results',
     'yes' 			=> 'Yes',
-    'site_name' => 'SiteName',
+    'site_name' => 'Eventdayplanner',
     'home' => 'Home',
     'dashboard' => 'Dashboard',
 

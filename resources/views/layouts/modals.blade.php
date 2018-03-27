@@ -1,13 +1,14 @@
 
 <div id="ModalLoginForm" class="modal fade">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="height: 420px;">
+        <div class="modal-content" style="height: 520px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">x</button>
                 <h3>Login</h3>
             </div>
             <div class="modal-body">
-            @include('register_social_menu')
+            @include('login_social_menu')
+{{--            @include('register_social_menu')--}}
                 <form role="form" method="POST" action="{{ route('login') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group {{ $errors->first('email', 'has-error') }}">
@@ -25,14 +26,19 @@
                         <label>
                             <input type="checkbox">  Remember Password
                         </label>
-
                     </div>
+
+                    <div class="">
+                        <label>
+                            <a href="{{ route('forgot-password') }}">Forgot Password?</a>
+                        </label>
+                    </div>
+
                     <input type="submit" class="btn btn-block btn-default" value="Login">
 
                 </form>
             </div>
             <div class="modal-footer">
-
                 Don't have an account? <a href="#" class="signup" data-toggle="modal" data-target="#ModalSignupMenuForm"><strong> Sign up</strong></a>
             </div>
         </div><!-- /.modal-content -->
@@ -126,8 +132,6 @@
                 <form action="{{ route('register-freelancer') }}" method="POST">
                     <!-- CSRF Token -->
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
-
 
                     <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
                         <label class="sr-only"> First Name</label>

@@ -307,6 +307,7 @@ Route::get('currency/{currency}', function ($currency) {
         Route::post('signin', 'AuthController@postSignin');
         Route::post('signup', array('as' => 'signup', 'uses' => 'AuthController@postSignup'));
         Route::post('forgot-password', array('as' => 'forgot-password', 'uses' => 'AuthController@postForgotPassword'));
+
         Route::get('login2', function () {
             return View::make('admin/login2');
         });
@@ -428,10 +429,12 @@ Route::get('currency/{currency}', function ($currency) {
     Route::get('activate/{userId}/{activationCode}', array('as' => 'activate', 'uses' => 'FrontEndController@getActivate'));
     Route::get('forgot-password', array('as' => 'forgot-password', 'uses' => 'FrontEndController@getForgotPassword'));
     Route::post('forgot-password', 'FrontEndController@postForgotPassword');
-# Forgot Password Confirmation
+
+    # Forgot Password Confirmation
     Route::get('forgot-password/{userId}/{passwordResetCode}', array('as' => 'forgot-password-confirm', 'uses' => 'FrontEndController@getForgotPasswordConfirm'));
     Route::post('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@postForgotPasswordConfirm');
-# My account display and update details
+
+    # My account display and update details
     Route::group(array('middleware' => 'SentinelUser'), function () {
          Route::get('my-bookings', array('as' => 'my-bookings', 'uses' => 'FrontEndController@myBookings'));
         Route::get('my-account', array('as' => 'my-account', 'uses' => 'FrontEndController@myAccount'));

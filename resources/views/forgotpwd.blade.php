@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Login
+Forget Password
 @parent
 @stop
 
@@ -32,7 +32,7 @@ Login
             <div class="box1">
             
             <p>Enter your email to send the password</p>
-            @include('notifications')
+
             <form action="{{ route('forgot-password') }}" class="omb_loginForm" autocomplete="off" method="POST">
                 {!! Form::token() !!}
                 <div class="form-group">

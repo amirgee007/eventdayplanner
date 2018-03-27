@@ -8,6 +8,7 @@ return array(
 
     'account_already_exists' => 'Un compte avec cette adresse email existe déja.',
     'account_not_found'      => "Le nom d'utilisateur ou le mot passe est incorrect.",
+    'email_not_found'      => "L'email est incorect.",
     'account_not_activated'  => "Ce compte d'utilisateur n'est pas activé.",
     'account_suspended'      => "Compte utilisateur suspendu à cause d'un trop grand nombre de tentatives de connexion. Essayer à nouveau après [:delay] secondes",
     'account_banned'         => 'Ce compte utilisateur est banni.',

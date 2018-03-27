@@ -35,8 +35,6 @@
                 <div class="col-md-12">
                     <!--main content-->
                     <div class="position-center">
-                        <!-- Notifications -->
-                        @include('notifications')
                         <div>
                         @include('usermenu')
                         </div>
@@ -255,7 +253,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-calendar text-primary"></i>
                                             </span>
-                                        {!!  Form::text('dob', old('dob',$user->dob), array('id' => 'datepicker','class' => 'form-control', 'data-date-format'=> 'YYYY-MM-DD'))  !!}
+                                        {!!  Form::text('dob', old('dob',$user->dob), array('id' => 'Datein','class' => 'form-control', 'data-date-format'=> 'YYYY-MM-DD'))  !!}
                                     </div>
                                     <span class="help-block">{{ $errors->first('dob', ':message') }}</span>
                                 </div>
@@ -283,4 +281,19 @@
     <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/frontend/user_account.js') }}"></script>
+
+
+    <script>
+
+        $(function () {
+
+            $('#Datein').datetimepicker(
+                {
+                    maxDate: 'now'
+                }
+            );
+        });
+    </script>
+
+
 @stop

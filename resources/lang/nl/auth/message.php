@@ -8,6 +8,7 @@ return array(
 
     'account_already_exists' => 'Een account met dit e-mail adres bestaat al.',
     'account_not_found'      => 'Gebruikersnaam en/of wachtwoord zijn incorrect.',
+    'email_not_found'      => 'De e-mail is onjuist.',
     'account_not_activated'  => 'Dit gebruikersaccount is nog niet geactiveerd.',
     'account_suspended'      => 'Dit gebruikersaccount is geschorts, omdat er teveel foutieve aanmeld pogingen zijn gedaan. Probeer het over [:delay] seconden opnieuw',
     'account_banned'         => 'Dit gebruikersaccount is verband.',

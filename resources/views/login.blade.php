@@ -31,12 +31,10 @@ Login
     <div class="row">
         <div class="box animation flipInX">
             <div class="box1">
-            
-                <!-- Notifications -->
-                @include('notifications')
 
                 <form action="{{ route('login') }}" class="omb_loginForm"  autocomplete="off" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                     <div class="form-group {{ $errors->first('email', 'has-error') }}">
                         <label class="sr-only">Email</label>
                         <input type="email" class="form-control" name="email" placeholder="Email"
@@ -58,10 +56,10 @@ Login
                     Don't have an account? <a href="{{ route('register') }}"><strong> Sign up</strong></a>
                 </form>
             </div>
-        <div class="bg-light animation flipInX">
+        <div class="">
             <a href="{{ route('forgot-password') }}">Forgot Password?</a>
         </div>
-
+<br/>
         <div class="bg-light animation flipInX">
             <ul>
                 <li><a href="{{ route('auth.getSocialAuth','google') }}">Login with Google</a></li>

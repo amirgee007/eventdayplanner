@@ -295,9 +295,6 @@ You have <input readonly type="text" name="countdown" size="3" value="110"> char
                                 </div>
                             </div>
 
-                            
-
-                            
 
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-4">

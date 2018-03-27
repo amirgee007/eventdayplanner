@@ -30,14 +30,6 @@ Register
     <!--Content Section Start -->
     <div class="row">
         <div class="box col-sm-6 col-xs-12 animation flipInX">
-            
-            <!-- Notifications -->
-            @include('notifications')
-            @if($errors->has())
-                @foreach ($errors->all() as $error)
-                    <div class="text-danger">{{ $error }}</div>
-                @endforeach
-            @endif
 
             <form action="{{ route('register') }}" method="POST">
                 <!-- CSRF Token -->
@@ -58,13 +50,16 @@ Register
                 <div class="form-group {{ $errors->first('email', 'has-error') }}">
                     <label class="sr-only"> Email</label>
                     <input type="email" class="form-control" id="Email" name="email" placeholder="Email"
-                           value="{!! old('Email') !!}" required>
+                           value="{!! old('email') !!}" required >
+
                     {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                 </div>
                 <div class="form-group {{ $errors->first('password', 'has-error') }}">
                     <label class="sr-only"> Password</label>
                     <input type="password" class="form-control" id="Password1" name="password" placeholder="Password">
-                    {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
+                    {!! $errors->first('password', '<span class="help-block">:message</span>')!!}
+                    {!! '<span class="help-block">Must have capital letter, Number,special char</span>'!!}
+
                 </div>
                 <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">
                     <label class="sr-only"> Confirm Password</label>

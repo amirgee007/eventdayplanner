@@ -32,7 +32,7 @@ class UserRequest extends Request
                     'first_name' => 'required|min:3',
                     'last_name' => 'required|min:3',
                     'email' => 'required|email|unique:users,email',
-                    'password' => 'required|between:3,32',
+                    'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
                     'password_confirm' => 'required|same:password'
 
                 ];
