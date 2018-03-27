@@ -36,9 +36,9 @@ return [
     ],
 
     'facebook' => [
-        'client_id'     => env('FACEBOOK_ID','1214991548588669'),
-        'client_secret' => env('FACEBOOK_SECRET','453988fb07b807f310df5a89662fca5e'),
-        'redirect'      => env('FACEBOOK_REDIRECT','http://eventdayplanner.com/dev/public/auth/callback/facebook')
+        'client_id'     => env('FACEBOOK_ID','1932067973737435'),
+        'client_secret' => env('FACEBOOK_SECRET','a345c54f5d8ab2163945a6432668d016'),
+        'redirect'      => env('FACEBOOK_REDIRECT','http://eventdayplanner.seersol.com/auth/callback/facebook')
     ],
     'google' => [
         'client_id'     => env('GOOGLE_ID','521125266075-6a4lg5bsh6b924aq6igguu4rd960ejho.apps.googleusercontent.com'),
