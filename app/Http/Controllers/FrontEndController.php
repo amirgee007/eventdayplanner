@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Activation;
 use App\Http\Requests;
+use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\UserRequest;
 use App\NewsLetterEmail;
 use App\User;
@@ -69,12 +70,10 @@ class FrontEndController extends JoshController
 
     public function home(Request $request){
 
-
         $date = new DateTime;
         $date->modify('-50 minutes');
         $formatted_date = $date->format('Y-m-d H:i:s');
         $filtereventbyprice = session('filtereventbyprice');
-
 
         if($filtereventbyprice && $filtereventbyprice!='-1'){
             $price=Helper::exchangeToUSD($filtereventbyprice);
@@ -140,7 +139,6 @@ class FrontEndController extends JoshController
      */
     public function postLogin(Request $request)
     {
-
         try {
             // Try to log the user in
             if (Sentinel::authenticate($request->only('email', 'password'), $request->get('remember-me', 0))) {
@@ -148,10 +146,8 @@ class FrontEndController extends JoshController
                // return Redirect::to(URL::previous());
                // return Redirect::intended('/');
 
-
                 if(Session::get('bookData'))
                    return Redirect::intended('ads/book');
-
 
                 if(Sentinel::inRole('event-organizer'))
                     return redirect()->intended('my-account-event-organizer')->with('success', Lang::get('auth/message.login.success'));
@@ -199,8 +195,7 @@ class FrontEndController extends JoshController
      * get user details and display
      */
     public function myAccountBusiness(User $user)
-    { 
-
+    {
         $user = Sentinel::getUser();
         $countries = $this->countries;
         return View::make('business.user_account', compact('user', 'countries'))->with('frontarray',$this->frontarray);
@@ -257,10 +252,6 @@ class FrontEndController extends JoshController
         $events_booked=\App\Booking::where('user_id',$user->id)->whereNotNull('event_id')->with('event')->get();
         $ads_booked=\App\Booking::where('user_id',$user->id)->whereNotNull('ads_id')->with('ad')->get();
 
-        
-
-
-        
         return View::make('user.mybookings', compact('user','events_booked','ads_booked'))->with('frontarray',$this->frontarray);
     }
 
@@ -360,8 +351,6 @@ class FrontEndController extends JoshController
      */
     public function postRegisterBusiness(UserRequest $request)
     {
-
-        
 
        // print_r($request->get('type'));exit;
         $activate = $this->user_activation; //make it false if you don't want to activate user automatically it is declared above as global variable
@@ -685,12 +674,12 @@ class FrontEndController extends JoshController
             //$user = Sentinel::FindByLogin($request->get('email'));
             $user = Sentinel::findByCredentials(['email' => $request->email]);
             if (!$user) {
-                return Redirect::route('forgot-password')->with('error', Lang::get('auth/message.account_not_found'));
+                return back()->with('error', Lang::get('auth/message.email_not_found'));
             }
 
             $activation = Activation::completed($user);
             if (!$activation) {
-                return Redirect::route('forgot-password')->with('error', Lang::get('auth/message.account_not_activated'));
+                return back()->with('error', Lang::get('auth/message.account_not_activated'));
             }
 
             $reminder = Reminder::exists($user) ?: Reminder::create($user);
@@ -706,14 +695,17 @@ class FrontEndController extends JoshController
                 $m->to($user->email, $user->first_name . ' ' . $user->last_name);
                 $m->subject('Account Password Recovery');
             });
+
+
         } catch (UserNotFoundException $e) {
             // Even though the email was not found, we will pretend
             // we have sent the password reset code through email,
             // this is a security measure against hackers.
+
         }
 
         //  Redirect to the forgot password
-        return Redirect::to(URL::previous())->with('success', Lang::get('auth/message.forgot-password.success'));
+        return back()->with('success', Lang::get('auth/message.forgot-password.success'));
     }
 
     /**
@@ -724,6 +716,7 @@ class FrontEndController extends JoshController
      */
     public function getForgotPasswordConfirm($userId, $passwordResetCode = null)
     {
+
         if (!$user = Sentinel::findById($userId)) {
             // Redirect to the forgot password page
             return Redirect::route('forgot-password')->with('error', Lang::get('auth/message.account_not_found'));
@@ -755,7 +748,7 @@ class FrontEndController extends JoshController
      * @param  string $passwordResetCode
      * @return Redirect
      */
-    public function postForgotPasswordConfirm(Request $request, $userId, $passwordResetCode = null)
+    public function postForgotPasswordConfirm(PasswordResetRequest $request, $userId, $passwordResetCode = null)
     {
 
         $user = Sentinel::findById($userId);
@@ -807,9 +800,6 @@ class FrontEndController extends JoshController
     public function postCareer(Request $request)
     {
 
-        
-        
-
         // Data to be used on the email view
         $data = array(
             'name' => $request->get('name'),
@@ -847,11 +837,6 @@ class FrontEndController extends JoshController
      */
     public function postInvestor(Request $request)
     {
-
-
-
-        
-        
 
         // Data to be used on the email view
         $data = array(
@@ -892,9 +877,6 @@ class FrontEndController extends JoshController
      */
     public function postPartner(Request $request)
     {
-
-        
-        
 
         // Data to be used on the email view
         $data = array(
