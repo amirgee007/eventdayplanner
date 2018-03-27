@@ -523,26 +523,21 @@ class PaymentController extends BaseController
     }
 
     public function prepareevent(Request $request)
-    {   
+    {
+
 
         $id=$request->get('event_id');
         $quantity=$request->get('quantity');
 
-        
         $event=Event::find($id); 
 
         $price=$event->ticket_price;
-
-
         
         $price_amount=$price*$quantity;
-        
 
         if(!$event){
             return  Redirect::to('events/book/'.$id)->with('error', 'No Event Selected');
         }
-
-
 
         if(!$price_amount || !is_numeric($price_amount)){
            

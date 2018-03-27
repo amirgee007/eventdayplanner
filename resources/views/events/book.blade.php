@@ -17,14 +17,6 @@ Book Now
       <div class="row">
         <div class="col-sm-6">
             <h1>Book Now</h1>
-              @include('notifications')
-                     @if ($errors->any())
-                        <ul class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
 
                     <span><a href="{{url('event',$event->slug)}}" title="{{ $event->name}}"> {{ $event->name }}</a></span><br/>
                    
@@ -36,11 +28,8 @@ Book Now
                         {!! Form::hidden('dates', '') !!}
                         {!! Form::hidden('event_id', $event->id) !!}
 
-                    
 
-                   
-            
-					           <div class="form-group">
+                    <div class="form-group">
                         {!! Form::label('price', 'Price: ') !!}
                         : {!! Helper::getPrice($event->ticket_price) !!} Per person
                     </div>
@@ -110,8 +99,8 @@ Book Now
                                       </select>
                                     </div>
                                     <div class="col-xs-3">
-                                      <select class="form-control" name="expiry_year">
-                                        
+
+                                        <select class="form-control" name="expiry_year">
                                         <option value="16">2016</option>
                                         <option value="17">2017</option>
                                         <option value="18">2018</option>
@@ -125,8 +114,6 @@ Book Now
                                         <option value="23">2026</option>
                                       </select>
                                     </div>
-
-                                    
                                   </div>
                                 </div>
                               </div>
@@ -150,8 +137,6 @@ Book Now
                             </fieldset>
                           {!! Form::close() !!}
                           @endif
-                     
-
         </div>
     </div>
 </div>

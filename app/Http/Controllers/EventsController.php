@@ -52,7 +52,6 @@ class EventsController extends Controller {
        // $tags = $this->tags;
         // Show the page
 
-
         return View('events', compact('events','popular','upcoming'))->with('frontarray',$this->frontarray);
     }
 
@@ -165,7 +164,7 @@ class EventsController extends Controller {
 		return view('events.viewreviews', compact('event'));
 	}
 
-	
+
 
 
 
@@ -183,17 +182,29 @@ class EventsController extends Controller {
 			$request->request->add(['user_id'=>$user->id]);
 		}
 
-		
+        $date_range = explode(" - ", $request->get("date_range"));
 
-		$rules = ['captcha' => 'required|captcha'];
-            $validator = Validator::make($request->all(), $rules);
+        if (!empty(array_filter($date_range))) {
+            $date = (trim($date_range[0]));
+            $enddatetime = trim($date_range[1]);
+
+            $request->request->add(['date'=>$date]);
+            $request->request->add(['enddatetime'=>$enddatetime]);
+        }
+
+            $validator = Validator::make($request->all(), array(
+                'captcha' => 'required|captcha'
+            ));
+
+
             if ($validator->fails())
             {
                 return redirect('create-event')->with('error', 'captcha error')->withInput();
                 echo '<p style="color: #ff0000;">Incorrect!</p>';
                 exit;
             }
-		$event= new Event($request->except('photo_image','captcha'));
+
+            $event= new Event($request->except('photo_image','captcha' ,'date_range'));
                 		
                 if ($request->hasFile('photo_image')) {
         			$file            = $request->file('photo_image');
@@ -205,8 +216,8 @@ class EventsController extends Controller {
 					}
         		}
 
-                		$event->save();
-		return redirect('my-events')->with('success', Lang::get('message.success.create'))->withInput();
+        		$event->save();
+                return redirect('my-events')->with('success', Lang::get('message.success.create'))->withInput();
 	}
 
 	public function editevent($id,Request $request)

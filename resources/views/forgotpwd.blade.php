@@ -32,7 +32,14 @@ Forget Password
             <div class="box1">
             
             <p>Enter your email to send the password</p>
-
+                @include('notifications')
+                @if ($errors->any())
+                    <ul class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
             <form action="{{ route('forgot-password') }}" class="omb_loginForm" autocomplete="off" method="POST">
                 {!! Form::token() !!}
                 <div class="form-group">

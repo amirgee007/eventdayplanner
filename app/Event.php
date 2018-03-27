@@ -39,6 +39,7 @@ class Event extends Model  {
      * @var array
      */
     protected $guarded = ['id'];
+    protected $appends = ['date_range'];
     /**
      * Searchable rules.
      *
@@ -90,4 +91,9 @@ class Event extends Model  {
         return $this->belongsTo('App\User','user_id','id');
     }
 
+
+    public function getDateRangeAttribute(){
+
+        return $this->date.' - '. $this->enddatetime;
+    }
 }
