@@ -230,6 +230,7 @@ class FrontEndController extends JoshController
      */
     public function myAccount(User $user)
     {
+
         $user = Sentinel::getUser();
 
          if(Sentinel::inRole('event-organizer'))
@@ -263,6 +264,10 @@ class FrontEndController extends JoshController
      */
     public function update(Request $request, User $user)
     {
+        $this->validate($request, [
+            'pic' => 'required | mimes:jpeg,jpg,png | max:1000'
+        ]);
+
 
         $user = Sentinel::getUser();
 
@@ -286,8 +291,6 @@ class FrontEndController extends JoshController
         $user->portfolio = $request->get('portfolio');
 
        // echo $user->office_number;exit;
-        
-
 
         if ($password = $request->get('password')) {
             $user->password = Hash::make($password);
