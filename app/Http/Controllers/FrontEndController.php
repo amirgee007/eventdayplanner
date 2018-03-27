@@ -429,8 +429,6 @@ class FrontEndController extends JoshController
     public function postRegisterEventOrganizer(UserRequest $request)
     {
 
-        
-
        // print_r($request->get('type'));exit;
         $activate = $this->user_activation; //make it false if you don't want to activate user automatically it is declared above as global variable
 
@@ -498,8 +496,6 @@ class FrontEndController extends JoshController
 
     public function postRegisterFreelancer(UserRequest $request)
     {
-
-        
 
        // print_r($request->get('type'));exit;
         $activate = $this->user_activation; //make it false if you don't want to activate user automatically it is declared above as global variable
@@ -573,8 +569,6 @@ class FrontEndController extends JoshController
      */
     public function postRegister(UserRequest $request)
     {
-
-        
 
        // print_r($request->get('type'));exit;
         $activate = $this->user_activation; //make it false if you don't want to activate user automatically it is declared above as global variable
@@ -660,7 +654,7 @@ class FrontEndController extends JoshController
      */
     public function getForgotPassword()
     {
-        // Show the page
+
         return View::make('forgotpwd')->with('frontarray',$this->frontarray);
 
     }
@@ -672,6 +666,7 @@ class FrontEndController extends JoshController
      */
     public function postForgotPassword(Request $request)
     {
+
         try {
             // Get the user password recovery code
             //$user = Sentinel::FindByLogin($request->get('email'));
@@ -704,7 +699,6 @@ class FrontEndController extends JoshController
             // Even though the email was not found, we will pretend
             // we have sent the password reset code through email,
             // this is a security measure against hackers.
-
         }
 
         //  Redirect to the forgot password
