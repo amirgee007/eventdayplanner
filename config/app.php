@@ -169,7 +169,7 @@ return [
         App\Providers\JoshCrudGeneratorServiceProvider::class,
         App\Providers\LocalServiceProvider::class,
 
-        Mews\Captcha\CaptchaServiceProvider::class,
+
 
          Laravel\Socialite\SocialiteServiceProvider::class,
          willvincent\Rateable\RateableServiceProvider::class,
@@ -182,6 +182,7 @@ return [
          Spatie\Newsletter\NewsletterServiceProvider::class,
          Milon\Barcode\BarcodeServiceProvider::class,
          Barryvdh\DomPDF\ServiceProvider::class,
+        LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class,
     ],
 
     /*
@@ -235,7 +236,6 @@ return [
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
         'Datatables' => yajra\Datatables\Datatables::class,
-        'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Share' => Chencha\Share\ShareFacade::class,

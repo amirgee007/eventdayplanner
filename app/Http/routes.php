@@ -1,6 +1,12 @@
 <?php
-Route::group(['middleware' => 'web'], function () {
 
+
+
+Route::get('/amir' ,function (){
+
+    return view('welcome');
+});
+Route::group(['middleware' => 'web'], function () {
 
 
     Route::post('event_anouncements_video',array('as' => 'event_anouncements_video','uses' => 'Event_anouncementsController@storevideo'));

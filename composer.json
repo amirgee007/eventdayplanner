@@ -12,7 +12,6 @@
         "cartalyst/sentinel": "2.0.",
         "cviebrock/eloquent-taggable": "2.0.0",
         "yajra/laravel-datatables-oracle": "~5.0",
-        "mews/captcha": "^2.1",
         "laravel/socialite": "^2.0",
         "willvincent/laravel-rateable": "~1.0",
         "cmgmyr/messenger": "~2.0",
@@ -25,7 +24,8 @@
         "guzzlehttp/guzzle": "*",
         "spatie/laravel-newsletter": "^3.0",
         "milon/barcode": "^5.3",
-        "barryvdh/laravel-dompdf": "^0.8.0"
+        "barryvdh/laravel-dompdf": "^0.8.0",
+        "captcha-com/laravel-captcha": "4.*"
 },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
