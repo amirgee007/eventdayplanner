@@ -1,5 +1,5 @@
 <footer>
-    <div class="container">
+    <div class="container col-xs-12">
         <div class="row">
             <div class="col-sm-3">
                 <h3>Our Expert Services</h3>

@@ -1,7 +1,6 @@
 
 <div id="ModalLoginForm" class="modal fade">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="height: 520px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">x</button>
                 <h3>Login</h3>
@@ -91,7 +90,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! captcha_img('captcha') !!}
+                        {{--{!! captcha_img('captcha') !!}--}}
                         <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
                     </div>
                 <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">
@@ -242,7 +241,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! captcha_img('captcha') !!}
+                        {{--{!! captcha_img('captcha') !!}--}}
                         <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
                     </div>
                 <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">
@@ -389,7 +388,7 @@
                 </div>
 
                 <div class="form-group">
-                    {!! captcha_img('captcha') !!}
+                    {{--{!! captcha_img('captcha') !!}--}}
                     <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
                 </div>
             <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">
@@ -526,7 +525,7 @@
                 </div>
 
                 <div class="form-group">
-                    {!! captcha_img('captcha') !!}
+                    {{--{!! captcha_img('captcha') !!}--}}
                     <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
                 </div>
             <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">

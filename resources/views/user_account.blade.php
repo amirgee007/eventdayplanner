@@ -125,7 +125,7 @@
                             </div>
 
                             <div class="form-group {{ $errors->first('password', 'has-error') }}">
-                                <p class="text-warning col-md-offset-2"><strong>If you don't want to change password... please leave them empty</strong></p>
+                                <p class="text-warning col-md-offset-2 col-sm-offset-2 col-xs-offset-1"><strong>If you don't want to change password... please leave them empty</strong></p>
                                 <label class="col-lg-2 control-label">
                                     Password:
                                     <span class='require'>*</span>
@@ -196,7 +196,7 @@
 
                             <div class="form-group {{ $errors->first('country', 'has-error') }}">
                                 <label class="control-label  col-md-2">Select Country: </label>
-                                <div class="col-md-6">
+                                <div class="col-md-6 col-sm-6">
                                     {!! Form::select('country', $countries, $user->country,['class' => 'form-control select2', 'id' => 'countries']) !!}
                                     <span class="help-block">{{ $errors->first('country', ':message') }}</span>
                                 </div>
