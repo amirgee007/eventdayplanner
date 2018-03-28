@@ -1,6 +1,7 @@
 
 <div id="ModalLoginForm" class="modal fade">
     <div class="modal-dialog" role="document">
+        <div class="modal-content col-xs-12" style="overflow: hidden; height: auto; border: 1px solid black;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">x</button>
                 <h3>Login</h3>

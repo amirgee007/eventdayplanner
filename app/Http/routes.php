@@ -4,7 +4,7 @@
 
 Route::get('/amir' ,function (){
 
-    return view('welcome');
+    return view('amir');
 });
 Route::group(['middleware' => 'web'], function () {
 
