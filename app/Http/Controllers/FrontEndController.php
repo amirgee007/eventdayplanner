@@ -88,7 +88,6 @@ class FrontEndController extends JoshController
 
         }
 
-
         $popularevents= Event::select(['*', DB::raw('count(event_comments.id) as total')])
                 ->leftJoin('event_comments', 'events.id', '=', 'event_comments.event_id')
                 ->groupBy('events.id')

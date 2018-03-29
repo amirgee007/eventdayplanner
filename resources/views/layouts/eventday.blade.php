@@ -31,6 +31,8 @@
 </head>
 
 <body>
+
+    @include('layouts.modals')
     <!-- Header Start -->
     <header>
       <div class="headerTop">
@@ -155,7 +157,7 @@
     @yield('top')
     @yield('content')
     @include('layouts.footer')
-    @include('layouts.modals')
+
 
 
 <!--global js start-->
@@ -221,22 +223,22 @@ window.onclick = function(event) {
 }
 
 $(function(){
-  $('#ModalSignupMenuForm').on('show.bs.modal', function () {
-    $('.modal.in').modal('hide');
-  });
 
-  $('#ModalLoginForm').on('show.bs.modal', function () {
-    $('.modal.in').modal('hide');
-  });
-  $('#ModalSignupBusinessForm').on('show.bs.modal', function () {
-    $('.modal.in').modal('hide');
-  });
-  $('#ModalSignupFreelancerForm').on('show.bs.modal', function () {
-    $('.modal.in').modal('hide');
-  });
-  $('#ModalSignupEventOrganizerForm').on('show.bs.modal', function () {
-    $('.modal.in').modal('hide');
-  });
+    $('.signUpModal').on('change' , function () {
+        status_checkbox = $(this);
+        form_class = status_checkbox.attr('data-id');
+        ischecked= status_checkbox.is(':checked');
+
+        if (ischecked){
+            $('#SignupMenuForm').hide('slow');
+            $('#SignupFreelancerForm').hide('slow');
+            $('#SignupBusinessForm').hide('slow');
+            $('#SignupEventOrganizerForm').hide('slow');
+
+            $('#'+form_class).show('slow');
+        }
+
+    });
 
 });
 

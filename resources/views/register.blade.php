@@ -90,11 +90,11 @@ Register
                 Already have an account? Please <a href="{{ route('login') }}"> Sign In</a>
             </form>
         </div>
-        @include('register_menu')
         <br>
         <br>
         <div class="col-sm-6 col-xs-12 ">
             <ul>
+                <li><a href="#" data-toggle="modal" data-target="#ModalSignupMenuForm">Sign Up With Difrent Option Another</a></li>
                 <li><a href="{{ route('auth.getSocialAuth','google') }}">Register By Google</a></li>
                 <li><a href="{{ route('auth.getSocialAuth','facebook') }}">Register By Facebook</a></li>
                 <li><a href="{{ route('auth.getSocialAuth','twitter') }}">Register By Twitter</a></li>
@@ -104,6 +104,7 @@ Register
     </div>
     <!-- //Content Section End -->
 </div>
+
 @stop
 @section('footer_script')
 <!--global js starts-->
@@ -111,8 +112,11 @@ Register
 <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
 <!--global js end-->
+
 <script>
+
     $(document).ready(function(){
+
         $("input[type='checkbox'],input[type='radio']").iCheck({
             checkboxClass: 'icheckbox_minimal-blue',
             radioClass: 'iradio_minimal-blue'
