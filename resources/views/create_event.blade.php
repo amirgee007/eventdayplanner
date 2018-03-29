@@ -159,7 +159,7 @@
                     <div class="form-group">
                     {!! Form::label('verify', 'Verify: ') !!}
 
-                    <div style="margin-bottom: 10px; display: inline-block;">{!! captcha_img('captcha') !!}</div> <br/>
+                    <div style="margin-bottom: 10px; display: inline-block;">{!! NoCaptcha::display() !!}</div> <br/>
                      <input type="text" name="captcha" class="form-control">
                      </div>
 
@@ -189,6 +189,7 @@
 
 {{-- page level scripts --}}
 @section('footer_scripts')
+    {!! NoCaptcha::renderJs() !!}
 
     <script type="text/javascript" src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>
@@ -196,7 +197,6 @@
     <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
     <script src="{{ asset('assets/vendors/daterangepicker/js/daterangepicker.js') }}" type="text/javascript"></script>
     {{--<script src="{{ asset('assets/js/pages/datepicker.js') }}" type="text/javascript"></script>--}}
-
 
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&key=AIzaSyDrUptjcGVTBOTkmq61SHWodlr1FZCPyY8"></script>
      <script src="{{ asset('assets/js/jquery.geocomplete.js') }}"></script>
