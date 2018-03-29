@@ -10,7 +10,4 @@ composer.lock
 _ide_helper.php
 .DS_Store
 composer.phar
-/storage/logs
-
-*.log
-*.log
+storage/logs/laravel.log

@@ -158,9 +158,7 @@
 
                     <div class="form-group">
                     {!! Form::label('verify', 'Verify: ') !!}
-
-                    <div style="margin-bottom: 10px; display: inline-block;">{!! NoCaptcha::display() !!}</div> <br/>
-                     <input type="text" name="captcha" class="form-control">
+                    <div style="">{!! NoCaptcha::display() !!}</div> <br/>
                      </div>
 
                     <div class="form-group">
