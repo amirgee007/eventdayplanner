@@ -546,3 +546,4 @@
         </div>
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
+{!! NoCaptcha::renderJs() !!}
