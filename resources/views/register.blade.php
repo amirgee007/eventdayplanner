@@ -92,6 +92,7 @@ Register
         </div>
         <br>
         <br>
+
         <div class="col-sm-6 col-xs-12 ">
             <ul>
                 <li><a href="#" data-toggle="modal" data-target="#ModalSignupMenuForm">Sign Up With Difrent Option Another</a></li>

@@ -95,9 +95,6 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="date" id='datepicker'
                                                    placeholder="Date" aria-describedby="basic-addon1">
-                                            <span class="input-group-addon" style="border-radius: 4px"
-                                                  id="basic-addon2"><i class="fa fa-calendar"
-                                                                       aria-hidden="true"></i></span>
                                         </div>
                                     </div>
                                     <div class="col-md-5 col-sm-5 col-xs-12">

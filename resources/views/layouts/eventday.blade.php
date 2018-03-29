@@ -24,11 +24,31 @@
         | Eventdayplanner
         @show
     </title>
-    
+
+    <style>
+        .fa {
+            padding: 4px;
+            font-size: 20px;
+            width: 30px;
+            text-align: center;
+            text-decoration: none;
+            margin: 3px 1px;
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        .jingalala li{ display: inline-block; border-radius:50px; height: 60px; text-align: center; border: 2px solid #fff; margin: 0 5px;}
+
+    </style>
+
     <!--page level css-->
     @yield('header_styles')
     <!--end of page level css-->
 </head>
+
+
 
 <body>
 

@@ -1,4 +1,5 @@
 
+
 <div id="ModalLoginForm" class="modal fade">
     <div class="modal-dialog" role="document">
         <div class="modal-content col-xs-12" style="overflow: hidden; height: auto; border: 1px solid black;">
@@ -55,7 +56,6 @@
             </div>
             <div class="modal-body">
                 @include('register_menu')
-                @include('register_social_menu')
 
                 <div id="SignupMenuForm" style="display: block">
                     <form action="{{ route('register') }}" method="POST">
@@ -114,7 +114,9 @@
                         </label>
                     </div>
                     <input type="submit" class="btn btn-block btn-default" value="Sign up" name="submit">
-                    Already have an account? Please <a href="{{ route('login') }}"> Sign In</a>
+                        @include('register_social_menu')
+                        Already have an account? Please <a href="{{ route('login') }}"> Sign In</a>
+
                 </form>
                 </div>
 
@@ -251,6 +253,7 @@
                         </label>
                     </div>
                     <input type="submit" class="btn btn-block btn-default" value="Sign up" name="submit">
+                    @include('register_social_menu')
                     Already have an account? Please <a href="{{ route('login') }}"> Sign In</a>
                 </form>
                 </div>
@@ -386,7 +389,8 @@
                             </label>
                         </div>
                         <input type="submit" class="btn btn-block btn-default" value="Sign up" name="submit">
-                        Already have an account? Please <a href="{{ route('login') }}"> Sign In</a>
+                    @include('register_social_menu')
+                    Already have an account? Please <a href="{{ route('login') }}"> Sign In</a>
                     </form>
                 </div>
 
@@ -514,7 +518,8 @@
                             </label>
                         </div>
                         <input type="submit" class="btn btn-block btn-default" value="Sign up" name="submit">
-                        Already have an account? Please <a href="{{ route('login') }}"> Sign In</a>
+                    @include('register_social_menu')
+                    Already have an account? Please <a href="{{ route('login') }}"> Sign In</a>
                     </form>
                 </div>
 
