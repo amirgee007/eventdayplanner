@@ -622,8 +622,9 @@ class AdsController extends Controller {
 	 */
 	public function storeFrontend(Request $request)
 	{
+        $data =  (clean($request->all()));
+        $request->merge($data);
 
-		
 
 		$photos=($request['mytext']);
 		$prices=$request['myprice'];
@@ -631,12 +632,9 @@ class AdsController extends Controller {
 		$services=$request['services'];
 		$serviceprices=$request['serviceprice'];
 
-
-
 		$galimage=array();
 		$galprice=array();$serprice=array();
 
-		 
 		
 		//echo $request->get('captcha');exit;
 		if(Sentinel::check()){
@@ -747,10 +745,6 @@ class AdsController extends Controller {
         			$price=(int)( $request['serviceprice'][$i]);
         			$service=( $request['services'][$i]);
 
-        			
-
-        			
-        			
 					$serprice[]=array('ads_id'=>$ad->id,'price'=>$price,'name'=>$service);
         			//echo $photo["temp_name"];
         			//echo $file            = $_FILES["fileToUpload"]["tmp_name"];
@@ -1146,9 +1140,10 @@ class AdsController extends Controller {
 	 */
 	public function store(Request $request)
 	{
+
 		$ad= new Ad($request->except(''));
                 		
-                		$ad->save();
+        $ad->save();
 		return redirect('admin/ads')->with('success', Lang::get('message.success.create'));
 	}
 

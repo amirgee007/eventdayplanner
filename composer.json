@@ -25,7 +25,8 @@
         "spatie/laravel-newsletter": "^3.0",
         "milon/barcode": "^5.3",
         "barryvdh/laravel-dompdf": "^0.8.0",
-        "anhskohbo/no-captcha": "^3.0"
+        "anhskohbo/no-captcha": "^3.0",
+        "mews/purifier": "^2.1"
 },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

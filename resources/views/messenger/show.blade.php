@@ -33,7 +33,7 @@
         {!! Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT']) !!}
         <!-- Message Form Input -->
         <div class="form-group msgBox">
-            {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
+            {!! Form::textarea('message', null, ['class' => 'form-control', 'required']) !!}
         </div>
 
         

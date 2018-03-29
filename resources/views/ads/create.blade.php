@@ -37,7 +37,7 @@
                     <!--main content-->
                     <div class="position-center">
                         <!-- Notifications -->
-                        @include('notifications')
+{{--                        @include('notifications')--}}
 
                         
                         <div class="panel-body">

@@ -264,10 +264,14 @@ class FrontEndController extends JoshController
      */
     public function update(Request $request, User $user)
     {
+
         $this->validate($request, [
-            'pic' => 'required | mimes:jpeg,jpg,png | max:1000'
+            'pic' => 'mimes:jpeg,jpg,png | max:1000'
         ]);
 
+
+       $data =  (clean($request->all()));
+       $request->merge($data);
 
         $user = Sentinel::getUser();
 

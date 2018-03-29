@@ -204,7 +204,7 @@ class EventsController extends Controller {
             }
 
             $event= new Event($request->except('photo_image','captcha' ,'date_range'));
-                		
+
                 if ($request->hasFile('photo_image')) {
         			$file            = $request->file('photo_image');
         			$destinationPath =  public_path().'/uploads/crudfiles/';

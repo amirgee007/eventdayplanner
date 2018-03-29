@@ -36,7 +36,7 @@ Forget Password
                 {!! Form::token() !!}
                 <div class="form-group">
                     <label class="sr-only"></label>
-                    <input type="email" class="form-control email" name="email" placeholder="Email"
+                    <input type="email" required class="form-control email" name="email" placeholder="Email"
                            value="{!! old('email') !!}">
                     <span class="help-block">{{ $errors->first('email', ':message') }}</span>
                 </div>

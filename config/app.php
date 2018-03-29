@@ -183,6 +183,7 @@ return [
          Milon\Barcode\BarcodeServiceProvider::class,
          Barryvdh\DomPDF\ServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
     ],
 
     /*
@@ -246,6 +247,7 @@ return [
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
 
     ],
 
