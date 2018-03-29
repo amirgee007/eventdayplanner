@@ -53,11 +53,11 @@
 
                             <div class="form-group">
                             {!! Form::label('ads_category_id', 'Category') !!}
-                            {!! Form::select('ads_category_id',$ads_category ,null, array('class' => 'form-control select2', 'placeholder'=>'Select Category')) !!}
+                            {!! Form::select('ads_category_id',$ads_category ,null, array('class' => 'form-control select2', 'required','placeholder'=>'Select Category')) !!}
                         </div>
                             <div class="form-group">
                                 {!! Form::label('title', 'Title: ') !!}
-                                {!! Form::text('title', old('title'), ['class' => 'form-control']) !!}
+                                {!! Form::text('title', old('title'), ['class' => 'form-control' ,'required']) !!}
                             </div>
 
         					<div class="form-group">
@@ -67,7 +67,7 @@
                             </div>
                              <div class="form-group">
                                 {!! Form::label('time', 'Time: ') !!}
-                                {!! Form::text('time', old('time'), ['class' => 'form-control']) !!}
+                                {!! Form::time('time', old('time'), ['class' => 'form-control']) !!}
                             </div>
 
         					<div class="form-group">
@@ -136,11 +136,10 @@
 
                     <div class="form-group" id="variableprice" style="display:none;">
                     {!! Form::label('price', 'Price Ranges: ') !!}
-                      
-                        
+
                         <div class="price_fields_wrap">
                                     <a href="javascript:void(0);" class="price_add_field_button">Add More Price Range</a>
-                                    <div>Guest No. Upto:<input type="input" name="myguest[]">Price:<input type="input" name="myprice[]"></div>
+                                    <div>Guest No. Upto:<input type="number" min="0" name="myguest[]">Price:<input type="number" min="0" name="myprice[]"></div>
                           </div>
                     </div>
 
@@ -154,16 +153,10 @@
                                 {!! Form::text('additional_ads_title', old('additional_ads_title'), ['class' => 'form-control']) !!} -->
 
                                  <div class="services_price_fields_wrap">
-                                    <a href="javascript:void(0);" class="services_price_add_button">Additional Searvices</a>
-                                    <div>Additional Service Name:<input type="input" name="services[]">Price:<input type="input" name="serviceprice[]"></div>
+                                    <a href="javascript:void(0);" class="services_price_add_button">Additional Services</a>
+                                    <div>Additional Service Name:<input type="input" name="services[]">Price:<input type="number" min="0" name="serviceprice[]"></div>
                           </div>
                             </div>
-
-        					
-
-        					
-
-        					
 
                             <div class="form-group">
                                 <div class="col-sm-4">
@@ -283,7 +276,7 @@
         e.preventDefault();
         if(x < price_max_fields){ //max input box allowed
             x++; //text box increment
-             $(price_wrapper).append('<div class="additional_field">Guest No. Upto:<input type="input" name="myguest[]"/>Price:<input type="input" name="myprice[]"><span class="remove"><a href="#" class="remove_field">Remove</a></span></div>'); //add input box
+             $(price_wrapper).append('<div class="additional_field">Guest No. Upto:<input type="input" name="myguest[]"/>Price:<input type="number" min="0" name="myprice[]"><span class="remove"><a href="#" class="remove_field">Remove</a></span></div>'); //add input box
 
         }
     });

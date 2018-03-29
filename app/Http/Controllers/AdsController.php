@@ -26,7 +26,8 @@ use Helper;
 use App\Withdrawl;
 
 class AdsController extends Controller {
-	private $objFoo;
+
+    private $objFoo;
 	public function __construct(Ad $foo){
          $this->objFoo = $foo;
      }
@@ -85,21 +86,12 @@ class AdsController extends Controller {
 			}
 				
 		}
-
-
-
-
-
-
-
 		return view('ads.search',compact('ads','ads_category','query','events','location','date','iseventsearch','isbusinesssearch'));
 
 		//dd($ads);
 	}
 
 	public function moreevents(request $request){
-
-
 
 		$query=$request->get('keyword');
 		$location=$request->get('location');
@@ -158,9 +150,6 @@ class AdsController extends Controller {
 			$e .='<div class="col-sm-4 unique-class">'.$event->name.'</div>';
 		}
 
-
-
-		
         return response($e,200);
     
 	}
@@ -442,6 +431,7 @@ class AdsController extends Controller {
 		if(Sentinel::check()){
 			$user=Sentinel::getUser();
 		}
+
 		$ads = Ad::where('user_id',$user->id)->with('booking')->paginate(15);
 		$ads_category = Ads_category::lists('name', 'id');
 
@@ -785,10 +775,13 @@ class AdsController extends Controller {
 	 */
 	public function deleteads($id = null)
 	{
-		$ad = Ad::destroy($id);
+		$ad = Ad::authuser()->destroy($id);
 
-	    // Redirect to the group management page
-	    return redirect('ads')->with('success', Lang::get('message.success.delete'));
+		if($ad)
+		    return redirect('ads')->with('success', Lang::get('message.success.delete'));
+
+		else
+            return redirect('ads')->with('error', Lang::get('message.delete.delete'));
 
 	}
 

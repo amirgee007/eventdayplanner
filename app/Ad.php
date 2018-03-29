@@ -11,6 +11,7 @@ use Sentinel;
 
 
 class Ad extends Model  {
+
     use Sluggable;
     use Rateable;
     use ReviewableTrait;
@@ -83,6 +84,14 @@ class Ad extends Model  {
                 'includeTrashed' => true,
             ]
         ];
+    }
+
+    public function scopeAuthuser($query)
+    {
+        if(Sentinel::check()){
+            $user=Sentinel::getUser();
+        }
+        return $query->where('user_id', '=', $user->id);
     }
 
     public function owner()
