@@ -91,9 +91,9 @@
                     </div>
 
                     <div class="form-group">
-                        {{--{!! captcha_img('captcha') !!}--}}
-                        <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
+                        <div style="">{!! NoCaptcha::display() !!}</div> <br/>
                     </div>
+
                 <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">
                     <label class="sr-only">Gender</label>
                     <label class="radio-inline">
@@ -242,9 +242,7 @@
                     </div>
 
                     <div class="form-group">
-                        {{--{!! captcha_img('captcha') !!}--}}
-                        <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
-                    </div>
+                        <div style="">{!! NoCaptcha::display() !!}</div> <br/> </div>
                 <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">
                     <label class="sr-only">Gender</label>
                     <label class="radio-inline">
@@ -389,8 +387,7 @@
                 </div>
 
                 <div class="form-group">
-                    {{--{!! captcha_img('captcha') !!}--}}
-                    <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
+                    <div style="">{!! NoCaptcha::display() !!}</div> <br/>
                 </div>
             <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">
                     <label class="sr-only">Gender</label>
@@ -526,9 +523,8 @@
                 </div>
 
                 <div class="form-group">
-                    {{--{!! captcha_img('captcha') !!}--}}
-                    <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
-                </div>
+                    <div style="">{!! NoCaptcha::display() !!}</div> <br/> </div>
+
             <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">
                     <label class="sr-only">Gender</label>
                     <label class="radio-inline">

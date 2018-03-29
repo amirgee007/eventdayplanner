@@ -359,7 +359,7 @@ class FrontEndController extends JoshController
         $activate = $this->user_activation; //make it false if you don't want to activate user automatically it is declared above as global variable
 
         try {
-            $rules = ['captcha' => 'required|captcha'];
+            $rules = ['g-recaptcha-response' => 'required|captcha'];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails())
             {
@@ -433,7 +433,7 @@ class FrontEndController extends JoshController
         $activate = $this->user_activation; //make it false if you don't want to activate user automatically it is declared above as global variable
 
         try {
-            $rules = ['captcha' => 'required|captcha'];
+            $rules = ['g-recaptcha-response' => 'required|captcha'];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails())
             {
@@ -501,7 +501,7 @@ class FrontEndController extends JoshController
         $activate = $this->user_activation; //make it false if you don't want to activate user automatically it is declared above as global variable
 
         try {
-            $rules = ['captcha' => 'required|captcha'];
+            $rules = ['g-recaptcha-response' => 'required|captcha'];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails())
             {

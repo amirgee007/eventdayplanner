@@ -151,8 +151,7 @@ Register
                 </div>
 
                 <div class="form-group">
-                    {!! captcha_img('captcha') !!} <br/>
-                     <input placeholder="Please Verify" type="text" name="captcha" class="form-control">
+                    <div style="">{!! NoCaptcha::display() !!}</div> <br/>
                 </div>
                 <!-- <div class="form-group {{ $errors->first('gender', 'has-error') }}">
                     <label class="sr-only">Gender</label>

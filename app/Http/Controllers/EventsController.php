@@ -196,7 +196,6 @@ class EventsController extends Controller {
                 'g-recaptcha-response' => 'required|captcha'
             ));
 
-dd($validator->fails());
             if ($validator->fails())
             {
                 return redirect('create-event')->with('error', 'captcha error')->withInput();

@@ -159,7 +159,7 @@
                     <div class="form-group">
                     {!! Form::label('verify', 'Verify: ') !!}
                     <div style="">{!! NoCaptcha::display() !!}</div> <br/>
-                     </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="sendMsg">
