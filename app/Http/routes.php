@@ -285,13 +285,11 @@ Route::get('currency/{currency}', function ($currency) {
     });
 
     
-             Route::any('search', array('as' => 'search', 'uses' => 'AdsController@search'));
-             Route::get('moreevents', 'AdsController@moreevents');
+         Route::any('search', array('as' => 'search', 'uses' => 'AdsController@search'));
+         Route::get('moreevents', 'AdsController@moreevents');
 
         //Route::get('ads-detail/{slug?}', array('as' => 'ads-detail', 'uses' => 'AdsController@adsdetail'));
 
-
-     
 
     Route::group(array('prefix' => 'admin'), function () {
 
@@ -475,9 +473,6 @@ Route::get('currency/{currency}', function ($currency) {
     Route::get('list-ads/{slug?}', array('as' => 'list-ads', 'uses' => 'AdsController@ads'));
     Route::get('ads-detail/{slug?}', array('as' => 'ads-detail', 'uses' => 'AdsController@adsdetail'));
     Route::get('list-ads-category',array('as'=>'ads-category','uses'=>'AdsController@listadscategory'));
-
-
-
 
 
 

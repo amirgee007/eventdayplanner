@@ -8,7 +8,6 @@
                 <h3>Login</h3>
             </div>
             <div class="modal-body">
-            @include('login_social_menu')
 {{--            @include('register_social_menu')--}}
                 <form role="form" method="POST" action="{{ route('login') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -36,6 +35,7 @@
                     </div>
 
                     <input type="submit" class="btn btn-block btn-default" value="Login">
+                    @include('login_social_menu')
 
                 </form>
             </div>
