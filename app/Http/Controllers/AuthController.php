@@ -78,11 +78,10 @@ public function __construct(Socialite $socialite){
 
        public function getSocialAuthCallback($provider=null,$type=null)
        {
-          
+
           if($user = $this->socialite->with($provider)->user()){
              //dd($user);
              //echo $user->email;
-
 
              $guser=User::where('email',$user->email)->first();
              if($guser){
@@ -94,7 +93,7 @@ public function __construct(Socialite $socialite){
 
 
 
-                //dd($user);
+                dd($user ,'amir');
                 //dd($user->user['name']['familyName']);exit;
             // Register the user
 
