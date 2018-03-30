@@ -91,17 +91,14 @@ public function __construct(Socialite $socialite){
 
              try {
 
-
-
-                dd($user ,'amir');
                 //dd($user->user['name']['familyName']);exit;
-            // Register the user
+                // Register the user
 
                 if($provider=='google'){
                     $guser['first_name']=$user->user['name']['givenName'];
                     $guser['last_name']=$user->user['name']['familyName'];
                     $guser['email']=$user->email;
-                    $guser['password']=$user->token;
+                    $guser['password']=$user->token.'!@#';
                 }
                 if($provider=='twitter'){
                     if(!$user->email){
@@ -118,7 +115,7 @@ public function __construct(Socialite $socialite){
                         $guser['email']=$user->id."@twitter.com";
                     else
                         $guser['email']=$user->email;
-                    $guser['password']=$user->token;
+                    $guser['password']=$user->token.'!@#';
                 }
                 if($provider=='linkedin'){
                     
@@ -128,8 +125,18 @@ public function __construct(Socialite $socialite){
                         $guser['email']=$user->id."@linkedin.com";
                     else
                         $guser['email']=$user->email;
-                    $guser['password']=$user->token;
+                    $guser['password']= $user->token.'!@#';
                 }
+
+                if($provider=='facebook'){
+                    $guser['first_name']=$user->name;
+                    $guser['last_name']= '';
+                    $guser['email']=$user->email;
+                    $guser['password']=$user->token.'!@#';
+                }
+
+
+
                 $guser['pic']=$user->avatar;
                 $guser['type']='social';
 
@@ -159,8 +166,10 @@ public function __construct(Socialite $socialite){
             //return View::make('user_account')->with('success', Lang::get('auth/message.signup.success'));
 
         } catch (UserExistsException $e) {
-            $this->messageBag->add('email', Lang::get('auth/message.account_already_exists'));
-        }
+
+                 session()->flash('app_message', Lang::get('auth/message.account_already_exists'));
+                 return Redirect::route("home");
+             }
 
             /* $user = Sentinel::register($request->only(['first_name', 'last_name', 'email', 'password']), $activate);
 
@@ -177,7 +186,9 @@ public function __construct(Socialite $socialite){
             $role->users()->attach($user);*/
 
           }else{
-             return 'something went wrong';
+              session()->flash('app_message', Lang::get('auth/message.account_already_exists'));
+
+              return Redirect::route("home");
           }
        }
     /**
