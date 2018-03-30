@@ -86,7 +86,7 @@ public function __construct(Socialite $socialite){
              $guser=User::where('email',$user->email)->first();
              if($guser){
                 Sentinel::login($guser, false);
-                return Redirect::route("my-account")->with('success', Lang::get('auth/message.signup.success'));
+                return Redirect::route("my-account")->with('success', Lang::get('auth/message.signin.success'));
              }
 
              try {
