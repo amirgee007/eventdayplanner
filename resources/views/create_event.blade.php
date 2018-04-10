@@ -19,7 +19,15 @@
 
     <link href="{{ asset('assets/vendors/daterangepicker/css/daterangepicker.css') }}" rel="stylesheet" type="text/css" />
 
+<style>
 
+    .daterangepicker .daterangepicker_input i {
+        left: -2px;
+        top: -3px;
+    }
+
+
+</style>
 
 @stop
 
@@ -217,8 +225,9 @@
         });*/
 
       });
-
+      var dateToday = new Date();
       $('#daterange1').daterangepicker({
+          minDate: dateToday,
           locale: {
               format: 'YYYY-MM-DD'
           }

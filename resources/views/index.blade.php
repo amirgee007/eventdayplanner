@@ -319,7 +319,7 @@
 
         <section class="joinUs">
             <div class="container"><br><br>
-                <input type="button" class="btn btn-default" value="Join Us Today">
+                {{--<input type="button" class="btn btn-default" value="Join Us Today">--}}
                 <div class="row">
                     <div class="social">
                         <ul>
