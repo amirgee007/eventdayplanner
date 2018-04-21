@@ -931,8 +931,10 @@ class AdsController extends Controller {
 
 
              if(count($photos) && $request['mytext'][0]){
-        	for($i=0; $i<count($photos); $i++){
+                 for($i=0; $i<count($photos); $i++){
         			$file=( $request['mytext'][$i]);
+        			if(is_null($file))
+        			    continue;
         			$destinationPath =  public_path().'/uploads/crudfiles/';
         			$filename        = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'png';
         			//$ad->photo = $filename;

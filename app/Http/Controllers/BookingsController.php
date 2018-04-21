@@ -79,15 +79,8 @@ class BookingsController extends Controller {
 		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if needed.
 		$booking = Booking::findOrFail($id);
 
-                		if($request->has('')){
-                        	$booking->=1;
-                        }
-                        else{
-                        	$booking->=0;
-                        }
+		$booking->update($request->except('_method','_token'));
 
-                		
-                		$booking->update($request->except(''));
 		return redirect('admin/bookings')->with('success', Lang::get('message.success.update'));
 	}
 
