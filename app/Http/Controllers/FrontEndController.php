@@ -369,7 +369,7 @@ class FrontEndController extends JoshController
                 return redirect('register-business')->with('error', 'captcha error')->withInput();
             }
             // Register the user
-            $user = Sentinel::register($request->except(['captcha','password_confirm','subscribed','submit']), $activate);
+            $user = Sentinel::register($request->except(['g-recaptcha-response','password_confirm','subscribed','submit']), $activate);
 
             //add user to 'User' group
             
@@ -443,7 +443,7 @@ class FrontEndController extends JoshController
                 return redirect('register-event-organizer')->with('error', 'captcha error')->withInput();
             }
             // Register the user
-            $user = Sentinel::register($request->except(['captcha','password_confirm','subscribed','submit']), $activate);
+            $user = Sentinel::register($request->except(['g-recaptcha-response','password_confirm','subscribed','submit']), $activate);
 
             //add user to 'User' group
             
@@ -511,7 +511,7 @@ class FrontEndController extends JoshController
                 return redirect('register-freelancer')->with('error', 'captcha error')->withInput();
             }
             // Register the user
-            $user = Sentinel::register($request->except(['captcha','password_confirm','subscribed','submit']), $activate);
+            $user = Sentinel::register($request->except(['g-recaptcha-response','password_confirm','subscribed','submit']), $activate);
 
             //add user to 'User' group
             

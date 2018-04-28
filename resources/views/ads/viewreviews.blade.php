@@ -13,8 +13,6 @@ My Ads
 @stop
 
 
-
-
 {{-- Page content --}}
 @section('content')
 <section class="mainContainer">
@@ -24,10 +22,9 @@ My Ads
   <div class="row">
       <div class="col-sm-12"><h3>Reviews</h3></div>
       @include('business.usermenu')
-     
+
       <div class="col-sm-9">
         @include('notifications')
-       
       </div>
       
 </div>

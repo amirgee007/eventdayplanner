@@ -203,7 +203,7 @@ class EventsController extends Controller {
                 exit;
             }
 
-            $event= new Event($request->except('photo_image','captcha' ,'date_range'));
+            $event= new Event($request->except('photo_image','g-recaptcha-response' ,'date_range' ,'g-recaptcha-response'));
 
                 if ($request->hasFile('photo_image')) {
         			$file            = $request->file('photo_image');
