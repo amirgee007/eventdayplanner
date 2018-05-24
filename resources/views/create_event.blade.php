@@ -66,7 +66,7 @@
                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         {!! Form::label('name', 'Event Name: ') !!}
-                        {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
+                        {!! Form::text('name', old('name'), ['class' => 'form-control' ,'required']) !!}
                     </div>
 
                     <div class="form-group">
@@ -140,7 +140,7 @@
 
                     <div class="form-group">
                         {!! Form::label('ticket_price', 'Ticket Price: ') !!}
-                        {!! Form::text('ticket_price', old('ticket_price'), ['class' => 'form-control']) !!}
+                        {!! Form::number('ticket_price', old('ticket_price'), ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
@@ -151,12 +151,12 @@
 
                     <div class="form-group">
                         {!! Form::label('landline', 'Landline: ') !!}
-                        {!! Form::text('land_line', old('land_line'), ['class' => 'form-control']) !!}
+                        {!! Form::number('land_line', old('land_line'), ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('mobile', 'Mobile: ') !!}
-                        {!! Form::text('mobile', old('mobile'), ['class' => 'form-control']) !!}
+                        {!! Form::number('mobile', old('mobile'), ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">

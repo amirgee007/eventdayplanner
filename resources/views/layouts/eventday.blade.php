@@ -29,7 +29,7 @@
     </title>
 
     <style>
-        .fa {
+        .fa_login {
             padding: 4px;
             font-size: 20px;
             width: 30px;
@@ -38,7 +38,7 @@
             margin: 3px 1px;
         }
 
-        .fa:hover {
+        .fa_login:hover {
             opacity: 0.7;
         }
 
