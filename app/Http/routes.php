@@ -459,6 +459,7 @@ Route::get('currency/{currency}', function ($currency) {
     Route::get('terms-and-conditions', array('as' => 'terms.conditions', 'uses' => 'FrontEndController@getTermsConditions'));
     Route::get('privacy-policy', array('as' => 'privacy.policy', 'uses' => 'FrontEndController@getPrivacyPolicy'));
     Route::get('contact-us', array('as' => 'contact.us', 'uses' => 'FrontEndController@getContactUs'));
+    Route::post('contact-us/send-mail', array('as' => 'post.contact.us', 'uses' => 'FrontEndController@postContactUs'));
 
     Route::get('news', array('as' => 'news', 'uses' => 'NewsController@getIndexFrontend'));
     Route::get('news/{slug}/tag', 'NewsController@getNewsTagFrontend');

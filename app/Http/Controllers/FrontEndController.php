@@ -56,6 +56,41 @@ class FrontEndController extends JoshController
         return view('footer-pages.contact');
     }
 
+
+    public function postContactUs(Request $request){
+
+        try{
+            $data['contact_name'] = $request->contact_name;
+            $data['contact_email'] = $request->contact_email;
+            $data['contact_msg'] = $request->contact_msg;
+
+
+
+            // Send the activation code through email
+            Mail::send('emails.contact-us', compact('data'), function ($m) use ($data) {
+                $m->from('info@eventdayplanner.com', "Event Day Planner");
+                $m->to('info@eventdayplanner.comm', 'Event day planner');
+                $m->cc('amirgee007@yahoo.com', 'Event day planner');
+                $m->subject('Contact mail from Event day planner');
+
+            });
+            session()->flash('app_message', 'Thank you for contacting us we will get back to you soon.');
+
+
+            //Redirect to contact page
+            return back();
+        }
+
+        catch (\Exception $e){
+            session()->flash('app_message', $e->getMessage());
+
+            //Redirect to contact page
+            return back();
+        }
+
+
+    }
+
     public function getSiteMap(){
         return view('footer-pages.site-map');
     }

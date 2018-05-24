@@ -48,16 +48,16 @@ Contact
                 <!-- Notifications -->
                 @include('notifications')
 
-                <form class="contact" id="contact" action="#" method="POST">
+                <form class="contact" id="contact" action="{{route('post.contact.us')}}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="form-group">
-                        <input type="text" name="contact-name" class="form-control input-lg" placeholder="Your name" required>
+                        <input type="text" name="contact_name" class="form-control input-lg" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="contact-email" class="form-control input-lg" placeholder="Your email address" required>
+                        <input type="email" name="contact_email" class="form-control input-lg" placeholder="Your email address" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="contact-msg" class="form-control input-lg no-resize" rows="6" placeholder="Your comment" required></textarea>
+                        <textarea name="contact_msg" class="form-control input-lg no-resize" rows="6" placeholder="Your comment" required></textarea>
                     </div>
                     <br>
                     <div class="input-group">
