@@ -32,7 +32,32 @@ class EventsController extends Controller {
         $this->frontarray['mainmenu']=Page::where('type','Main Menu')->get();
         $this->frontarray['OurExpertServices']=Page::where('type','Our Expert Services')->get();
     }
-/**
+
+    public function advertisement(){
+        if(Sentinel::check()){
+            $user = Sentinel::getUser();
+        }
+
+        $events = Event::where('user_id',$user->id)->get();
+
+
+        return View('advertisement')->with('frontarray',$this->frontarray)->with('events',$events);
+    }
+
+    public function sales_report(){
+
+        if(Sentinel::check()){
+            $user = Sentinel::getUser();
+        }
+
+        $events = Event::where('user_id',$user->id)->get();
+
+
+        return View('sales_report')->with('frontarray',$this->frontarray)->with('events',$events);
+    }
+
+
+    /**
      * @return \Illuminate\View\View
      */
     public function getIndexFrontend()
@@ -488,7 +513,7 @@ class EventsController extends Controller {
 
     public function showmessages(){
     	if(Sentinel::check()){
-			$user=Sentinel::getUser();
+			$user = Sentinel::getUser();
 		}
 
 		$events = Event::where('user_id',$user->id)->get();

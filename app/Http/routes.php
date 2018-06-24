@@ -259,6 +259,8 @@ Route::get('currency/{currency}', function ($currency) {
 
     Route::group(array('middleware' => 'SentinelUser'), function () {
         Route::get('my-events', array('as' => 'my-events', 'uses' => 'EventsController@myevents'));
+        Route::get('advertisement', array('as' => 'advertisement', 'uses' => 'EventsController@advertisement'));
+        Route::get('sales-report', array('as' => 'sales-report', 'uses' => 'EventsController@sales_report'));
         Route::get('booking-management', array('as' => 'booking-management', 'uses' => 'AdsController@bookingmanagement'));
         Route::get('bookings-detail/{id}/{date}', array('as' => 'bookings-detail', 'uses' => 'AdsController@bookingdetail'));
         Route::post('withdrawrequest', array('as' => 'withdrawrequest', 'uses' => 'AdsController@withdrawrequest'));
@@ -270,8 +272,8 @@ Route::get('currency/{currency}', function ($currency) {
         Route::get('total-revenue', array('as' => 'total-revenue', 'uses' => 'AdsController@totalrevenue'));
         Route::get('edit-event/{event_id}', array('as' => 'edit-event', 'uses' => 'EventsController@showeditevent'));
         Route::post('edit-event/{event_id}', array('as' => 'edit-event', 'uses' => 'EventsController@editevent'));
-       Route::get('delete-event/{event_id}', array('as' => 'delete-event', 'uses' => 'EventsController@deleteevent'));
-       Route::get('messages', array('as' => 'messages', 'uses' => 'EventsController@showmessages'));
+        Route::get('delete-event/{event_id}', array('as' => 'delete-event', 'uses' => 'EventsController@deleteevent'));
+        Route::get('messages', array('as' => 'messages', 'uses' => 'EventsController@showmessages'));
 
         Route::post('rate-ads', array('as' => 'rate-ads', 'uses' => 'AdsController@rateads'));
         Route::post('submit-review', array('as' => 'submit-review', 'uses' => 'AdsController@submitreview'));

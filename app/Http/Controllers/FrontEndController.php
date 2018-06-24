@@ -214,12 +214,12 @@ class FrontEndController extends JoshController
         return Redirect::back()->withInput()->withErrors($this->messageBag);
     }
 
-     public function portfolio(User $user)
-    { 
+    public function portfolio(User $user)
+    {
 
         $user = Sentinel::getUser();
         $countries = $this->countries;
-        return View::make('business.portfolio', compact('user', 'countries'))->with('frontarray',$this->frontarray);
+        return View::make('business.portfolio', compact('user', 'countries'))->with('frontarray', $this->frontarray);
     }
 
 

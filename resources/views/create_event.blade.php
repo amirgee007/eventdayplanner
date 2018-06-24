@@ -225,9 +225,16 @@
         });*/
 
       });
+
       var dateToday = new Date();
+      var year = dateToday.getFullYear();
+      var month = dateToday.getMonth();
+      var day = dateToday.getDate();
+      var max_date = new Date(year + 2, month, day);
+
       $('#daterange1').daterangepicker({
           minDate: dateToday,
+          maxDate: max_date,
           locale: {
               format: 'YYYY-MM-DD'
           }
