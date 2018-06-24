@@ -122,7 +122,7 @@ News
                                     </div>
                                     <h4 class="text-primary">Jelly-o sesame snaps</h4>
                                     <p>
-                                        Extraordinary claims require extraordinary evidence globular star cluster great turbulent clouds dispassionate extraterrestrial observer hearts of the stars. Jean-François Champollion Euclid the sky. 
+                                        Extraordinary claims require extraordinary evidence globular star cluster great turbulent clouds dispassionate extraterrestrial observer hearts of the stars. Jean-François Champollion Euclid the sky.
                                     </p>
                                     <div class="text-right primary marbtm"><a href="#">Read more</a>
                                     </div>
@@ -244,7 +244,7 @@ News
             </div>
         </div>
     </div>
-    
+
 @stop
 
 {{-- page level scripts --}}

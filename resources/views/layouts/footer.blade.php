@@ -6,13 +6,13 @@
                 <ul>
                     @foreach($frontarray['OurExpertServices'] as $menu)
                         <li><a href="{{ route('page',$menu->slug)}}">{{$menu->name}}</a></li>
-                @endforeach
+                    @endforeach
                 <!-- <li><a href="#">Birthdays Party</a></li>
-        <li><a href="#">Wedding Arrangement</a></li>
-        <li><a href="#">Corporate Events</a></li>
-        <li><a href="#">Bachelor Parties</a></li>
-        <li><a href="#">Proposal Arrange</a></li>
-        <li><a href="#">Social Meetings</a></li> -->
+                <li><a href="#">Wedding Arrangement</a></li>
+                <li><a href="#">Corporate Events</a></li>
+                <li><a href="#">Bachelor Parties</a></li>
+                <li><a href="#">Proposal Arrange</a></li>
+                <li><a href="#">Social Meetings</a></li> -->
                 </ul>
             </div>
             <div class="col-sm-3">
@@ -45,10 +45,13 @@
             <div class="col-sm-3">
                 <h3>Contact us</h3>
                 <ul>
-                    <li>Head office</li>
-                    <li>consectetur adipiscing elit UK.</li>
-                    <li>Phone: +(000) 000 0000</li>
-                    <li>Customer Service: +(000) 000 0000</li>
+                    <li>Jyostna</li>
+                    <li>Pediatric Surgeons of Alaska</li>
+                    <li>3340 Providence Drive #565 </li>
+                    <li>Anchorage, AK(Alaska)  </li>
+                    <li>North Las Vegas, NV  </li>
+                    {{--<li>Phone: (703) 717-4200 </li>--}}
+                    {{--<li>Fax: 400 423 1456</li>--}}
                     <li>Email: <a href="mailto:info@eventdayplanner.com">info@eventdayplanner.com</a></li>
                 </ul>
             </div>

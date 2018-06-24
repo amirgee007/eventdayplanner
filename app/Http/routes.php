@@ -380,7 +380,7 @@ Route::get('currency/{currency}', function ($currency) {
             Route::post('{news}/storecomment', array('as' => 'restore/news', 'uses' => 'NewsController@storecomment'));
 
             Route::get('news/{id}/makeTop', array('as' => 'admin.news.makeTop', 'uses' => 'NewsController@makeTop'));
-    Route::get('news/{id}/cancelTop', array('as' => 'admin.news.cancelTop', 'uses' => 'NewsController@cancelTop'));
+            Route::get('news/{id}/cancelTop', array('as' => 'admin.news.cancelTop', 'uses' => 'NewsController@cancelTop'));
         });
 
         /*routes for News category*/

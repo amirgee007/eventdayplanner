@@ -29,16 +29,20 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-10">
                     <div class="adsBanner">
-                        <div class="adsBannerTop"><img src="{{ asset('assets/images/eventday/ads1.jpg')}}"
-                                                       class="img-responsive"></div>
+                        <div class="adsBannerTop">
+                            <a href="#adds1"><img src="{{ asset('assets/images/eventday/ads1.jpg')}}" class="img-responsive"></a>
+                        </div>
                         <div class="adsBannerBtm">
                             <div class="row">
-                                <div class="col-xs-4 col-sm-4"><img src="{{ asset('assets/images/eventday/ads2.jpg')}}"
-                                                                    class="img-responsive"></div>
-                                <div class="col-xs-4 col-sm-4"><img src="{{ asset('assets/images/eventday/ads3.jpg')}}"
-                                                                    class="img-responsive"></div>
-                                <div class="col-xs-4 col-sm-4"><img src="{{ asset('assets/images/eventday/ads4.jpg')}}"
-                                                                    class="img-responsive"></div>
+                                <div class="col-xs-4 col-sm-4">
+                                    <a href="#adds2"><img src="{{ asset('assets/images/eventday/ads2.jpg')}}" class="img-responsive"></a>
+                                </div>
+                                <div class="col-xs-4 col-sm-4">
+                                    <a href="#adds3"><img src="{{ asset('assets/images/eventday/ads3.jpg')}}" class="img-responsive"></a>
+                                </div>
+                                <div class="col-xs-4 col-sm-4">
+                                    <a href="#adds4"><img src="{{ asset('assets/images/eventday/ads4.jpg')}}" class="img-responsive"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -47,8 +51,10 @@
                             @foreach($ads_category as $cat)
                                 <li><a href="{!! url('list-ads',$cat->slug) !!}">{!! $cat->name !!}</a></li>
                             @endforeach
-                            <li><a href="{{route('ads-category')}}">More <i class="fa fa-angle-double-right"
-                                                                            aria-hidden="true"></i></a></li>
+                            <li>
+                                <a href="{{route('ads-category')}}">More <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
