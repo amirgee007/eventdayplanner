@@ -198,7 +198,7 @@
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-fw fa-phone text-primary"></i>
                                                         </span>
-                                        <input type="text" placeholder=" " id="office_number" class="form-control"
+                                        <input type="number" placeholder=" " id="office_number" class="form-control"
                                                name="office_number" value="{!! old('office_number',$user->office_number) !!}"/>
                                     </div>
                                     <span class="help-block">{{ $errors->first('office_number', ':message') }}</span>
@@ -212,7 +212,7 @@
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-fw fa-mobile text-primary"></i>
                                                         </span>
-                                        <input type="text" placeholder=" " id="mobile_number" class="form-control"
+                                        <input type="number" placeholder=" " id="mobile_number" class="form-control"
                                                name="mobile_number" value="{!! old('mobile_number',$user->mobile_number) !!}"/>
                                     </div>
                                     <span class="help-block">{{ $errors->first('mobile_number', ':message') }}</span>

@@ -201,6 +201,7 @@ class EventsController extends Controller {
 	public function storeFrontend(Request $request)
 	{
 
+
 		//echo $request->get('captcha');exit;
 		if(Sentinel::check()){
 			$user=Sentinel::getUser();
@@ -246,12 +247,9 @@ class EventsController extends Controller {
 
 	public function editevent($id,Request $request)
 	{
+		    $event = Event::findOrFail($id);
 
-		$event = Event::findOrFail($id);
-
-		
-
-		$rules = ['name' => 'required'];
+		    $rules = ['name' => 'required'];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails())
             {

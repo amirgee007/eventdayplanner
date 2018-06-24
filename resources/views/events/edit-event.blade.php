@@ -145,7 +145,7 @@
 
                     <div class="form-group">
                         {!! Form::label('ticket_price', 'Ticket Price: ') !!}
-                        {!! Form::text('ticket_price', $event->ticket_price, ['class' => 'form-control']) !!}
+                        {!! Form::number('ticket_price', $event->ticket_price, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
@@ -156,12 +156,12 @@
 
                     <div class="form-group">
                         {!! Form::label('landline', 'Landline: ') !!}
-                        {!! Form::text('land_line', $event->land_line, ['class' => 'form-control']) !!}
+                        {!! Form::number('land_line', $event->land_line, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('mobile', 'Mobile: ') !!}
-                        {!! Form::text('mobile', $event->mobile, ['class' => 'form-control']) !!}
+                        {!! Form::number('mobile', $event->mobile, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">

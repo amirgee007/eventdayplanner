@@ -208,7 +208,7 @@
 
                     <div class="form-group {{ $errors->first('office_number', 'has-error') }}">
                         <label class="sr-only" for="office_number">Landline:</label>
-                        <input type="text" placeholder="Landline" id="office_number" class="form-control"
+                        <input type="number" placeholder="Landline" id="office_number" class="form-control"
                                name="office_number" value="{!! old('office_number') !!}"/>
 
                         <span class="help-block">{{ $errors->first('office_number', ':message') }}</span>
@@ -218,7 +218,7 @@
                     <div class="form-group {{ $errors->first('mobile_number', 'has-error') }}">
                         <label class="sr-only" for="postal">Mobile Number:</label>
 
-                        <input type="text" placeholder="Mobile Number" id="mobile_number" class="form-control"
+                        <input type="number" placeholder="Mobile Number" id="mobile_number" class="form-control"
                                name="mobile_number" value="{!! old('mobile_number') !!}"/>
 
                         <span class="help-block">{{ $errors->first('mobile_number', ':message') }}</span>
