@@ -9,6 +9,8 @@ use Tshafer\Reviewable\Contracts\Reviewable;
 use Tshafer\Reviewable\Traits\Reviewable as ReviewableTrait;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Kuber\ViewCounter\ViewCounterTrait;
+use Sentinel;
+
 
 class Event extends Model  {
 
@@ -79,6 +81,14 @@ class Event extends Model  {
                 'includeTrashed' => true,
             ]
         ];
+    }
+
+    public function scopeMyEvent($query)
+    {
+        if(Sentinel::check()){
+            $user = Sentinel::getUser();
+            return $query->where('user_id',$user->id);
+        }
     }
 
     public function comments()

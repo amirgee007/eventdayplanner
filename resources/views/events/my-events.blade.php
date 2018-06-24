@@ -78,7 +78,7 @@ My Events
                         <p class="pull-right">
                         
                         <a href="{!! route('edit-event',$event)!!}"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a> | 
-                        <a href="{!! route('delete-event',$event)!!}"><i class="fa fa-close" aria-hidden="true"></i> Delete</a>
+                        <a onclick="return confirm('do you want to delete this event?')" href="{!! route('delete-event',$event)!!}"><i class="fa fa-close" aria-hidden="true"></i> Delete</a>
                         </p>
                         <!-- <p>
                             <strong>Tags: </strong>

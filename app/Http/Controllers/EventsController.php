@@ -123,16 +123,12 @@ class EventsController extends Controller {
 
 			$share=Share::load(url('event/'.$event->slug), $event->name)->services('facebook', 'gplus', 'twitter','email','pinterest');
 
-
-
-		 $date = new DateTime;
+		$date = new DateTime;
         $date->modify('-50 minutes');
         $formatted_date = $date->format('Y-m-d H:i:s');
 		 $upcomingevents=Event::where('type','Public')->where('date','>',$formatted_date)->orderBy('date','ASC')->limit(6)->get();
 
 		 $owner= User::where('id',$event->user_id)->first();
-
-
 
 		 $event_anouncements = \App\Event_anouncement::where('event_id',$event->id)->whereNull('parent_id')->orderBy('created_at', 'desc')->get();
 
@@ -141,12 +137,7 @@ class EventsController extends Controller {
 		 	$is_owner=true;
 		 else
 		 	$is_owner=false;
-		
 
-
-		 //dd($owner);
-
-        
         // Show the page
         return View('event', compact('event','reviewed','user','users','share','upcomingevents','owner','event_anouncements','anouncement_reply','is_owner'))->with('frontarray',$this->frontarray);
 
@@ -201,7 +192,6 @@ class EventsController extends Controller {
 	public function storeFrontend(Request $request)
 	{
 
-
 		//echo $request->get('captcha');exit;
 		if(Sentinel::check()){
 			$user=Sentinel::getUser();
@@ -249,6 +239,16 @@ class EventsController extends Controller {
 	{
 		    $event = Event::findOrFail($id);
 
+        $date_range = explode(" - ", $request->get("date_range"));
+
+        if (!empty(array_filter($date_range))) {
+            $date = (trim($date_range[0]));
+            $enddatetime = trim($date_range[1]);
+
+            $request->request->add(['date'=>$date]);
+            $request->request->add(['enddatetime'=>$enddatetime]);
+        }
+
 		    $rules = ['name' => 'required'];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails())
@@ -257,25 +257,33 @@ class EventsController extends Controller {
             }
 		//$event= new Event($request->all(''));
                 		
+            if ($request->hasFile('photo_image')) {
+                $file            = $request->file('photo_image');
+                $destinationPath =  public_path().'/uploads/crudfiles/';
+                $filename        = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'png';
+                $event->photo = $filename;
                 if ($request->hasFile('photo_image')) {
-        			$file            = $request->file('photo_image');
-        			$destinationPath =  public_path().'/uploads/crudfiles/';
-        			$filename        = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'png';
-        			$event->photo = $filename;
-        			if ($request->hasFile('photo_image')) {
-						$request->file('photo_image')->move($destinationPath, $filename);
-					}
-        		}
+                    $request->file('photo_image')->move($destinationPath, $filename);
+                }
+            }
 
-                $event->update($request->except('photo_image'));
-		return redirect('edit-event/'.$id)->with('success', 'Edited Succesfully')->withInput();
+
+        		$event->update($request->except('photo_image','date_range'));
+		return redirect('edit-event/'.$id)->with('success', 'Edited Successfully')->withInput();
 	}
 
 	public function deleteevent($id){
-		$event = Event::destroy($id);
+
+		$event = Event::MyEvent()->where('id' ,$id)->delete();
+
+        if($event){
+            session()->flash('app_message', Lang::get('message.success.delete'));
+        }
+        else
+            session()->flash('app_message', 'This event is not belongs to you or not found');
 
         // Redirect to the group management page
-        return redirect('my-events')->with('success', Lang::get('message.success.delete'));
+        return redirect()->back();
 	}
 
 	/**
@@ -316,11 +324,9 @@ class EventsController extends Controller {
 		$event = Event::where('user_id',$user->id)->where('id',$event)->first();
 
 		if($event==null){
-			$event = Event::where('user_id',$user->id)->get();
-			return view('events.my-events', compact('events'))->witherrors("Please select you event to edit");
+            session()->flash('app_message', 'This event is not belongs to you please select yours.');
+			return redirect()->back();
 		}
-
-		//dd($event);exit;
 
 		return view('events.edit-event', compact('event'))->with('frontarray',$this->frontarray);
 

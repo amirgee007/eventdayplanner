@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/user_account.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datetimepicker.css') }}" />
+    <link href="{{ asset('assets/vendors/daterangepicker/css/daterangepicker.css') }}" rel="stylesheet" type="text/css" />
+
 
 @stop
 
@@ -39,15 +41,7 @@
                         <!-- Notifications -->
                         @include('notifications')
 
-                        
                         <div class="panel-body">
-                     @if ($errors->any())
-                        <ul class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
 
                     {!! Form::open(['method' => 'post', 'action' => ['EventsController@editevent', $event->id],'files'=>true]) !!}
 
@@ -73,29 +67,17 @@
                    <!--  <input id="find" type="button" value="find" /> -->
                        <!--   {!! Form::label('location', 'Event Location: ') !!}
                         {!! Form::text('location', null, ['class' => 'form-control','id'=>'location']) !!}-->
-                    </div> 
-
-                    <div class="form-group">
-                        {!! Form::label('date', 'Start Date: ') !!}
-                        <div class='input-group date' >
-                            <input type='text' value="{!! $event->date !!}" name="date" class="form-control" id='datetimepicker1' />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
                     </div>
 
-                    <div class="form-group">
-                        {!! Form::label('enddatetime', 'End Date: ') !!}
-                        <div class='input-group date' >
-                            <input type='text' value="{!! $event->enddatetime !!}" name="enddatetime" class="form-control" id='datetimepicker2' />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-
-                    
+                     <div class="form-group">
+                         {!! Form::label('date', 'Date: ') !!}
+                         <div class='input-group date' >
+                             <input required type='text' value="{!! old('date_range') !!}" name="date_range" class="form-control" id='daterange1' />
+                             <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                         </div>
+                     </div>
 
                     <div class="form-group">
                     {!! Form::label('photo', 'Banner or Photo:') !!}
@@ -201,7 +183,9 @@
     <script type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
-  <!-- include your less or built css files  -->
+    <script src="{{ asset('assets/vendors/daterangepicker/js/daterangepicker.js') }}" type="text/javascript"></script>
+
+    <!-- include your less or built css files  -->
   <!-- 
   bootstrap-datetimepicker-build.less will pull in "../bootstrap/variables.less" and "bootstrap-datetimepicker.less";
   or
@@ -214,7 +198,7 @@
      <script>
       $(function(){
         
-        $("#geocomplete").geocomplete()
+        $("#geocomplete").geocomplete();
           /*.bind("geocode:result", function(event, result){
             $.log("Result: " + result.formatted_address);
           })
@@ -228,21 +212,22 @@
         /*$("#find").click(function(){
           $("#geocomplete").trigger("geocode");
         });*/
-        
-        
+
+          var dateToday = new Date();
+          var year = dateToday.getFullYear();
+          var month = dateToday.getMonth();
+          var day = dateToday.getDate();
+          var max_date = new Date(year + 2, month, day);
+
+          $('#daterange1').daterangepicker({
+              minDate: dateToday,
+              maxDate: max_date,
+              locale: {
+                  format: 'YYYY-MM-DD'
+              }
+          });
         
         
       });
-
-      $('#datetimepicker1').datetimepicker({
-           // dateFormat: 'dd-mm-yy',
-           format:'YYYY-MM-DD HH:mm:ss'
-           // minDate: getFormattedDate(new Date())
-        });
-      $('#datetimepicker2').datetimepicker({
-           // dateFormat: 'dd-mm-yy',
-           format:'YYYY-MM-DD HH:mm:ss'
-           // minDate: getFormattedDate(new Date())
-        });
     </script>
 @stop
