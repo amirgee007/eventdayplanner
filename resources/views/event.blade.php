@@ -126,6 +126,7 @@
                         </div>
                         @endif
                         <p>
+
                         <div class="socialTicket">
                           <div class="row">
                             <div class="col-sm-6">
@@ -150,8 +151,11 @@
                         </div>
                         </p>
                         <p class="pull-right sendMsg">
-                            <?php if(isset($user)){?>
-                         <button  class="btn btn-primary" data-toggle="modal" data-target="#myModal">Send Message</button> 
+
+                            <?php if(isset($user) && ($user->id!=$event->user_id)  ){?>
+
+                                    <button  class="btn btn-primary" data-toggle="modal" data-target="#myModal">Send Message</button>
+
                             <?php } else{
                                 
                                 /*<a href="{{url('login')}}">Login to Send Message</a> */
