@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Page;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 use Lang;
 use App\News;
 
