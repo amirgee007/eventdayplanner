@@ -331,6 +331,12 @@ class FrontEndController extends JoshController
        // echo $user->office_number;exit;
 
         if ($password = $request->get('password')) {
+            $this->validate($request, [
+                'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
+                'password_confirm' => 'required|same:password'
+            ]);
+
+
             $user->password = Hash::make($password);
         }
         // is new image uploaded?

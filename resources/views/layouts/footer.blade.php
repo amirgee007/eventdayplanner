@@ -43,16 +43,12 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <h3>Contact us</h3>
+                <h3>Support</h3>
                 <ul>
-                    <li>Jyostna</li>
-                    <li>Pediatric Surgeons of Alaska</li>
-                    <li>3340 Providence Drive #565 </li>
-                    <li>Anchorage, AK(Alaska)  </li>
-                    <li>North Las Vegas, NV  </li>
-                    {{--<li>Phone: (703) 717-4200 </li>--}}
-                    {{--<li>Fax: 400 423 1456</li>--}}
-                    <li>Email: <a href="mailto:info@eventdayplanner.com">info@eventdayplanner.com</a></li>
+                    <li>Help & Support</li>
+                    <li>Sell service</li>
+                    <li>Hire service</li>
+
                 </ul>
             </div>
         </div>

@@ -66,7 +66,8 @@
                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         {!! Form::label('name', 'Event Name: ') !!}
-                        {!! Form::text('name', old('name'), ['class' => 'form-control' ,'required']) !!}
+                        {!! Form::text('name', old('name'), ['class' => 'form-control' ,'required' , 'pattern' => '\b.*[a-zA-Z]+.*\b']) !!}
+                    <span class="text-danger">Should Not only numbers but a valid name</span>
                     </div>
 
                     <div class="form-group">

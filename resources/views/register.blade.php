@@ -58,7 +58,7 @@ Register
                     <label class="sr-only"> Password</label>
                     <input type="password" class="form-control" id="Password1" name="password" placeholder="Password">
                     {!! $errors->first('password', '<span class="help-block">:message</span>')!!}
-                    {!! '<span class="help-block">Must have capital letter, Number,special char</span>'!!}
+                    {!! '<span class="text-danger">Must have capital letter, Number,special char</span>'!!}
 
                 </div>
                 <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">

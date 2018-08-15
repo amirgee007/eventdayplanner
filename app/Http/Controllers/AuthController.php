@@ -249,8 +249,8 @@ public function __construct(Socialite $socialite){
             'last_name'        => 'required|min:3',
             'email'            => 'required|email|unique:users',
             'email_confirm'    => 'required|email|same:email',
-            'password'         => 'required|between:3,32',
-            'password_confirm' => 'required|same:password',
+            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
+            'password_confirm' => 'required|same:password'
         );
 
         // Create a new validator instance from our validation rules
@@ -503,7 +503,7 @@ public function __construct(Socialite $socialite){
             'last_name'        => 'required|min:3',
             'email'            => 'required|email|unique:users',
             'email_confirm'    => 'required|email|same:email',
-            'password'         => 'required|between:3,32',
+            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
             'password_confirm' => 'required|same:password',
             'terms'            => 'accepted',
         );

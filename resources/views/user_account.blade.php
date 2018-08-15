@@ -135,7 +135,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-key text-primary"></i>
                                             </span>
-                                        <input type="password" name="password" placeholder=" " id="pwd" class="form-control"></div>
+                                        <input minlength="6" type="password" name="password" placeholder=" " id="pwd" class="form-control"></div>
                                     <span class="help-block">{{ $errors->first('password', ':message') }}</span>
                                 </div>
                             </div>
@@ -150,10 +150,13 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-key text-primary"></i>
                                             </span>
-                                        <input type="password" name="password_confirm" placeholder=" " id="cpwd" class="form-control"></div>
+                                        <input minlength="6" type="password" name="password_confirm" placeholder=" " id="cpwd" class="form-control"></div>
                                     <span class="help-block">{{ $errors->first('password_confirm', ':message') }}</span>
+                                    {!! '<span class="text-danger">Must have capital letter, Number,special char</span>'!!}
                                 </div>
+
                             </div>
+
 
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">Gender: </label>
@@ -255,6 +258,7 @@
                                             </span>
                                         {!!  Form::text('dob', old('dob',$user->dob), array('id' => 'Datein','class' => 'form-control', 'data-date-format'=> 'YYYY-MM-DD'))  !!}
                                     </div>
+                                    <span class="text-danger">Minimum Date: 1918-01-01</span>
                                     <span class="help-block">{{ $errors->first('dob', ':message') }}</span>
                                 </div>
                             </div>
@@ -289,7 +293,8 @@
 
             $('#Datein').datetimepicker(
                 {
-                    maxDate: 'now'
+                    maxDate: 'now',
+                    minDate: new Date('1918/01/01'),
                 }
             );
         });

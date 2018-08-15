@@ -40,9 +40,12 @@
 @section('content')
     <!-- Container Section Start -->
     <div class="container">
-        {{ $page->content }}
+
+        {!! nl2br(str_replace(" ", " &nbsp;", $page->content))!!}
+
+        <br/><br/><br/>
     </div>
-    
+
 @stop
 
 {{-- page level scripts --}}
