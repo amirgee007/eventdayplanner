@@ -524,30 +524,41 @@
                           {{$owner->name}}<br/>
                         @endif
                         </div>
-                        <div class="imgPoster">
-                        @if($owner->pic)
 
-                            <img src="{!! url('/').'/user_circularthumb/'.$owner->pic !!}" alt="profile pic" class="img-responsive"><br/>
+                        <div class="imgPoster">
+                        @if($event->venue)
+                            Venue: <br>
+                                {{$event->venue}}
                         @else
-                            <img src="{{ asset('assets/img/authors/avatar3.jpg') }}" alt="profile pic"><br/>
+                          N/A
                         @endif
                       </div>
-                      <div class="imgPoster1">
-                        @if($owner->bio)
-                        <p>{!! $owner->bio !!}</p><br>
-                        @endif
-                      </div>
-                      <div class="imgPoster2">
-                         @if($owner->office_phone)
-                        <i class="fa fa-phone" aria-hidden="true"></i> {!! $owner->office_phone !!}<br>
-                        @endif
-                      </div>
-                      <div class="imgPoster3">
-                        <!-- <i class="fa fa-globe" aria-hidden="true"></i> www.event.com<br> -->
-                        @if($owner->address)
-                        <i class="fa fa-map-marker" aria-hidden="true"></i> {!! $owner->address !!}<br>
-                        @endif
-                      </div>
+
+                        <div class="imgPoster">
+                            Our Sponsors <br>
+                        @if($event->issponsored)
+                                Coca Cola, Budha, Nilke, RedBull
+                            @else
+                                N/A
+                            @endif
+                        </div>
+
+                      {{--<div class="imgPoster1">--}}
+                        {{--@if($owner->bio)--}}
+                        {{--<p>{!! $owner->bio !!}</p><br>--}}
+                        {{--@endif--}}
+                      {{--</div>--}}
+                      {{--<div class="imgPoster2">--}}
+                         {{--@if($owner->office_phone)--}}
+                        {{--<i class="fa fa-phone" aria-hidden="true"></i> {!! $owner->office_phone !!}<br>--}}
+                        {{--@endif--}}
+                      {{--</div>--}}
+                      {{--<div class="imgPoster3">--}}
+                        {{--<!-- <i class="fa fa-globe" aria-hidden="true"></i> www.event.com<br> -->--}}
+                        {{--@if($owner->address)--}}
+                        {{--<i class="fa fa-map-marker" aria-hidden="true"></i> {!! $owner->address !!}<br>--}}
+                        {{--@endif--}}
+                      {{--</div>--}}
                         
                       
                   </div>
