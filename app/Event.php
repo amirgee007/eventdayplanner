@@ -26,6 +26,7 @@ class Event extends Model  {
     use ReviewableTrait;
     use SearchableTrait;
     use ViewCounterTrait;
+
     protected $table = 'events';
 
     //protected $dates = ['deleted_at'];

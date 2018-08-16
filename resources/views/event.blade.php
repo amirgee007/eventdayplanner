@@ -534,14 +534,14 @@
                         @endif
                       </div>
 
-                        <div class="imgPoster">
-                            Our Sponsors <br>
-                        @if($event->issponsored)
-                                Coca Cola, Budha, Nilke, RedBull
-                            @else
-                                N/A
-                            @endif
-                        </div>
+                    <div class="imgPoster">
+                        Our Sponsors <br>
+                    @if($event->issponsored)
+                            Coca Cola, Budha, Nilke, RedBull
+                        @else
+                            N/A
+                        @endif
+                    </div>
 
                       {{--<div class="imgPoster1">--}}
                         {{--@if($owner->bio)--}}
