@@ -131,6 +131,7 @@
                         caricaturists and more!
                     </div>
                 </div>
+
                 <div class="searchContent">
                     <div class="row">
                         <div class="filterSearch">
@@ -206,22 +207,22 @@
                                                             </button>
                                                             <!-- Popover hidden content -->
                                                             <span id="popoverExampleHiddenContent" class="hidden">
-          <a target="_blank" href="#" class="btn-media twitter">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a target="_blank" href="#" class="btn-media facebook">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a target="_blank" href="#" class="btn-media google-plus">
-            <i class="fa fa-google-plus"></i>
-          </a>
-          <a target="_blank" href="#" class="btn-media pinterest">
-            <i class="fa fa-pinterest"></i>
-          </a>
-          <a target="_blank" href="#" class="btn-media envelope">
-            <i class="fa fa-envelope"></i>
-          </a>
-        </span>
+                                                                  <a target="_blank" href="#" class="btn-media twitter">
+                                                                    <i class="fa fa-twitter"></i>
+                                                                  </a>
+                                                                  <a target="_blank" href="#" class="btn-media facebook">
+                                                                    <i class="fa fa-facebook"></i>
+                                                                  </a>
+                                                                  <a target="_blank" href="#" class="btn-media google-plus">
+                                                                    <i class="fa fa-google-plus"></i>
+                                                                  </a>
+                                                                  <a target="_blank" href="#" class="btn-media pinterest">
+                                                                    <i class="fa fa-pinterest"></i>
+                                                                  </a>
+                                                                  <a target="_blank" href="#" class="btn-media envelope">
+                                                                    <i class="fa fa-envelope"></i>
+                                                                  </a>
+                                                            </span>
                                                         </p>
 
                                                     </li>
@@ -294,6 +295,41 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="contantWrapper">
+            <div class="container">
+                <div class="row">
+                    <h2><span>How It Works ?</span></h2>
+
+                    <div class="col-sm-2">
+                        <h3><b>Sign up free</b></h3>
+                        <p>As <br> freelancer,<br>
+                            eventplanner,<br> business owner</p>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <h3><b>Create Ads</b></h3>
+                        <p>list our service using create ads</p>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <h3><b>Booking</b></h3>
+                        <p>Service user select available date & proceed to payment</p>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <h3><b>Payment</b></h3>
+                        <p>Take a payment from service user</p>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <h3><b>Complete</b></h3>
+                        <p>Order will be completed once event happen</p>
+                    </div>
+                </div>
+                <br>
             </div>
         </div>
     </section>

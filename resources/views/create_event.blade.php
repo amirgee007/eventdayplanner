@@ -125,7 +125,7 @@
                     <div class="form-group">
                         {!! Form::label('video', 'Video Link: ') !!}
                         {!! Form::text('video_link', old('video_link'), ['class' => 'form-control']) !!}
-                        <span><i>Vimeo or Youtube</i></span>
+                        <span class="text-danger"><i>https://www.youtube.com/* or https://www.vimeo.com/* </i></span>
                     </div>
 
                     <div class="form-group">

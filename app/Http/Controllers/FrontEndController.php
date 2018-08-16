@@ -64,8 +64,6 @@ class FrontEndController extends JoshController
             $data['contact_email'] = $request->contact_email;
             $data['contact_msg'] = $request->contact_msg;
 
-
-
             // Send the activation code through email
             Mail::send('emails.contact-us', compact('data'), function ($m) use ($data) {
                 $m->from('info@eventdayplanner.com', "Event Day Planner");
@@ -74,8 +72,8 @@ class FrontEndController extends JoshController
                 $m->subject('Contact mail from Event day planner');
 
             });
-            session()->flash('app_message', 'Thank you for contacting us we will get back to you soon.');
 
+            session()->flash('app_message', 'Thank you for contacting us we will get back to you soon.');
 
             //Redirect to contact page
             return back();
@@ -113,13 +111,13 @@ class FrontEndController extends JoshController
         if($filtereventbyprice && $filtereventbyprice!='-1'){
             $price=Helper::exchangeToUSD($filtereventbyprice);
             
-                $events=Event::where('type','Public')->where(function($q) use($price){
+                $events=Event::where('type','Public')->orWhere('type' , 'charity')->where(function($q) use($price){
                     $q->where('ticket_price','<=',DB::raw($price));
                     //$q->orWhere('ticket_price','=','Free');
                 })->where('date','>',$formatted_date)->orderBy('date','ASC')->limit(6)->get();
 
         }else{
-            $events=Event::where('type','Public')->where('date','>',$formatted_date)->orderBy('date','ASC')->limit(6)->get();
+            $events=Event::where('type','Public')->orWhere('type' , 'charity')->where('date','>',$formatted_date)->orderBy('date','ASC')->limit(6)->get();
 
         }
 

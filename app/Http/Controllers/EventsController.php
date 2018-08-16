@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Event;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
 use Lang;
 use Captcha;
 use Validator;
-use Input;
+//use Input;
 use Sentinel;
 use App\News;
 use App\Page;
@@ -31,6 +32,27 @@ class EventsController extends Controller {
         $this->frontarray['onenews'] = News::latest()->first();
         $this->frontarray['mainmenu']=Page::where('type','Main Menu')->get();
         $this->frontarray['OurExpertServices']=Page::where('type','Our Expert Services')->get();
+    }
+
+    public static function cleanArray($array)
+    {
+        $result = array();
+        foreach ($array as $key => $value) {
+            $key = strip_tags($key);
+            if (is_array($value)) {
+                $result[$key] = static::cleanArray($value);
+            } else {
+                $result[$key] = trim(strip_tags($value)); // Remove trim() if you want to.
+            }
+        }
+        return $result;
+    }
+
+
+    public static function stripXSS()
+    {
+        $sanitized = static::cleanArray(Input::get());
+        Input::merge($sanitized);
     }
 
     public function advertisement(){
@@ -180,9 +202,17 @@ class EventsController extends Controller {
 		return view('events.viewreviews', compact('event'));
 	}
 
+    public function isNotValidUrl($url){
 
+	    $youtube = 'https://www.youtube.com';
+	    $vimeo = 'https://vimeo.com';
 
+        if (strpos($url, $youtube) === 0 || strpos($url, $vimeo) === 0) {
+            return false;
+        }
+        return true;
 
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -191,6 +221,13 @@ class EventsController extends Controller {
 	 */
 	public function storeFrontend(Request $request)
 	{
+
+        self::stripXSS();
+
+	    if ($this->isNotValidUrl($request->video_link))
+        {
+            return redirect('create-event')->with('error', 'video link is invalid.')->withInput();
+        }
 
 		//echo $request->get('captcha');exit;
 		if(Sentinel::check()){
@@ -215,8 +252,6 @@ class EventsController extends Controller {
             if ($validator->fails())
             {
                 return redirect('create-event')->with('error', 'captcha error')->withInput();
-                echo '<p style="color: #ff0000;">Incorrect!</p>';
-                exit;
             }
 
             $event= new Event($request->except('photo_image','g-recaptcha-response' ,'date_range' ,'g-recaptcha-response'));
@@ -237,7 +272,10 @@ class EventsController extends Controller {
 
 	public function editevent($id,Request $request)
 	{
-		    $event = Event::findOrFail($id);
+
+        self::stripXSS();
+
+        $event = Event::findOrFail($id);
 
         $date_range = explode(" - ", $request->get("date_range"));
 
@@ -317,6 +355,7 @@ class EventsController extends Controller {
 	}
 
 	public function showeditevent($event){
+
 		if(Sentinel::check()){
 			$user=Sentinel::getUser();
 		}
@@ -361,7 +400,9 @@ class EventsController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$event= new Event($request->except('photo_image'));
+        self::stripXSS();
+
+        $event= new Event($request->except('photo_image'));
                 		
                 if ($request->hasFile('photo_image')) {
         			$file            = $request->file('photo_image');
