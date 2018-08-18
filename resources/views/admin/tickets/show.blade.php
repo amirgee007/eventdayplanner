@@ -94,6 +94,7 @@
                   
                      </div>
 
+
             @if(Sentinel::getuser()->is_admin == 1)
                  <h4 class="pull-right">{{ Carbon\Carbon::parse($comment->created_at)->format('d-m-Y i') }}</h4>
             <div class="panel panel-body" style="margin-left:40px; " >
