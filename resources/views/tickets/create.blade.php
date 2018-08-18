@@ -48,7 +48,7 @@
                
 
                 <div class="panel-body">
-                           <form class="form-horizontal" role="form" method="POST" action="{{ url('/new-ticket') }}">
+                           <form class="form-horizontal" role="form" method="POST" action="{{ route('ticket-store') }}">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

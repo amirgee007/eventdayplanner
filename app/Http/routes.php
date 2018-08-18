@@ -574,29 +574,31 @@ Route::get('currency/{currency}', function ($currency) {
 
     Route::resource('event_anouncements', 'Event_anouncementsController');
 
-       Route::post('ticket/close/{ticket_id}', array('as' => 'close_ticket', 'uses' => 'TicketsController@close'));
-
-         
+       Route::post('ticket/close/{ticket_id}', array('as' => 'close_ticket', 'uses' => 'TicketsController@close'));  
 
         Route::get('ticket/index', array('as' => 'tickets-all', 'uses' => 'TicketsController@index'));
-        Route::get('new-ticket', array('as' => 'new-ticket', 'uses' => 'TicketsController@create'));
-        Route::post('new-ticket', array('as' => 'new-ticket', 'uses' => 'TicketsController@store'));
+        Route::get('ticket/create', array('as' => 'create', 'uses' => 'TicketsController@create'));
+        Route::post('ticket/store', array('as' => 'ticket-store', 'uses' => 'TicketsController@store'));
         Route::get('user-tickets', array('as' => 'user-tickets', 'uses' => 'TicketsController@userTickets'));
         Route::get('tickets/{ticket_id}', array('as' => 'tickets', 'uses' => 'TicketsController@show'));
 
         Route::post('comment', array('as' => 'comment', 'uses' => 'CommentsController@postComment'));
 
-        Route::post('close-ticket/{ticket_id}', array('as' => 'close-ticket', 'uses' => 'TicketsController@close'));
-
+        Route::post('ticket/close/{ticket_id}', array('as' => 'close-ticket', 'uses' => 'TicketsController@close'));
+     
+         
+         
     Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), function () {
-          Route::get('admin-tickets', array('as' => 'admin-tickets', 'uses' => 'TicketsController@adminIndex'));
 
+
+         Route::get('admin-tickets', array('as' => 'admin-tickets', 'uses' => 'TicketsController@adminIndex'));
          Route::get('admin-show/{ticket_id}', array('as' => 'show', 'uses' => 'TicketsController@adminShowTickets'));
 
           Route::post('admin-comment', array('as' => 'admin-comment', 'uses' => 'CommentsController@adminPostComment'));
           
          Route::get('show-tickets/{ticket_id}', array('as' => 'show-tickets', 'uses' => 'TicketsController@showTickets'));
-     }
+
+        });
 
    // Route::get('{name?}', 'JoshController@showFrontEndView');
 

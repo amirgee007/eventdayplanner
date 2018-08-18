@@ -213,6 +213,27 @@
     
         
     </ul>
+
+    <li {!! (Request::is('admin/testimonials') || Request::is('admin/testimonials/create') || Request::is('admin/testimonials/*') ? 'class="active"' : '') !!}>
+    <a href="#">
+        <i class="livicon" data-name="list-ul" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
+        <span class="title">Tickets</span>
+        <span class="fa arrow"></span>
+    </a>
+    <ul class="sub-menu">
+        <li {!! (Request::is('admin/testimonials') ? 'class="active" id="active"' : '') !!}>
+            <a href="{{ route('admin-tickets') }}">
+                <i class="fa fa-angle-double-right"></i>
+                Tickets
+            </a>
+        </li>
+    
+
+
+    
+        
+    </ul>
+
     <li {!! (Request::is('admin/withdrawl') || Request::is('admin/withdrawl/create') || Request::is('admin/withdrawl/*') ? 'class="active"' : '') !!}>
     <a href="#">
         <i class="livicon" data-name="list-ul" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
@@ -226,6 +247,7 @@
                 Withdrawl Request
             </a>
         </li>
+
 <!-- </li><li {!! (Request::is('admin/event_anouncements') || Request::is('admin/event_anouncements/create') || Request::is('admin/event_anouncements/*') ? 'class="active"' : '') !!}>
     <a href="#">
         <i class="livicon" data-name="list-ul" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
