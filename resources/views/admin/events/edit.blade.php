@@ -42,8 +42,9 @@ Edit a event
                             @endforeach
                         </ul>
                     @endif
+                    {{ Form::model($event, array('route' => array('admin.events.update', $event->id))) }}
 
-                    {!! Form::model($event, ['method' => 'PATCH', 'action' => ['EventsController@update', $event->id],'files'=>true]) !!}
+                    {!! method_field('patch') !!}
 
                     <div class="form-group">
                         {!! Form::label('name', 'Name: ') !!}

@@ -246,7 +246,7 @@
                <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
 
-                  <img class="img-responsive profile pic" src="{{ $owner->pic?url('uploads/users/'.$owner->pic):asset('assets/images/default.jpg') }}" />
+                  <img class="img-responsive profile pic" src="{{ @$owner->pic ? url('uploads/users/'.@$owner->pic):asset('assets/images/default.jpg') }}" />
                   <!-- <figcaption class="text-center"></figcaption> -->
                 </figure>
               </div>
@@ -254,18 +254,16 @@
                 <div class="panel panel-default arrow left">
                   <div class="panel-body">
                     <header class="text-left">
-                      <div class="comment-user"><i class="fa fa-user"></i> 
-
-                      
-                                      @if($owner->company_name)
-                                        {{$owner->company_name}}
-                                      @elseif($owner->first_name)
-                                        {{$owner->first_name.' '.$owner->last_name}}
-                                      @elseif($owner->name)
-                                        {{$owner->name}}
-                                      @else
-                                        No Name
-                                      @endif
+                      <div class="comment-user"><i class="fa fa-user"></i>
+                      @if(@$owner->company_name)
+                        {{@$owner->company_name}}
+                      @elseif(@$owner->first_name)
+                        {{@$owner->first_name.' '.@$owner->last_name}}
+                      @elseif(@$owner->name)
+                        {{@$owner->name}}
+                      @else
+                        No Name
+                      @endif
                       </div>
                       <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($event_anouncement->created_at)->format('F j Y')}}</time>
                     </header>
@@ -510,18 +508,18 @@
             <!-- Recent Posts Section Start -->
             <div class="col-sm-4 col-md-4 col-full-width-left">
                 <div class="the-box">
-                <div class="eventLogoWrap"><div class="eventlogo"><img class="img-responsive img-circle" src="{{url('user_circularthumb',$owner->pic)}}"/></div></div>
+                <div class="eventLogoWrap"><div class="eventlogo"><img class="img-responsive img-circle" src="{{url('user_circularthumb',@$owner->pic)}}"/></div></div>
                     <div class="leftList">
                         <h3>Event Organizer</h3>
                          <div class="eventPoster">
-                          @if($owner->company_name)
-                          {{$owner->company_name}}
+                          @if(@$owner->company_name)
+                          {{@$owner->company_name}}
                         
-                        @elseif($owner->first_name)
-                          {{$owner->first_name." ".$owner->last_name}}<br/>
+                        @elseif(@$owner->first_name)
+                          {{@$owner->first_name." ".@$owner->last_name}}<br/>
                         
-                        @elseif($owner->name)
-                          {{$owner->name}}<br/>
+                        @elseif(@$owner->name)
+                          {{@$owner->name}}<br/>
                         @endif
                         </div>
 
@@ -542,25 +540,6 @@
                             N/A
                         @endif
                     </div>
-
-                      {{--<div class="imgPoster1">--}}
-                        {{--@if($owner->bio)--}}
-                        {{--<p>{!! $owner->bio !!}</p><br>--}}
-                        {{--@endif--}}
-                      {{--</div>--}}
-                      {{--<div class="imgPoster2">--}}
-                         {{--@if($owner->office_phone)--}}
-                        {{--<i class="fa fa-phone" aria-hidden="true"></i> {!! $owner->office_phone !!}<br>--}}
-                        {{--@endif--}}
-                      {{--</div>--}}
-                      {{--<div class="imgPoster3">--}}
-                        {{--<!-- <i class="fa fa-globe" aria-hidden="true"></i> www.event.com<br> -->--}}
-                        {{--@if($owner->address)--}}
-                        {{--<i class="fa fa-map-marker" aria-hidden="true"></i> {!! $owner->address !!}<br>--}}
-                        {{--@endif--}}
-                      {{--</div>--}}
-                        
-                      
                   </div>
               </div>
               <div class="the-box">
