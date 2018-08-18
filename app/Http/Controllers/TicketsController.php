@@ -81,15 +81,6 @@ class TicketsController extends Controller
         return view('admin/tickets/index', compact('tickets'));
     }
 
-    public function adminShowTickets($ticket_id)
-    {
-        $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
-
-        $comments = $ticket->comments;
-
-        return view('admin/tickets/comment', compact('ticket', 'comments'));
-    }
-
     public function AdminShowTicket($ticket_id)
     {
 

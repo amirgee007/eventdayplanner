@@ -6,8 +6,6 @@
     @parent
 @stop
 
-
-{{-- Page content --}}
 @section('content')
     <section class="bannerWrapper innerBanner">
         <div class="searchWrap">

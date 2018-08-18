@@ -1,12 +1,7 @@
 <?php
 
 
-Route::get('/amir', function () {
-
-    return view('amir');
-});
 Route::group(['middleware' => 'web'], function () {
-
 
     Route::post('event_anouncements_video', array('as' => 'event_anouncements_video', 'uses' => 'Event_anouncementsController@storevideo'));
     Route::post('event_anouncements_photo', array('as' => 'event_anouncements_photo', 'uses' => 'Event_anouncementsController@storephoto'));
@@ -395,6 +390,14 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback')
         Route::post('disapprovewithdrawl', array('as' => 'disapprovewithdrawl', 'uses' => 'AdsController@disapprovewithdrawl'));
 
 
+        /*routes for Admin tickets*/
+        Route::get('tickets', array('as' => 'admin-tickets', 'uses' => 'TicketsController@adminIndex'));
+
+        Route::get('ticket/{ticket_id}', array('as' => 'admin-show-ticket', 'uses' => 'TicketsController@adminShowTicket'));
+
+        Route::post('admin-comment', array('as' => 'admin-comment', 'uses' => 'CommentsController@adminPostComment'));
+
+
         //tasks section
         /*Route::post('task/create', 'TaskController@store');
         Route::get('task/data', 'TaskController@data');
@@ -510,6 +513,7 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback')
 
 
     Route::group(array('middleware' => 'SentinelFreelancer'), function () {
+
         Route::get('create-ads', array('as' => 'create-ads', 'uses' => 'AdsController@createFrontend'));
         Route::post('ads', 'AdsController@storeFrontend');
         Route::get('edit-ads/{ad_id}', array('as' => 'edit-ads', 'uses' => 'AdsController@showeditads'));
@@ -519,6 +523,7 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback')
     });
 
     route::group(array('middleware' => 'SentinelEventOrganizer'), function () {
+
         Route::get('create-event-menu', array('as' => 'create-event-menu', 'uses' => 'EventsController@createEventMenuFrontend'));
         Route::get('create-event', array('as' => 'create-event', 'uses' => 'EventsController@createEventFrontend'));
         Route::post('events', 'EventsController@storeFrontend');
@@ -572,19 +577,6 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback')
 
     Route::get('ticket/close/{ticket_id}', array('as' => 'ticket-close', 'uses' => 'TicketsController@close'));
 
-
-
-    Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), function () {
-
-
-        Route::get('admin-tickets', array('as' => 'admin-tickets', 'uses' => 'TicketsController@adminIndex'));
-        Route::get('admin-show/{ticket_id}', array('as' => 'show', 'uses' => 'TicketsController@adminShowTickets'));
-
-        Route::post('admin-comment', array('as' => 'admin-comment', 'uses' => 'CommentsController@adminPostComment'));
-
-        Route::get('show-tickets/{ticket_id}', array('as' => 'show-tickets', 'uses' => 'TicketsController@showTickets'));
-
-    });
 
     // Route::get('{name?}', 'JoshController@showFrontEndView');
 
