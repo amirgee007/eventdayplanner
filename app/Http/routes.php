@@ -2,16 +2,7 @@
 
 Route::get('/amir/test/users', function(){
 
-    \App\User::where('id' , 27)->update(
-        [
-            'password' => bcrypt(123456),
-            'first_name' => 'its my name',
-            'last_name' => 'its my last',
-            'state' => 'state',
-            'city' => 'state',
-            'address' => 'state',
-            'postal' => 'state',
-        ]);
+    \App\User::where('id' , 1)->update(['password' => bcrypt(123456)]);
     return \App\User::all();
 });
 
