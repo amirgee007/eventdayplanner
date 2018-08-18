@@ -20,6 +20,21 @@
     </ul>
 </li>
 
+<li {!! (Request::is('admin/tickets')|| Request::is('admin/ticket/*') ? 'class="active"' : '') !!}>
+    <a href="#">
+        <i class="livicon" data-name="list-ul" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
+        <span class="title">Tickets</span>
+        <span class="fa arrow"></span>
+    </a>
+    <ul class="sub-menu">
+        <li {!! (Request::is('admin/ticket') ? 'class="active" id="active"' : '') !!}>
+            <a href="{{ route('admin-tickets') }}">
+                <i class="fa fa-angle-double-right"></i>
+                Tickets
+            </a>
+        </li>
+    </ul>
+
 <li {!! ((Request::is('admin/newscategory') || Request::is('admin/newscategory/create') || Request::is('admin/news') ||  Request::is('admin/news/create')) || Request::is('admin/news/*') || Request::is('admin/newscategory/*') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="comment" data-c="#F89A14" data-hc="#F89A14" data-size="18"
@@ -209,21 +224,6 @@
             </a>
         </li>
 
-    </ul>
-
-    <li {!! (Request::is('admin/ticket')|| Request::is('admin/ticket/*') ? 'class="active"' : '') !!}>
-    <a href="#">
-        <i class="livicon" data-name="list-ul" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
-        <span class="title">Tickets</span>
-        <span class="fa arrow"></span>
-    </a>
-    <ul class="sub-menu">
-        <li {!! (Request::is('admin/ticket') ? 'class="active" id="active"' : '') !!}>
-            <a href="{{ route('admin-tickets') }}">
-                <i class="fa fa-angle-double-right"></i>
-                Tickets
-            </a>
-        </li>
     </ul>
 
     <li {!! (Request::is('admin/withdrawl') || Request::is('admin/withdrawl/create') || Request::is('admin/withdrawl/*') ? 'class="active"' : '') !!}>

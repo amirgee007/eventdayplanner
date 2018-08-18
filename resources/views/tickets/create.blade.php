@@ -2,24 +2,14 @@
 
 {{-- Page title --}}
 @section('title')
-    User Account
+    Ticket
     @parent
 @stop
 
-{{-- page level styles --}}
 @section('header_styles')
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/minimal/blue.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css"
-          href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/user_account.css') }}">
-
 @stop
 
-{{-- Page content --}}
 @section('content')
     <section class="bannerWrapper innerBanner">
         <div class="searchWrap">
@@ -132,30 +122,4 @@
             </div>
         </div>
     </div>
-@stop
-{{-- page level scripts --}}
-@section('footer_scripts')
-
-    <script type="text/javascript" src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/frontend/user_account.js') }}"></script>
-
-
-    <script>
-
-        $(function () {
-
-            $('#Datein').datetimepicker(
-                {
-                    maxDate: 'now',
-                    minDate: new Date('1918/01/01'),
-                }
-            );
-        });
-    </script>
-
-
 @stop

@@ -1,8 +1,12 @@
 @extends('layouts.eventday')
 
 @section('title')
-    User Ticket
+    My Ticket
     @parent
+@stop
+
+@section('header_styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/user_account.css') }}">
 @stop
 
 @section('content')
@@ -28,14 +32,14 @@
                             <h3 class="text-primary">TICKETS</h3>
                         </div>
                         <div class="col-md-10 col-md-offset-1">
-                            <div class="panel panel-default">
+                            <div class="panel panel-success">
                                 <div class="panel-heading">
                                     <i class="fa fa-ticket">{{ $ticket->title }} </i>
                                 </div>
 
                                 <div class="panel-body">
 
-                                    <div class="ticket-info">
+                                    <div class="ticket-success">
                                         <p>{{ $ticket->message }}</p>
 
                                         <p>

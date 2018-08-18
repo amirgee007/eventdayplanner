@@ -2,8 +2,12 @@
 
 {{-- Page title --}}
 @section('title')
-    User Tickets
+    My Tickets
     @parent
+@stop
+
+@section('header_styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/user_account.css') }}">
 @stop
 
 @section('content')
@@ -31,7 +35,7 @@
                         </div>
                         <div class="col-md-10 col-md-offset-1">
 
-                            <div class="panel panel-default">
+                            <div class="panel panel-success">
                                 <div class="panel-heading">
                                     <i class="fa fa-ticket"> My Tickets</i>
                                     <a href="{{route('create')}}" class="btn btn-success pull-right">Open
