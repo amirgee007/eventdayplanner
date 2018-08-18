@@ -916,7 +916,6 @@ class FrontEndController extends JoshController
      */
     public function postPartner(Request $request)
     {
-
         // Data to be used on the email view
         $data = array(
             'name' => $request->get('name'),
