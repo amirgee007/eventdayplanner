@@ -1,5 +1,11 @@
 <?php
 
+Route::get('/amir/test/users', function(){
+
+    return \App\User::all();
+});
+
+
 
 Route::group(['middleware' => 'web'], function () {
 
