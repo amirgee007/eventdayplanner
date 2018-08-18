@@ -42,7 +42,7 @@ Edit a event
                             @endforeach
                         </ul>
                     @endif
-                    {{ Form::model($event, array('route' => array('admin.events.update', $event->id))) }}
+                    {{ Form::model($event, array('route' => array('admin.events.update', $event->id),'files'=>true)) }}
 
                     {!! method_field('patch') !!}
 
