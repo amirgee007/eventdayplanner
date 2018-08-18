@@ -11,7 +11,8 @@
 
     <link href="{{ asset('assets/vendors/fullcalendar/css/fullcalendar.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/pages/calendar_custom.css') }}" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" media="all" href="{{ asset('assets/vendors/bower-jvectormap/css/jquery-jvectormap-1.2.2.css') }}"/>
+    <link rel="stylesheet" media="all"
+          href="{{ asset('assets/vendors/bower-jvectormap/css/jquery-jvectormap-1.2.2.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/vendors/animate/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/pages/only_dashboard.css') }}"/>
     <meta name="_token" content="{{ csrf_token() }}">
@@ -35,71 +36,70 @@
         </ol>
     </section>
     <section class="content">
-        
-        
-        
+
+
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-         
-                    <i class="fa fa-ticket"> Tickets</i>
-                </div>
 
-                <div class="panel-body">
-                    @if ($tickets->isEmpty())
-                        <p>There are currently no tickets.</p>
-                    @else
-                        <table class="table">
-                            <thead>
-                                <tr>
-                               
-                                    <th>Title</th>
-                                    <th>Status</th>
-                                     <th>Created At</th>
-                                    <th>Last Updated</th>
-                                    <th style="text-align:center" colspan="2">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($tickets as $ticket)
-                                <tr>
-                           
-                                    <td>
-                                        <a href="{{ url('show-tickets/'. $ticket->ticket_id) }}">
-                                           {{ $ticket->title }}
-                                        </a>
-                                    </td>
-                                    <td>
+                <i class="fa fa-ticket"> Tickets</i>
+            </div>
+
+            <div class="panel-body">
+                @if ($tickets->isEmpty())
+                    <p>There are currently no tickets.</p>
+                @else
+                    <table class="table">
+                        <thead>
+                        <tr>
+
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Created At</th>
+                            <th>Last Updated</th>
+                            <th style="text-align:center" colspan="2">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($tickets as $ticket)
+                            <tr>
+
+                                <td>
+                                    <a href="{{ url('show-tickets/'. $ticket->ticket_id) }}">
+                                        {{ $ticket->title }}
+                                    </a>
+                                </td>
+                                <td>
                                     @if ($ticket->status === 'Open')
                                         <span class="label label-success">{{ $ticket->status }}</span>
                                     @else
                                         <span class="label label-danger">{{ $ticket->status }}</span>
                                     @endif
-                                    </td>
-                                    <td>{{ $ticket->created_at->diffForHumans() }}</td>
-                                    <td>{{ $ticket->updated_at }}</td>
-                                    <td>
-                                        <a href="{{ url('admin-show/' . $ticket->ticket_id) }}" class="btn btn-primary">Comment</a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ url('close-ticket/' . $ticket->ticket_id) }}" method="POST">
-                                            {!! csrf_field() !!}
-                                            <button type="submit" class="btn btn-danger">Close</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </td>
+                                <td>{{ $ticket->created_at->diffForHumans() }}</td>
+                                <td>{{ $ticket->updated_at }}</td>
+                                <td>
+                                    <a href="{{ url('admin-show/' . $ticket->ticket_id) }}" class="btn btn-primary">Comment</a>
+                                </td>
+                                <td>
+                                    <form action="{{ url('close-ticket/' . $ticket->ticket_id) }}" method="POST">
+                                        {!! csrf_field() !!}
+                                        <button type="submit" class="btn btn-danger">Close</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
 
-                        {{ $tickets->render() }}
-                    @endif
-          
+                    {{ $tickets->render() }}
+                @endif
+
+            </div>
+
         </div>
- 
-        </div>
-       
+
         <div class="clearfix"></div>
-       
+
     </section>
 
 @stop
@@ -107,7 +107,8 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
     <script type="text/javascript" src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 
     <!-- EASY PIE CHART JS -->
     <script src="{{ asset('assets/vendors/bower-jquery-easyPieChart/js/easypiechart.min.js') }}"></script>
