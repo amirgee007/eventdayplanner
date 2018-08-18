@@ -205,7 +205,8 @@
                     <div class="col-sm-4">
                         <div class="leftContent">
                             <div class="eventLogoWrap">
-                                <div class="eventlogo"><img class="img-responsive img-circle"
+                                <div class="eventlogo">
+                                    <img class="img-responsive img-circle"
                                                             src="{{url('user_circularthumb',$owner->pic)}}"/></div>
                             </div>
                             <div class="leftList">

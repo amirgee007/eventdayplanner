@@ -117,11 +117,12 @@ Edit User
                                             </div>
 
                                             <div class="form-group">
-                                                <p class="text-warning">If you don't want to change password... please leave them empty</p>
+
                                                 <label for="password" class="col-sm-2 control-label">Password *</label>
                                                 <div class="col-sm-10">
                                                     <input id="password" name="password" type="password" placeholder="Password"
                                                            class="form-control" value="{!! old('password') !!}"/>
+                                                    {!! '<span class="text-danger">Must have capital letter, Number,special char</span>'!!}
                                                 </div>
                                             </div>
 
@@ -131,6 +132,8 @@ Edit User
                                                     <input id="password_confirm" name="password_confirm" type="password"
                                                            placeholder="Confirm Password " class="form-control"
                                                            value="{!! old('password_confirm') !!}"/>
+                                                    <p class="text-warning">If you don't want to change password... please leave them empty</p>
+
                                                 </div>
                                             </div>
 
@@ -234,7 +237,6 @@ Edit User
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="tab4" disabled="disabled">
-                                            <p class="text-danger"><strong>Be careful with group selection, if you give admin access.. they can access admin section</strong></p>
                                             <div class="form-group">
                                                 <label for="group" class="col-sm-2 control-label">Group *</label>
                                                 <div class="col-sm-10">
@@ -244,6 +246,8 @@ Edit User
                                                             <option value="{!! $role->id !!}" {{ (array_key_exists($role->id, $userRoles) ? ' selected="selected"' : '') }}>{{ $role->name }}</option>
                                                         @endforeach
                                                     </select>
+                                                    <p class="text-danger"><strong>Be careful with group selection, if you give admin access.. they can access admin section</strong></p>
+
                                                 </div>
                                             </div>
 

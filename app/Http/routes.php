@@ -255,9 +255,8 @@ Route::get('currency/{currency}', function ($currency) {
     Route::post('filtereventbyprice',array('as' => 'filtereventbyprice','uses' => 'FrontEndController@filtereventbyprice'));
 
 
-   
-
     Route::group(array('middleware' => 'SentinelUser'), function () {
+
         Route::get('my-events', array('as' => 'my-events', 'uses' => 'EventsController@myevents'));
         Route::get('advertisement', array('as' => 'advertisement', 'uses' => 'EventsController@advertisement'));
         Route::get('sales-report', array('as' => 'sales-report', 'uses' => 'EventsController@sales_report'));
@@ -339,7 +338,6 @@ Route::get('currency/{currency}', function ($currency) {
         # Dashboard / Index
         Route::get('/', array('as' => 'dashboard', 'uses' => 'JoshController@showHome'));
 
-
         # User Management
         Route::group(array('prefix' => 'users'), function () {
             Route::get('/', array('as' => 'users', 'uses' => 'UsersController@index'));
@@ -352,6 +350,7 @@ Route::get('currency/{currency}', function ($currency) {
             Route::post('{userId}/passwordreset', array('as' => 'passwordreset', 'uses' => 'UsersController@passwordreset'));
 
         });
+
         Route::resource('users', 'UsersController');
 
         Route::get('deleted_users', array('as' => 'deleted_users', 'before' => 'Sentinel', 'uses' => 'UsersController@getDeletedUsers'));
@@ -442,13 +441,13 @@ Route::get('currency/{currency}', function ($currency) {
 
     # My account display and update details
     Route::group(array('middleware' => 'SentinelUser'), function () {
-         Route::get('my-bookings', array('as' => 'my-bookings', 'uses' => 'FrontEndController@myBookings'));
+        Route::get('my-bookings', array('as' => 'my-bookings', 'uses' => 'FrontEndController@myBookings'));
         Route::get('my-account', array('as' => 'my-account', 'uses' => 'FrontEndController@myAccount'));
         Route::get('portfolio', array('as' => 'portfolio', 'uses' => 'FrontEndController@portfolio'));
         Route::put('my-account', 'FrontEndController@update');
     });
-    Route::get('logout', array('as' => 'logout', 'uses' => 'FrontEndController@getLogout'));
 
+    Route::get('logout', array('as' => 'logout', 'uses' => 'FrontEndController@getLogout'));
 
 
     # newsletter form

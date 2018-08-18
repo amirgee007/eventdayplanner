@@ -52,7 +52,6 @@ class UsersController extends JoshController
      */
     public function store(UserRequest $request)
     {
-
         //upload image
         if ($file = $request->file('pic_file')) {
             $fileName = $file->getClientOriginalName();
@@ -136,7 +135,6 @@ class UsersController extends JoshController
      */
     public function update(User $user, UserRequest $request)
     {
-
         try {
             $user->first_name = $request->get('first_name');
             $user->last_name = $request->get('last_name');
@@ -150,8 +148,8 @@ class UsersController extends JoshController
             $user->address = $request->get('address');
             $user->postal = $request->get('postal');
 
-            if ($password = $request->has('password')) {
-                $user->password = Hash::make($password);
+            if ($request->has('password')) {
+                $user->password = bcrypt($request->get('password'));
             }
 
 
@@ -220,12 +218,16 @@ class UsersController extends JoshController
                         'activationUrl' => URL::route('activate', $user->id, Activation::exists($user)->code),
                     );
 
-                    // Send the activation code through email
-                    Mail::send('emails.register-activate', $data, function ($m) use ($user) {
-                        $m->to($user->email, $user->first_name . ' ' . $user->last_name);
-                        $m->subject('Welcome ' . $user->first_name);
-                    });
+                    try{
+                        // Send the activation code through email
+                        Mail::send('emails.register-activate', $data, function ($m) use ($user) {
+                            $m->to($user->email, $user->first_name . ' ' . $user->last_name);
+                            $m->subject('Welcome ' . $user->first_name);
+                        });
 
+                    }catch (\Exception $e){
+
+                    }
                 }
             }
 

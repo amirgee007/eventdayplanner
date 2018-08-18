@@ -43,8 +43,8 @@ class UserRequest extends Request
                     'first_name' => 'required|min:3',
                     'last_name' => 'required|min:3',
                     'email' => 'required|unique:users,email,' . $this->users->id,
-                    'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
-                    'password_confirm' => 'required|same:password',
+                    'password' => 'sometimes|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
+                    'password_confirm' => 'sometimes|same:password',
                     'pic_file' => 'mimes:jpg,jpeg,bmp,png|max:10000',
                 ];
             }
