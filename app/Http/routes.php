@@ -588,6 +588,7 @@ Route::get('currency/{currency}', function ($currency) {
 
         Route::post('close-ticket/{ticket_id}', array('as' => 'close-ticket', 'uses' => 'TicketsController@close'));
 
+    Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), function () {
           Route::get('admin-tickets', array('as' => 'admin-tickets', 'uses' => 'TicketsController@adminIndex'));
 
          Route::get('admin-show/{ticket_id}', array('as' => 'show', 'uses' => 'TicketsController@adminShowTickets'));
@@ -595,6 +596,7 @@ Route::get('currency/{currency}', function ($currency) {
           Route::post('admin-comment', array('as' => 'admin-comment', 'uses' => 'CommentsController@adminPostComment'));
           
          Route::get('show-tickets/{ticket_id}', array('as' => 'show-tickets', 'uses' => 'TicketsController@showTickets'));
+     }
 
    // Route::get('{name?}', 'JoshController@showFrontEndView');
 

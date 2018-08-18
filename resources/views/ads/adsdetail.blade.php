@@ -202,7 +202,7 @@
 
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="leftContent">
                             <div class="eventLogoWrap">
                                 <div class="eventlogo"><img class="img-responsive img-circle"

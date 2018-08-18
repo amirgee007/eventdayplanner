@@ -304,28 +304,28 @@
                     <h2><span>How It Works ?</span></h2>
 
                     <div class="col-sm-2">
-                        <h3><b>Sign up free</b></h3>
+                        <h4><b>Sign up free</b></h4>
                         <p>As <br> freelancer,<br>
                             eventplanner,<br> business owner</p>
                     </div>
 
                     <div class="col-sm-2">
-                        <h3><b>Create Ads</b></h3>
+                        <h4><b>Create Ads</b></h4>
                         <p>list our service using create ads</p>
                     </div>
 
                     <div class="col-sm-4">
-                        <h3><b>Booking</b></h3>
+                        <h4><b>Booking</b></h4>
                         <p>Service user select available date & proceed to payment</p>
                     </div>
 
                     <div class="col-sm-2">
-                        <h3><b>Payment</b></h3>
+                        <h4><b>Payment</b></h4>
                         <p>Take a payment from service user</p>
                     </div>
 
                     <div class="col-sm-2">
-                        <h3><b>Complete</b></h3>
+                        <h4><b>Complete</b></h4>
                         <p>Order will be completed once event happen</p>
                     </div>
                 </div>
