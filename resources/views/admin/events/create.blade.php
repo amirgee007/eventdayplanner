@@ -6,6 +6,11 @@ Create New event
 @parent
 @stop
 
+
+@section('header_styles')
+    <link href="{{ asset('assets/dropify/dist/css/dropify.min.css') }}" rel="stylesheet" type="text/css"/>
+@stop
+
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
@@ -162,7 +167,7 @@ Create New event
 
 					<div class="form-group">
                         {!! Form::label('photo', 'Photo: ') !!}
-                        &nbsp; {!! Form::file('photo_image', ['class' => 'form-control']) !!}
+                        &nbsp; {!! Form::file('photo_image', ['class' => 'form-control dropify']) !!}
 
                     </div>
 
@@ -188,4 +193,15 @@ Create New event
     <!-- row-->
 </section>
 
+@stop
+
+@section('footer_scripts')
+    <script type="text/javascript" src="{{ asset('assets/dropify/dist/js/dropify.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('.dropify').dropify();
+
+        });
+    </script>
 @stop
