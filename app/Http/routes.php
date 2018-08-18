@@ -22,7 +22,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('get-appointments/{ads_id}', 'APIController@GetAppointments');
 
         // Admin API Routes
-        Route::get('get-all-appointments', 'AdminAPIController@GetAllAppointments');
+//        Route::get('get-all-appointments', 'AdminAPIController@GetAllAppointments');
     });
     Route::post('payment', [
         'as' => 'payment',
