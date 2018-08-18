@@ -36,7 +36,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <i class="fa fa-ticket"> My Tickets</i>
-                                    <a href="{{route('create')}}" class="btn btn-success" style="float:right">Create
+                                    <a href="{{route('create')}}" class="btn btn-success pull-right">Open
                                         Ticket</a>
                                     <div class="clearfix"></div>
                                 </div>
@@ -101,30 +101,4 @@
             </div>
         </div>
     </div>
-@stop
-{{-- page level scripts --}}
-@section('footer_scripts')
-
-    <script type="text/javascript" src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/frontend/user_account.js') }}"></script>
-
-
-    <script>
-
-        $(function () {
-
-            $('#Datein').datetimepicker(
-                {
-                    maxDate: 'now',
-                    minDate: new Date('1918/01/01'),
-                }
-            );
-        });
-    </script>
-
-
 @stop

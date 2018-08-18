@@ -1,13 +1,10 @@
 @extends('layouts.eventday')
 
-{{-- Page title --}}
 @section('title')
     User Ticket
     @parent
 @stop
 
-
-{{-- Page content --}}
 @section('content')
     <section class="bannerWrapper innerBanner">
         <div class="searchWrap">
@@ -51,39 +48,38 @@
                                         <p>Created At: {{ $ticket->created_at->diffForHumans() }}</p>
                                     </div>
 
-                                    <hr> <br/>
+                                    <hr>
+                                    <br/>
                                     <div class="comments">
                                         @foreach ($comments as $comment)
 
-                                            <div class="panel panel-{{$ticket->user->id === $comment->user_id ? 'info' : 'success'}}">
-                                                <div class="panel panel-heading">
-                                                    {{ $comment->user->name }}
+                                            <div class="panel panel-default" style="{{$ticket->user->id == $comment->user_id ? 'margin-left:20px;' : ''}}">
+
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">
+                                                        {{ @$comment->user->first_name }}
+                                                        <span class="pull-right"> {{ Carbon\Carbon::parse($comment->created_at)->diffForHumans() }} </span>
+                                                    </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="content">
+                                                        <p> {{ $comment->comment }} </p>
+                                                    </div>
                                                 </div>
 
-
-                                                @if(Sentinel::inRole('admin'))
-                                                    <h5 class="pull-right">{{ Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</h5>
-                                                    <div class="panel panel-body" style="margin-left:40px; ">
-                                                        <p>Admin</p>
-                                                        {{ $comment->comment }}
-                                                    </div>
-
-                                                @else
-                                                    <div class="panel panel-body">
-                                                        {{ $comment->comment }}
-                                                    </div>
-                                                @endif
                                             </div>
                                         @endforeach
                                     </div>
+                                    @if($ticket->status=='open')
                                     <div class="comment-form">
-                                        <form action="{{ url('comment') }}" method="POST" class="form">
+                                        <form action="{{ route('ticket-comment')}}" method="POST" class="form">
                                             {!! csrf_field() !!}
 
                                             <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
 
                                             <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                                                <textarea rows="10" id="comment" class="form-control" name="comment"></textarea>
+                                                <textarea rows="10" id="comment" class="form-control"
+                                                          name="comment"></textarea>
 
                                                 @if ($errors->has('comment'))
                                                     <span class="help-block">
@@ -94,9 +90,14 @@
 
                                             <div class="form-group" style="padding-top: 10px">
                                                 <button type="submit" class="btn btn-primary">Comment</button>
+                                                <a title="Close Ticket" href="{{route('ticket-close' ,$ticket->ticket_id)}}"
+                                                   class="btn btn-danger"  onclick="return confirm('Are you sure to close ticket?')">Close Ticket</a>
                                             </div>
                                         </form>
                                     </div>
+                                    @else
+                                        <button style="width: 100%" type="button" class="btn btn-danger">Ticket Already Closed</button>
+                                    @endif
                                     <br/>
                                 </div>
                             </div>
@@ -106,31 +107,5 @@
                 </div>
             </div>
         </div>
-        @stop
-        {{-- page level scripts --}}
-        @section('footer_scripts')
-
-            <script type="text/javascript" src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"></script>
-            <script type="text/javascript"
-                    src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/js/frontend/user_account.js') }}"></script>
-
-
-            <script>
-
-                $(function () {
-
-                    $('#Datein').datetimepicker(
-                        {
-                            maxDate: 'now',
-                            minDate: new Date('1918/01/01'),
-                        }
-                    );
-                });
-            </script>
-
-
-@stop
+    </div>
+@endsection

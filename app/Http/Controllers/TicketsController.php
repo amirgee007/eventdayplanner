@@ -16,16 +16,27 @@ class TicketsController extends Controller
     const STATUS_OPEN = 'open';
     const STATUS_CLOSE = 'closed';
 
-    public function index()
-    {
-        $tickets = Ticket::paginate(10);
+    //--------------------------User Tickets methods-----------------------------------------------//
 
-        return view('tickets/index', compact('tickets'));
+    public function userTickets()
+    {
+        $tickets = Ticket::where('user_id', Sentinel::getuser()->id)->paginate(10);
+
+        return view('tickets.index', compact('tickets'));
     }
 
     public function create()
     {
-        return view('tickets/create');
+        return view('tickets.create');
+    }
+
+    public function show($ticket_id)
+    {
+        $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
+
+        $comments = $ticket->comments;
+
+        return view('tickets/show', compact('ticket', 'comments'));
     }
 
     public function store(Request $request)
@@ -40,29 +51,15 @@ class TicketsController extends Controller
             'title' => $request->input('title'),
             'user_id' => Sentinel::getuser()->id,
             'ticket_id' => strtoupper(str_random(10)),
-
             'message' => $request->input('message'),
             'status' => 'open',
         ]);
+
         $ticket->save();
+
         return redirect()->route('user-tickets')->with("status", "A ticket with ID: #$ticket->ticket_id has been opened.");
     }
 
-    public function userTickets()
-    {
-        $tickets = Ticket::where('user_id', Sentinel::getuser()->id)->paginate(10);
-
-        return view('tickets.index', compact('tickets'));
-    }
-
-    public function show($ticket_id)
-    {
-        $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
-
-        $comments = $ticket->comments;
-
-        return view('tickets/show', compact('ticket', 'comments'));
-    }
 
     public function close($ticket_id)
     {
@@ -72,6 +69,9 @@ class TicketsController extends Controller
 
         return back();
     }
+
+    //--------------------------Admin Tickets methods-----------------------------------------------//
+
 
     public function adminIndex()
     {
@@ -90,7 +90,7 @@ class TicketsController extends Controller
         return view('admin/tickets/comment', compact('ticket', 'comments'));
     }
 
-    public function showTickets($ticket_id)
+    public function AdminShowTicket($ticket_id)
     {
 
         $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
