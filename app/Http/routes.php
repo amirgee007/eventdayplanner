@@ -562,17 +562,16 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback')
 
     Route::resource('event_anouncements', 'Event_anouncementsController');
 
-    Route::post('ticket/close/{ticket_id}', array('as' => 'close_ticket', 'uses' => 'TicketsController@close'));
 
-    Route::get('ticket/index', array('as' => 'tickets-all', 'uses' => 'TicketsController@index'));
+    Route::get('ticket', array('as' => 'user-tickets', 'uses' => 'TicketsController@index'));
     Route::get('ticket/create', array('as' => 'create', 'uses' => 'TicketsController@create'));
     Route::post('ticket/store', array('as' => 'ticket-store', 'uses' => 'TicketsController@store'));
     Route::get('user-tickets', array('as' => 'user-tickets', 'uses' => 'TicketsController@userTickets'));
-    Route::get('tickets/{ticket_id}', array('as' => 'tickets', 'uses' => 'TicketsController@show'));
+    Route::get('ticket/{ticket_id}', array('as' => 'ticket-show', 'uses' => 'TicketsController@show'));
 
     Route::post('comment', array('as' => 'comment', 'uses' => 'CommentsController@postComment'));
 
-    Route::post('ticket/close/{ticket_id}', array('as' => 'close-ticket', 'uses' => 'TicketsController@close'));
+    Route::get('ticket/close/{ticket_id}', array('as' => 'ticket-close', 'uses' => 'TicketsController@close'));
 
 
     Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), function () {

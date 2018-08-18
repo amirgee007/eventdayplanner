@@ -2,30 +2,17 @@
 
 {{-- Page title --}}
 @section('title')
-    User Account
+    User Ticket
     @parent
 @stop
 
-{{-- page level styles --}}
-@section('header_styles')
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/minimal/blue.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css"
-          href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/user_account.css') }}">
-
-@stop
 
 {{-- Page content --}}
 @section('content')
     <section class="bannerWrapper innerBanner">
         <div class="searchWrap">
             <div class="container">
-                <h1>My Account</h1>
-
+                <h1>User Ticket</h1>
             </div>
         </div>
     </section>
@@ -46,61 +33,36 @@
                         <div class="col-md-10 col-md-offset-1">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    {{ $ticket->title }}
+                                    <i class="fa fa-ticket">{{ $ticket->title }} </i>
                                 </div>
 
                                 <div class="panel-body">
-
 
                                     <div class="ticket-info">
                                         <p>{{ $ticket->message }}</p>
 
                                         <p>
-                                            @if ($ticket->status === 'Open')
+                                            @if ($ticket->status === 'open')
                                                 Status: <span class="label label-success">{{ $ticket->status }}</span>
                                             @else
                                                 Status: <span class="label label-danger">{{ $ticket->status }}</span>
                                             @endif
                                         </p>
-                                        <p>Created on: {{ $ticket->created_at->diffForHumans() }}</p>
+                                        <p>Created At: {{ $ticket->created_at->diffForHumans() }}</p>
                                     </div>
 
-                                    <hr>
-
-                                    <div class="comment-form">
-                                        <form action="{{ url('comment') }}" method="POST" class="form">
-                                            {!! csrf_field() !!}
-
-                                            <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-
-                                            <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                                                <textarea rows="10" id="comment" class="form-control"
-                                                          name="comment"></textarea>
-
-                                                @if ($errors->has('comment'))
-                                                    <span class="help-block">
-                                        <strong>{{ $errors->first('comment') }}</strong>
-                                    </span>
-                                                @endif
-                                            </div>
-
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <hr> <br/>
                                     <div class="comments">
                                         @foreach ($comments as $comment)
 
-                                            <div class="panel panel-@if($ticket->user->id === $comment->user_id) {{"default"}}@else{{"success"}}@endif">
+                                            <div class="panel panel-{{$ticket->user->id === $comment->user_id ? 'info' : 'success'}}">
                                                 <div class="panel panel-heading">
                                                     {{ $comment->user->name }}
-
                                                 </div>
 
 
                                                 @if(Sentinel::inRole('admin'))
-                                                    <h4 class="pull-right">{{ Carbon\Carbon::parse($comment->created_at)->format('d-m-Y i') }}</h4>
+                                                    <h5 class="pull-right">{{ Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</h5>
                                                     <div class="panel panel-body" style="margin-left:40px; ">
                                                         <p>Admin</p>
                                                         {{ $comment->comment }}
@@ -114,6 +76,28 @@
                                             </div>
                                         @endforeach
                                     </div>
+                                    <div class="comment-form">
+                                        <form action="{{ url('comment') }}" method="POST" class="form">
+                                            {!! csrf_field() !!}
+
+                                            <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
+
+                                            <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
+                                                <textarea rows="10" id="comment" class="form-control" name="comment"></textarea>
+
+                                                @if ($errors->has('comment'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('comment') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+
+                                            <div class="form-group" style="padding-top: 10px">
+                                                <button type="submit" class="btn btn-primary">Comment</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <br/>
                                 </div>
                             </div>
 

@@ -2,29 +2,17 @@
 
 {{-- Page title --}}
 @section('title')
-    User Account
+    User Tickets
     @parent
 @stop
 
-{{-- page level styles --}}
-@section('header_styles')
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/minimal/blue.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css"
-          href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/user_account.css') }}">
-
-@stop
 
 {{-- Page content --}}
 @section('content')
     <section class="bannerWrapper innerBanner">
         <div class="searchWrap">
             <div class="container">
-                <h1>My Account</h1>
+                <h1>My Tickets</h1>
 
             </div>
         </div>
@@ -44,8 +32,10 @@
                             <h3 class="text-primary">TICKETS</h3>
                         </div>
                         <div class="col-md-10 col-md-offset-1">
+
                             <div class="panel panel-default">
                                 <div class="panel-heading">
+                                    <i class="fa fa-ticket"> My Tickets</i>
                                     <a href="{{route('create')}}" class="btn btn-success" style="float:right">Create
                                         Ticket</a>
                                     <div class="clearfix"></div>
@@ -58,42 +48,41 @@
                                         <table class="table">
                                             <thead>
                                             <tr>
-
+                                                <th>Id</th>
                                                 <th>Title</th>
-                                                <th>Status</th>
-                                                <th>Created At</th>
+                                                <th>Message</th>
+                                                {{--<th>Created At</th>--}}
                                                 <th>Last Updated</th>
-                                                <th style="text-align:center" colspan="2">Actions</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach ($tickets as $ticket)
                                                 <tr>
-
+                                                    <td>{{$ticket->id}}</td>
                                                     <td>
-                                                        <a href="{{ url('tickets/'. $ticket->ticket_id) }}">
+                                                        <a href="{{route('ticket-show' ,$ticket->ticket_id)}}">
                                                             {{ $ticket->title }}
                                                         </a>
                                                     </td>
+                                                    <td>{{ str_limit($ticket->message, 50)}}</td>
+
+
+                                                    {{--                                                    <td>{{ @$ticket->created_at->diffForHumans() }}</td>--}}
+                                                    <td>{{ $ticket->updated_at ? $ticket->updated_at->diffForHumans() : '' }}</td>
                                                     <td>
-                                                        @if ($ticket->status === 'Open')
-                                                            <span class="label label-success">{{ $ticket->status }}</span>
+                                                        <span class="label {{$ticket->status === 'open' ? 'label-success' :  'label-danger'}}">{{ $ticket->status }}</span>
+                                                    </td>
+                                                    <td>
+                                                        @if($ticket->status=='open')
+                                                        <a title="Comment" href="{{route('ticket-show' ,$ticket->ticket_id)}}"
+                                                           class="btn btn-sm btn-primary"><i class="fa fa-comment"></i></a>
+                                                        <a title="Close Ticket" href="{{route('ticket-close' ,$ticket->ticket_id)}}"
+                                                           class="btn btn-sm btn-danger"  onclick="return confirm('Are you sure to close ticket?')"><i class="fa fa-remove"></i></a>
                                                         @else
-                                                            <span class="label label-danger">{{ $ticket->status }}</span>
+                                                            N/A
                                                         @endif
-                                                    </td>
-                                                    <td>{{ $ticket->created_at->diffForHumans() }}</td>
-                                                    <td>{{ $ticket->updated_at }}</td>
-                                                    <td>
-                                                        <a href="{{ url('tickets/'. $ticket->ticket_id) }}"
-                                                           class="btn btn-primary">Comment</a>
-                                                    </td>
-                                                    <td>
-                                                        <form action="{{ url('ticket/close/' . $ticket->ticket_id) }}"
-                                                              method="POST">
-                                                            {!! csrf_field() !!}
-                                                            <button type="submit" class="btn btn-danger">Close</button>
-                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

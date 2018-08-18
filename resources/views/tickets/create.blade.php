@@ -47,7 +47,6 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Open New Ticket</div>
 
-
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" method="POST"
                                           action="{{ route('ticket-store') }}">

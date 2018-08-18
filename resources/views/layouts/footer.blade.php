@@ -45,7 +45,7 @@
             <div class="col-sm-3">
                 <h3>Support</h3>
                 <ul>
-                    <li>Help & Support</li>
+                    <li><a href="{{route('user-tickets')}}">Help & Support</a></li>
                     <li>Sell service</li>
                     <li>Hire service</li>
 
