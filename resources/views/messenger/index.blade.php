@@ -194,17 +194,11 @@
             background: none repeat scroll 0 0 #f7f7f7;
             font-weight: 600;
         }
-        ul.inbox-pagination {
-            float: right;
-        }
+
         ul.inbox-pagination li {
             float: left;
         }
-        .mail-option {
-            display: inline-block;
-            margin-bottom: 10px;
-            width: 100%;
-        }
+
         .mail-option .chk-all, .mail-option .btn-group {
             margin-right: 5px;
         }
@@ -239,10 +233,7 @@
             margin-right: 5px;
             margin-top: 7px;
         }
-        .fileinput-button {
-            background: none repeat scroll 0 0 #eeeeee;
-            border: 1px solid #e6e6e6;
-        }
+
         .inbox-body .modal .modal-body input, .inbox-body .modal .modal-body textarea {
             border: 1px solid #e6e6e6;
             box-shadow: none;
@@ -269,109 +260,20 @@
             margin-top: 20px;
             padding-bottom: 10px;
         }
-        .sender-info {
-            margin-bottom: 20px;
-        }
+
         .sender-info img {
             height: 30px;
             width: 30px;
         }
-        .sender-dropdown {
-            background: none repeat scroll 0 0 #eaeaea;
-            color: #777;
-            font-size: 10px;
-            padding: 0 3px;
-        }
+
         .view-mail a {
             color: #ff6c60;
         }
-        .attachment-mail {
-            margin-top: 30px;
-        }
-        .attachment-mail ul {
-            display: inline-block;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-        .attachment-mail ul li {
-            float: left;
-            margin-bottom: 10px;
-            margin-right: 10px;
-            width: 150px;
-        }
-        .attachment-mail ul li img {
-            width: 100%;
-        }
-        .attachment-mail ul li span {
-            float: right;
-        }
-        .attachment-mail .file-name {
-            float: left;
-        }
-        .attachment-mail .links {
-            display: inline-block;
-            width: 100%;
-        }
 
-        .fileinput-button {
-            float: left;
-            margin-right: 4px;
-            overflow: hidden;
-            position: relative;
+        .modal-content{
+            padding-bottom: 0px;
+            height: 460px;
         }
-        .fileinput-button input {
-            cursor: pointer;
-            direction: ltr;
-            font-size: 23px;
-            margin: 0;
-            opacity: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transform: translate(-300px, 0px) scale(4);
-        }
-        .fileupload-buttonbar .btn, .fileupload-buttonbar .toggle {
-            margin-bottom: 5px;
-        }
-        .files .progress {
-            width: 200px;
-        }
-        .fileupload-processing .fileupload-loading {
-            display: block;
-        }
-        * html .fileinput-button {
-            line-height: 24px;
-            margin: 1px -3px 0 0;
-        }
-        * + html .fileinput-button {
-            margin: 1px 0 0;
-            padding: 2px 15px;
-        }
-        @media (max-width: 767px) {
-            .files .btn span {
-                display: none;
-            }
-            .files .preview * {
-                width: 40px;
-            }
-            .files .name * {
-                display: inline-block;
-                width: 80px;
-                word-wrap: break-word;
-            }
-            .files .progress {
-                width: 20px;
-            }
-            .files .delete {
-                width: 60px;
-            }
-        }
-        ul {
-            list-style-type: none;
-            padding: 0px;
-            margin: 0px;
-        }
-
 
     </style>
 
@@ -465,9 +367,9 @@
                                 <tr class="{{$thread->isUnread($currentUserId) ? 'unread' : ''}}">
                                     <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
                                     <td class="view-message">{!! $thread->latestMessage->body !!}</td>
-                                    <td class="view-message"><a class="btn btn-send" href="{{url('messages/' . $thread->id)}}">See Message</a></td>
                                     <td class="view-message inbox-small-cells"><small>{{ $thread->creator()->first_name }} {{ $thread->creator()->last_name }}</small></td>
                                     <td class="view-message text-right">{{\Carbon\Carbon::parse($thread->created_at)->diffForHumans()}}</td>
+                                    <td class="view-message"><a class="btn btn-send" href="{{url('messages/' . $thread->id)}}">View</a></td>
                                 </tr>
                             @endforeach
                         @else
