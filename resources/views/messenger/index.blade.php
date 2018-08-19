@@ -379,6 +379,11 @@
 <div class="contantWrapper innercontantWrapper adsListing">
 
     <div class="container">
+        <div class="row">
+            @include('usermenu')
+            <div class="col-sm-12"><h3>My Messages</h3></div>
+        </div>
+
         <div class="mail-box">
             <aside class="sm-side">
                 <div class="user-head">
@@ -442,7 +447,7 @@
 
                 <ul class="inbox-nav inbox-divider">
                     <li class="active">
-                        <a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
+                        <a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">{{$threads->count()}}</span></a>
                     </li>
                 </ul>
 
@@ -455,17 +460,19 @@
                 <div class="inbox-body">
                     <table class="table table-inbox table-hover">
                         <tbody>
-                      <tr class="">
-                            <td class="inbox-small-cells">
-                                <input type="checkbox" class="mail-checkbox">
-                            </td>
-                            <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-                            <td class="view-message dont-show">Google+</td>
-                            <td class="view-message">alireza, do you know</td>
-                            <td class="view-message inbox-small-cells"></td>
-                            <td class="view-message text-right">March 09</td>
-                        </tr>
-
+                        @if($threads->count() > 0)
+                            @foreach($threads as $thread)
+                                <tr class="{{$thread->isUnread($currentUserId) ? 'unread' : ''}}">
+                                    <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
+                                    <td class="view-message">{!! $thread->latestMessage->body !!}</td>
+                                    <td class="view-message"><a class="btn btn-send" href="{{url('messages/' . $thread->id)}}">See Message</a></td>
+                                    <td class="view-message inbox-small-cells"><small>{{ $thread->creator()->first_name }} {{ $thread->creator()->last_name }}</small></td>
+                                    <td class="view-message text-right">{{\Carbon\Carbon::parse($thread->created_at)->diffForHumans()}}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <p>Sorry, no threads.</p>
+                        @endif
                         </tbody>
                     </table>
                 </div>
