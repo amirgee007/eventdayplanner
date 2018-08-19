@@ -320,7 +320,7 @@ class EventsController extends Controller
         if ($event) {
             session()->flash('app_message', Lang::get('message.success.delete'));
         } else
-            session()->flash('app_message', 'This event is not belongs to you or not found');
+            session()->flash('app_warning', 'This event is not belongs to you or not found');
 
         // Redirect to the group management page
         return redirect()->back();

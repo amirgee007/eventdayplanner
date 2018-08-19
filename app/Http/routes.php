@@ -268,7 +268,10 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback')
         Route::get('edit-event/{event_id}', array('as' => 'edit-event', 'uses' => 'EventsController@showeditevent'));
         Route::post('edit-event/{event_id}', array('as' => 'edit-event', 'uses' => 'EventsController@editevent'));
         Route::get('delete-event/{event_id}', array('as' => 'delete-event', 'uses' => 'EventsController@deleteevent'));
+
         Route::get('messages', array('as' => 'messages', 'uses' => 'EventsController@showmessages'));
+
+        Route::post('messages/sendNew', array('as' => 'send-new-message', 'uses' => 'MessagesController@sendEmailMessage'));
 
         Route::post('rate-ads', array('as' => 'rate-ads', 'uses' => 'AdsController@rateads'));
         Route::post('submit-review', array('as' => 'submit-review', 'uses' => 'AdsController@submitreview'));

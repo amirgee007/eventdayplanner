@@ -16,24 +16,45 @@ use App\Event;
 
 class MessagesController extends Controller
 {
-    /**
-     * Show all of the message threads to the user.
-     *
-     * @return mixed
-     */
+
+
+    public function sendEmailMessage()
+    {
+
+        $to = request()->to;
+        $subject = request()->subject;
+
+        try {
+
+            \Mail::raw(request()->message, function ($message) use ($to , $subject) {
+                $message->subject($subject);
+                $message->to($to);
+            });
+
+            session()->flash('app_message', 'Email send successfully.');
+
+        } catch (\Exception $e) {
+            session()->flash('app_warning', $e->getMessage());
+
+        }
+
+        return back();
+
+    }
+
     public function index()
     {
-        
-        if(Sentinel::check())
-            $user=Sentinel::getUser();
-        
+
+        if (Sentinel::check())
+            $user = Sentinel::getUser();
+
         $currentUserId = $user->id;
 
         // All threads, ignore deleted/archived participants
         //$threads = Thread::getAllLatest()->get();
 
         // All threads that user is participating in
-         $threads = Thread::forUser($currentUserId)->latest('updated_at')->get();
+        $threads = Thread::forUser($currentUserId)->latest('updated_at')->get();
 
         // All threads that user is participating in, with new messages
         // $threads = Thread::forUserWithNewMessages($currentUserId)->latest('updated_at')->get();
@@ -88,19 +109,17 @@ class MessagesController extends Controller
      */
     public function storeFrontend()
     {
-        
+
         $input = Input::all();
 
-        $ad=Ad::findorfail($input['subject']);
-        $subject="Message on Ad-".$ad->title;
-        $adlink= "<a href='".url('ads-detail/'.$ad->slug)."'>View ".$ad->title."</a>";
+        $ad = Ad::findorfail($input['subject']);
+        $subject = "Message on Ad-" . $ad->title;
+        $adlink = "<a href='" . url('ads-detail/' . $ad->slug) . "'>View " . $ad->title . "</a>";
 
-        $message=$input['message'];
-        $chk=filter_var(trim($message), FILTER_VALIDATE_EMAIL);
-        if($chk)
-            return redirect('ads-detail/'.$ad->slug)->with('error','Message Contains invalid things like email');
-
-
+        $message = $input['message'];
+        $chk = filter_var(trim($message), FILTER_VALIDATE_EMAIL);
+        if ($chk)
+            return redirect('ads-detail/' . $ad->slug)->with('error', 'Message Contains invalid things like email');
 
         $thread = Thread::create(
             [
@@ -108,15 +127,12 @@ class MessagesController extends Controller
             ]
         );
 
-        
-        
-
         // Message
         Message::create(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => Sentinel::getUser()->id,
-                'body'      => $input['message']."<br/>".$adlink,
+                'user_id' => Sentinel::getUser()->id,
+                'body' => $input['message'] . "<br/>" . $adlink,
             ]
         );
 
@@ -124,7 +140,7 @@ class MessagesController extends Controller
         Participant::create(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => Sentinel::getUser()->id,
+                'user_id' => Sentinel::getUser()->id,
                 'last_read' => new Carbon,
             ]
         );
@@ -134,24 +150,23 @@ class MessagesController extends Controller
             $thread->addParticipant(array($ad->user_id));
         }
 
-        return redirect('ads-detail/'.$ad->slug)->with('success','Message Sent');
+        return redirect('ads-detail/' . $ad->slug)->with('success', 'Message Sent');
         //return redirect('messages');
     }
 
     public function storeFrontendevent()
     {
-        
+
         $input = Input::all();
 
-        $event=Event::findorfail($input['subject']);
-        $subject="Message on Event-".$event->name;
-        $eventlink= "<a href='".url('event/'.$event->slug)."'>View ".$event->name."</a>";
+        $event = Event::findorfail($input['subject']);
+        $subject = "Message on Event-" . $event->name;
+        $eventlink = "<a href='" . url('event/' . $event->slug) . "'>View " . $event->name . "</a>";
 
-        $message=$input['message'];
-        $chk=filter_var(trim($message), FILTER_VALIDATE_EMAIL);
-        if($chk)
-            return redirect('event/'.$event->slug)->with('error','Message Contains invalid things like email');
-
+        $message = $input['message'];
+        $chk = filter_var(trim($message), FILTER_VALIDATE_EMAIL);
+        if ($chk)
+            return redirect('event/' . $event->slug)->with('error', 'Message Contains invalid things like email');
 
 
         $thread = Thread::create(
@@ -160,15 +175,13 @@ class MessagesController extends Controller
             ]
         );
 
-        
-        
 
         // Message
         Message::create(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => Sentinel::getUser()->id,
-                'body'      => $input['message']."<br/>".$eventlink,
+                'user_id' => Sentinel::getUser()->id,
+                'body' => $input['message'] . "<br/>" . $eventlink,
             ]
         );
 
@@ -176,7 +189,7 @@ class MessagesController extends Controller
         Participant::create(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => Sentinel::getUser()->id,
+                'user_id' => Sentinel::getUser()->id,
                 'last_read' => new Carbon,
             ]
         );
@@ -186,7 +199,7 @@ class MessagesController extends Controller
             $thread->addParticipant(array($event->user_id));
         }
 
-        return redirect('event/'.$event->slug)->with('success','Message Sent');
+        return redirect('event/' . $event->slug)->with('success', 'Message Sent');
         //return redirect('messages');
     }
 
@@ -208,8 +221,8 @@ class MessagesController extends Controller
         Message::create(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => Sentinel::getUser()->id,
-                'body'      => $input['message'],
+                'user_id' => Sentinel::getUser()->id,
+                'body' => $input['message'],
             ]
         );
 
@@ -217,7 +230,7 @@ class MessagesController extends Controller
         Participant::create(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => Sentinel::getUser()->id,
+                'user_id' => Sentinel::getUser()->id,
                 'last_read' => new Carbon,
             ]
         );
@@ -252,8 +265,8 @@ class MessagesController extends Controller
         Message::create(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => Sentinel::getUser()->id,
-                'body'      => Input::get('message'),
+                'user_id' => Sentinel::getUser()->id,
+                'body' => Input::get('message'),
             ]
         );
 
@@ -261,7 +274,7 @@ class MessagesController extends Controller
         $participant = Participant::firstOrCreate(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => Sentinel::getUser()->id,
+                'user_id' => Sentinel::getUser()->id,
             ]
         );
         $participant->last_read = new Carbon;

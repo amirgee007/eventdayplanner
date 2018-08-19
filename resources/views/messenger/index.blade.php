@@ -314,24 +314,25 @@
                                     <h4 class="modal-title">Compose</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form role="form" class="form-horizontal">
+                                    <form role="form" class="form-horizontal" method="POST" action="{{route('send-new-message')}}">
+                                        {{csrf_field()}}
                                         <div class="form-group">
                                             <label class="col-lg-2 control-label">To</label>
                                             <div class="col-lg-10">
-                                                <input type="text" placeholder="" id="inputEmail1" class="form-control">
+                                                <input required type="email" name="to" placeholder="" id="inputEmail1" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-lg-2 control-label">Subject</label>
                                             <div class="col-lg-10">
-                                                <input type="text" placeholder="" id="inputPassword1" class="form-control">
+                                                <input required type="text" name="subject" placeholder="" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 control-label">Message</label>
                                             <div class="col-lg-10">
-                                                <textarea rows="10" cols="30" class="form-control" id="" name=""></textarea>
+                                                <textarea required rows="10" name="message" cols="30" class="form-control" id=""></textarea>
                                             </div>
                                         </div>
 
@@ -368,8 +369,8 @@
                                     <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
                                     <td class="view-message">{!! $thread->latestMessage->body !!}</td>
                                     <td class="view-message inbox-small-cells"><small>{{ $thread->creator()->first_name }} {{ $thread->creator()->last_name }}</small></td>
-                                    <td class="view-message text-right">{{\Carbon\Carbon::parse($thread->created_at)->diffForHumans()}}</td>
                                     <td class="view-message"><a class="btn btn-send" href="{{url('messages/' . $thread->id)}}">View</a></td>
+                                    <td class="view-message text-right">{{\Carbon\Carbon::parse($thread->created_at)->diffForHumans()}}</td>
                                 </tr>
                             @endforeach
                         @else
