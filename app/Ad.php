@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use willvincent\Rateable\Rateable;
 use Tshafer\Reviewable\Contracts\Reviewable;
 use Tshafer\Reviewable\Traits\Reviewable as ReviewableTrait;
@@ -17,6 +18,7 @@ class Ad extends Model  {
     use ReviewableTrait;
     use SearchableTrait;
     use ViewCounterTrait;
+
 
     /**
      * The database table used by the model.
@@ -91,6 +93,7 @@ class Ad extends Model  {
         if(Sentinel::check()){
             $user=Sentinel::getUser();
         }
+
         return $query->where('user_id', '=', $user->id);
     }
 

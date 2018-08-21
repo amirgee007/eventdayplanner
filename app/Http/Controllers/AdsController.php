@@ -769,10 +769,19 @@ class AdsController extends Controller {
 	 */
 	public function deleteads($id = null)
 	{
-		$ad = Ad::authuser()->destroy($id);
 
-		if($ad)
-		    return redirect('ads')->with('success', Lang::get('message.success.delete'));
+		$ad = Ad::authuser()->where('id' ,$id)->first();
+
+		if($ad){
+
+            $ad->prices()->delete();
+            $ad->services()->delete();
+            $ad->photos()->delete();
+            $ad->booking()->delete();
+
+            $ad->delete();
+            return redirect('ads')->with('success', Lang::get('message.success.delete'));
+        }
 
 		else
             return redirect('ads')->with('error', Lang::get('message.delete.delete'));
