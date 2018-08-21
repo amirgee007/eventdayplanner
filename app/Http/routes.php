@@ -401,9 +401,9 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback')
 
 
         /*routes for Admin tickets*/
-        Route::get('tickets', array('as' => 'admin-tickets', 'uses' => 'TicketsController@adminIndex'));
+        Route::get('support-tickets', array('as' => 'admin-support-tickets', 'uses' => 'SupportTicketController@adminIndex'));
 
-        Route::get('ticket/{ticket_id}', array('as' => 'admin-show-ticket', 'uses' => 'TicketsController@adminShowTicket'));
+        Route::get('support-ticket/{ticket_id}', array('as' => 'admin-show-support-ticket', 'uses' => 'SupportTicketController@adminShowTicket'));
 
         Route::post('admin-comment', array('as' => 'admin-comment', 'uses' => 'CommentsController@adminPostComment'));
 
@@ -575,17 +575,18 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback')
     });
 
 
+    //user support tickets routes
     Route::resource('event_anouncements', 'Event_anouncementsController');
 
-    Route::get('tickets', array('as' => 'user-tickets', 'uses' => 'TicketsController@userTickets'));
-    Route::get('ticket/create', array('as' => 'create', 'uses' => 'TicketsController@create'));
-    Route::post('ticket/store', array('as' => 'ticket-store', 'uses' => 'TicketsController@store'));
+    Route::get('support-tickets', array('as' => 'user-support-tickets', 'uses' => 'SupportTicketController@userTickets'));
+    Route::get('support-ticket/create', array('as' => 'create', 'uses' => 'SupportTicketController@create'));
+    Route::post('support-ticket/store', array('as' => 'support-ticket-store', 'uses' => 'SupportTicketController@store'));
 
-    Route::get('ticket/{ticket_id}', array('as' => 'ticket-show', 'uses' => 'TicketsController@show'));
+    Route::get('support-ticket/{ticket_id}', array('as' => 'support-ticket-show', 'uses' => 'SupportTicketController@show'));
 
-    Route::post('ticket/comment', array('as' => 'ticket-comment', 'uses' => 'CommentsController@postComment'));
+    Route::post('support-ticket/comment', array('as' => 'support-ticket-comment', 'uses' => 'CommentsController@postComment'));
 
-    Route::get('ticket/close/{ticket_id}', array('as' => 'ticket-close', 'uses' => 'TicketsController@close'));
+    Route::get('support-ticket/close/{ticket_id}', array('as' => 'support-ticket-close', 'uses' => 'SupportTicketController@close'));
 
 
     // Route::get('{name?}', 'JoshController@showFrontEndView');

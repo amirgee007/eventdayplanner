@@ -42,7 +42,7 @@
                         <tr class="filters">
                             <th>Id</th>
                             <th>Title</th>
-                            <th>Message</th>
+                            <th width="30%">Message</th>
                             <th>Opened By</th>
                             <th>Open At</th>
                             <th>Last Updated</th>
@@ -55,7 +55,7 @@
                             <tr>
                                 <td>{{$ticket->id}}</td>
                                 <td>
-                                    <a href="{{route('ticket-show' ,$ticket->ticket_id)}}">
+                                    <a href="{{route('admin-show-support-ticket' ,$ticket->ticket_id)}}">
                                         {{ $ticket->title }}
                                     </a>
                                 </td>
@@ -73,9 +73,9 @@
                                 </td>
                                 <td>
                                     @if($ticket->status=='open')
-                                        <a title="Show Ticket" href="{{route('admin-show-ticket' ,$ticket->ticket_id)}}"
+                                        <a title="Show Ticket" href="{{route('admin-show-support-ticket' ,$ticket->ticket_id)}}"
                                            class="btn btn-sm btn-primary">Show</a>
-                                        <a title="Close Ticket" href="{{route('ticket-close' ,$ticket->ticket_id)}}"
+                                        <a title="Close Ticket" href="{{route('support-ticket-close' ,$ticket->ticket_id)}}"
                                            class="btn btn-sm btn-danger"  onclick="return confirm('Are you sure to close ticket?')">Close</a>
                                     @else
                                         N/A

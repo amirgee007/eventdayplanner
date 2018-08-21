@@ -31,15 +31,15 @@
                         </div>
 
                         <div>
-                            <h3 class="text-primary">TICKETS</h3>
+                            <h3 class="text-primary">SUPPORT TICKETS</h3>
                         </div>
                         <div class="col-md-10 col-md-offset-1">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Open New Ticket</div>
+                                <div class="panel-heading">Open New support Ticket</div>
 
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" method="POST"
-                                          action="{{ route('ticket-store') }}">
+                                          action="{{ route('support-ticket-store') }}">
                                         {!! csrf_field() !!}
 
                                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

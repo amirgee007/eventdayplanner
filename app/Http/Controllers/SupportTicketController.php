@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+
 use App\Ticket;
 use App\User;
 use Auth;
 use Sentinel;
-use App\Http\Requests;
 use Session;
 
-class TicketsController extends Controller
-{
 
+class SupportTicketController extends Controller
+{
     const STATUS_OPEN = 'open';
     const STATUS_CLOSE = 'closed';
 
@@ -22,12 +24,12 @@ class TicketsController extends Controller
     {
         $tickets = Ticket::where('user_id', Sentinel::getuser()->id)->paginate(10);
 
-        return view('tickets.index', compact('tickets'));
+        return view('support-tickets.index', compact('tickets'));
     }
 
     public function create()
     {
-        return view('tickets.create');
+        return view('support-tickets.create');
     }
 
     public function show($ticket_id)
@@ -36,7 +38,7 @@ class TicketsController extends Controller
 
         $comments = $ticket->comments;
 
-        return view('tickets/show', compact('ticket', 'comments'));
+        return view('support-tickets.show', compact('ticket', 'comments'));
     }
 
     public function store(Request $request)
@@ -57,7 +59,7 @@ class TicketsController extends Controller
 
         $ticket->save();
 
-        return redirect()->route('user-tickets')->with("status", "A ticket with ID: #$ticket->ticket_id has been opened.");
+        return redirect()->route('user-support-tickets')->with("status", "A support ticket with ID: #$ticket->ticket_id has been opened.");
     }
 
 
@@ -65,7 +67,7 @@ class TicketsController extends Controller
     {
         Ticket::where('ticket_id', $ticket_id)->update(['status' => 'closed']);
 
-        Session::flash('success', 'The ticket has been closed');
+        Session::flash('success', 'The support ticket has been closed');
 
         return back();
     }
@@ -78,7 +80,7 @@ class TicketsController extends Controller
 
         $tickets = Ticket::paginate(10);
 
-        return view('admin/tickets/index', compact('tickets'));
+        return view('admin/support-tickets/index', compact('tickets'));
     }
 
     public function AdminShowTicket($ticket_id)
@@ -88,6 +90,6 @@ class TicketsController extends Controller
 
         $comments = $ticket->comments;
 
-        return view('admin/tickets/show', compact('ticket', 'comments'));
+        return view('admin/support-tickets/show', compact('ticket', 'comments'));
     }
 }

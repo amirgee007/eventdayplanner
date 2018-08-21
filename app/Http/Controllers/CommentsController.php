@@ -22,8 +22,9 @@ class CommentsController extends Controller
             'comment' => $request->input('comment'),
         ]);
 
+        session()->flash('app_message', ' Your comment has be submitted.');
 
-        return redirect()->back()->with("status", "Your comment has be submitted.");
+        return back();
     }
 
     public function adminPostComment(Request $request)

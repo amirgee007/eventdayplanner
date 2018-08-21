@@ -20,17 +20,17 @@
     </ul>
 </li>
 
-<li {!! (Request::is('admin/tickets')|| Request::is('admin/ticket/*') ? 'class="active"' : '') !!}>
+<li {!! (Request::is('admin/support-tickets')|| Request::is('admin/support-ticket/*') ? 'class="active"' : '') !!}>
     <a href="#">
         <i class="livicon" data-name="list-ul" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
-        <span class="title">Tickets</span>
+        <span class="title">Support Tickets</span>
         <span class="fa arrow"></span>
     </a>
     <ul class="sub-menu">
-        <li {!! (Request::is('admin/ticket') ? 'class="active" id="active"' : '') !!}>
-            <a href="{{ route('admin-tickets') }}">
+        <li {!! (Request::is('admin/support-ticket') ? 'class="active" id="active"' : '') !!}>
+            <a href="{{ route('admin-support-tickets') }}">
                 <i class="fa fa-angle-double-right"></i>
-                Tickets
+                All Support Tickets
             </a>
         </li>
     </ul>

@@ -37,15 +37,15 @@
 
                             <div class="panel panel-success">
                                 <div class="panel-heading">
-                                    <i class="fa fa-ticket"> My Tickets</i>
-                                    <a href="{{route('create')}}" class="btn btn-success pull-right">Open
+                                    <i class="fa fa-ticket"> My Support Tickets</i>
+                                    <a href="{{route('create')}}" class="btn btn-success pull-right">Open support
                                         Ticket</a>
                                     <div class="clearfix"></div>
                                 </div>
 
                                 <div class="panel-body">
                                     @if ($tickets->isEmpty())
-                                        <p>There are currently no tickets.</p>
+                                        <p>There are currently no support tickets.</p>
                                     @else
                                         <table class="table">
                                             <thead>
@@ -64,7 +64,7 @@
                                                 <tr>
                                                     <td>{{$ticket->id}}</td>
                                                     <td>
-                                                        <a href="{{route('ticket-show' ,$ticket->ticket_id)}}">
+                                                        <a href="{{route('support-ticket-show' ,$ticket->ticket_id)}}">
                                                             {{ $ticket->title }}
                                                         </a>
                                                     </td>
@@ -78,9 +78,9 @@
                                                     </td>
                                                     <td>
                                                         @if($ticket->status=='open')
-                                                        <a title="Comment" href="{{route('ticket-show' ,$ticket->ticket_id)}}"
+                                                        <a title="Comment" href="{{route('support-ticket-show' ,$ticket->ticket_id)}}"
                                                            class="btn btn-sm btn-primary"><i class="fa fa-comment"></i></a>
-                                                        <a title="Close Ticket" href="{{route('ticket-close' ,$ticket->ticket_id)}}"
+                                                        <a title="Close Ticket" href="{{route('support-ticket-close' ,$ticket->ticket_id)}}"
                                                            class="btn btn-sm btn-danger"  onclick="return confirm('Are you sure to close ticket?')"><i class="fa fa-remove"></i></a>
                                                         @else
                                                             N/A

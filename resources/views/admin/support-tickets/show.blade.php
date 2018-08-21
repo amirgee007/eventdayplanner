@@ -73,7 +73,7 @@
                         </div>
                         @if($ticket->status=='open')
                             <div class="comment-form">
-                                <form action="{{ route('ticket-comment')}}" method="POST" class="form">
+                                <form action="{{ route('support-ticket-comment')}}" method="POST" class="form">
                                     {!! csrf_field() !!}
 
                                     <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
@@ -91,7 +91,7 @@
 
                                     <div class="form-group" style="padding-top: 10px">
                                         <button type="submit" class="btn btn-primary">Comment</button>
-                                        <a title="Close Ticket" href="{{route('ticket-close' ,$ticket->ticket_id)}}"
+                                        <a title="Close Ticket" href="{{route('support-ticket-close' ,$ticket->ticket_id)}}"
                                            class="btn btn-danger"  onclick="return confirm('Are you sure to close ticket?')">Close Ticket</a>
                                     </div>
                                 </form>
