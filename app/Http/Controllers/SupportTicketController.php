@@ -15,6 +15,12 @@ use Session;
 
 class SupportTicketController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('SentinelUser', ['except' => ['home']]);
+    }
+
     const STATUS_OPEN = 'open';
     const STATUS_CLOSE = 'closed';
 
