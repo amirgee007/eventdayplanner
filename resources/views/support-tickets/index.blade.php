@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    My Tickets
+    Help & Support
     @parent
 @stop
 
@@ -14,7 +14,7 @@
     <section class="bannerWrapper innerBanner">
         <div class="searchWrap">
             <div class="container">
-                <h1>My Tickets</h1>
+                <h1>Help & Support</h1>
 
             </div>
         </div>
@@ -27,11 +27,11 @@
                     <!--main content-->
                     <div class="position-center">
                         <div>
-                            @include('event_organizer.usermenu')
+                            {{--@include('event_organizer.usermenu')--}}
                         </div>
 
                         <div>
-                            <h3 class="text-primary">TICKETS</h3>
+                            <h3 class="text-primary">Help & Support</h3>
                         </div>
                         <div class="col-md-10 col-md-offset-1">
 
