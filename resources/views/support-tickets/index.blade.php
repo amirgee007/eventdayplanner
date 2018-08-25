@@ -32,6 +32,7 @@
 
                         <div>
                             <h3 class="text-primary">Help & Support</h3>
+                            <br/>
                         </div>
                         <div class="col-md-10 col-md-offset-1">
 

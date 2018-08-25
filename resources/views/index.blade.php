@@ -311,7 +311,7 @@
 
                     <div class="col-sm-2">
                         <h4><b>Create Ads</b></h4>
-                        <p>list our service using create ads</p>
+                        <p>list your service using create ads</p>
                     </div>
 
                     <div class="col-sm-4">
