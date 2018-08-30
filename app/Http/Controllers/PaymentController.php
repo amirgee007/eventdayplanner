@@ -527,6 +527,7 @@ class PaymentController extends BaseController
 
 
         $id=$request->get('event_id');
+        
         $quantity=$request->get('quantity');
 
         $event=Event::find($id); 

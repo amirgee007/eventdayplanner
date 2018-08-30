@@ -150,19 +150,7 @@
                           </div>
                         </div>
                         </p>
-                        <p class="pull-right sendMsg">
-
-                            <?php if(isset($user) && ($user->id!=$event->user_id)  ){?>
-
-                                    <button  class="btn btn-primary" data-toggle="modal" data-target="#myModal">Send Message</button>
-
-                            <?php } else{
-                                
-                                /*<a href="{{url('login')}}">Login to Send Message</a> */
-                               
-                                }?>
-                        <!-- <a href="{{ url('events/book',$event->id) }}" ><i class="fa fa-ticket" aria-hidden="true" ></i> Book Tickets</a> -->
-                        </p>
+                    
                         <!-- <p>
                             <strong>Tags: </strong>
                             @forelse($event->tags as $tag)
@@ -506,10 +494,28 @@
             <!-- //Business Deal Section End -->
             <!-- /.col-sm-9 -->
             <!-- Recent Posts Section Start -->
+                <p class="pull-right sendMsg">
+
+                            <?php if(isset($user) && ($user->id!=$event->user_id)  ){?>
+
+                            <button  class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="    float: right;
+                                margin-right: 236px;
+                                margin-top: -43px;">
+                              Send Message</button>
+
+                            <?php } else{
+                                
+                                /*<a href="{{url('login')}}">Login to Send Message</a> */
+                               
+                                }?>
+                        <!-- <a href="{{ url('events/book',$event->id) }}" ><i class="fa fa-ticket" aria-hidden="true" ></i> Book Tickets</a> -->
+                        </p>
             <div class="col-sm-4 col-md-4 col-full-width-left">
+
                 <div class="the-box">
                 <div class="eventLogoWrap"><div class="eventlogo"><img class="img-responsive img-circle" src="{{url('user_circularthumb',@$owner->pic)}}"/></div></div>
                     <div class="leftList">
+
                         <h3>Event Organizer</h3>
                          <div class="eventPoster">
                           @if(@$owner->company_name)

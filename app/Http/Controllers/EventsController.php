@@ -229,7 +229,7 @@ class EventsController extends Controller
 
         self::stripXSS();
 
-        if ($this->isNotValidUrl($request->video_link)) {
+        if(!empty($request->video_link) && $this->isNotValidUrl($request->video_link)) {
             return redirect('create-event')->with('error', 'video link is invalid.')->withInput();
         }
 
