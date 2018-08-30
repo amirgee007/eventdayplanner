@@ -2,8 +2,8 @@
 Date: {{$event->date}}<br/>
 Organized By: 
 
-@if($organizer->company_name){{ $organizer->company_name}}
-@elseif($organizer->first_name)
+@if(@$organizer->company_name){{ $organizer->company_name}}
+@elseif(@$organizer->first_name)
 {{$organizer->first_name.' '.$organizer->last_name}}
 @endif
 <br/>

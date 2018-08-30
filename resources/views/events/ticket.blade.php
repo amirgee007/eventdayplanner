@@ -31,8 +31,8 @@
                         Date: {{$event->date}}<br/>
                         Organized By:
 
-                        @if($organizer->company_name){{ $organizer->company_name}}
-                        @elseif($organizer->first_name)
+                        @if(@$organizer->company_name){{ $organizer->company_name}}
+                        @elseif(@$organizer->first_name)
                             {{$organizer->first_name.' '.$organizer->last_name}}
                         @endif
                         <br/>
@@ -43,6 +43,7 @@
                         @else
                             <b>Free Pass</b>
                         @endif
+
                         <br/>
                         <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($booking->id,'C39+',3,133) }}"
                              alt="barcode"/>
