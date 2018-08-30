@@ -533,15 +533,12 @@ class PaymentController extends BaseController
         $event=Event::find($id); 
 
         $price=$event->ticket_price;
-        
-        $price_amount=$price*$quantity;
 
         if(!$event){
             return  Redirect::to('events/book/'.$id)->with('error', 'No Event Selected');
         }
 
-        if(!$price_amount || !is_numeric($price_amount)){
-           
+        if(!$price || !is_numeric($price)){
 
             //freebooking
                 $booking=new Booking();
@@ -549,13 +546,15 @@ class PaymentController extends BaseController
                 $booking->event_id=$id;
                 $booking->quantity=$quantity;
                 
-                $booking->price=$price_amount;
+                $booking->price=0;
 
                 $booking->user_id=Sentinel::getUser()->id;
                 $booking->save();
             return  Redirect::to('events/ticket/'.$booking->id)->with('success', 'Booked Successfully!!');
         }
-       
+
+        $price_amount=$price*$quantity;
+
 
         //$data['barcode']= $booking->id;//
        // echo '<img src="data:image/png;base64,' . DNS2D::getBarcodePNG("4", "PDF417") . '" alt="barcode"   />';
@@ -563,11 +562,6 @@ class PaymentController extends BaseController
    // $pdf = PDF::loadView('pdf.invoice', $data);
    // echo  $pdf->download('invoice.pdf');
 //exit;
-
-
-        
-
-       
             $params = array( 
                 'cancelUrl' => url('event',$event->slug),//'http://localhost:8888/eventdayplanner/public/', 
                 'returnUrl' => url('payment/done_event'),//'http://localhost:8888/eventdayplanner/public/payment/done',
