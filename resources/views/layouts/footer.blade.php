@@ -59,8 +59,8 @@
                 <ul>
                     <li>&copy; {{date('Y')}} <b> Eventdayplanner</b>. All Rights Reserved.</li>
                     <li><a href="{{route('site.map')}}">Site Map</a></li> |
-                    <li><a href="{{ asset('test/public/page/Terms%20&%20Condition') }}">Terms & Conditions</a></li> |
-                    <li><a href="{{ asset('test/public/page/Privacy%20&%20Policy%20') }}">Privacy Policy</a></li> |
+                    <li><a href="{{ env('APP_URL'). 'page/terms-and-condition' }}">Terms & Conditions</a></li> |
+                    <li><a href="{{ env('APP_URL'). 'page//privacy-and-policy' }}">Privacy Policy</a></li> |
                     <li><a href="{{route('contact.us')}}">Contact Us</a></li>
                 </ul>
             </div>

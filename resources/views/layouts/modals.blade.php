@@ -110,7 +110,7 @@
                         </div> -->
                     <div class="">
                         <label>
-                            <input type="checkbox" checked name="subscribed" >  I accept <a href="{{ asset('test/public/page/Terms%20&%20Condition') }}"> Terms and Conditions</a>
+                            <input type="checkbox" checked name="subscribed" >  I accept <a target="_blank" href="{{ env('APP_URL'). 'page/privacy-and-policy' }}"> Terms and Conditions</a>
                         </label>
                     </div>
                     <input type="submit" class="btn btn-block btn-default" value="Sign up" name="submit">
