@@ -1,21 +1,11 @@
 @extends('layouts/eventday')
 
-{{-- Page title --}}
 @section('title')
 My Ads
 @parent
 @stop
 
-{{-- page level styles --}}
-@section('header_styles')
-    <!--page level css starts-->
-    <!--end of page level css-->
-@stop
 
-
-
-
-{{-- Page content --}}
 @section('content')
 <section class="mainContainer">
 <div class="contantWrapper innercontantWrapper adsListing">
@@ -27,7 +17,6 @@ My Ads
      
       <div class="col-sm-9">
         @include('notifications')
-       
       </div>
       
 </div>
@@ -65,9 +54,7 @@ My Ads
     <div class="table-responsive">
         <table id="mytable" class="table table-bordred table-striped">
             <thead>
-                
                 <th>Ads</th>
-                
             </thead>
             <tbody>
                  @forelse ($ads as $ad)
