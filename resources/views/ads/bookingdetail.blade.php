@@ -71,7 +71,7 @@
                         <h3>More Bookings for this Ads</h3>
 
                         <div class="col-sm-4">
-                            {{dd($calendar)}}
+                            {!!$calendar!!}
                         </div>
                         <div class="col-sm-2">
                             <span style="display: inline-block;width:10px;height:20px;background-color:#00ff00;"></span>&nbsp;Booked<br/>
