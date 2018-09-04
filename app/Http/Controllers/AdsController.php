@@ -50,7 +50,7 @@ class AdsController extends Controller
         }
 
         $ads = $events = $ads_category = null;
-        
+
         if ($isbusinesssearch) {
             if ($date) {
                 $ads = Ad::search($query)
@@ -485,8 +485,9 @@ class AdsController extends Controller
         if (Sentinel::check()) {
             $user = Sentinel::getUser();
         }
+
         $ads = Ad::where('user_id', $user->id)->with('booking')->get();
-        //$ads_category = Ads_category::lists('name', 'id');
+
         $total_earnings = $withdrawl_total = 0;
 
         foreach ($ads as $ad) {
@@ -494,6 +495,8 @@ class AdsController extends Controller
                 $total_earnings += $book->price;
             }
         }
+
+
         $withdrawls = Withdrawl::where('user_id', $user->id)->where('approved', 1)->get();
 
         foreach ($withdrawls as $withdrawl) {
