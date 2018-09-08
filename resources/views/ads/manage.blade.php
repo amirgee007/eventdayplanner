@@ -1,5 +1,7 @@
 @extends('layouts/eventday')
 
+
+
 {{-- Page title --}}
 @section('title')
 My Ads
@@ -9,8 +11,11 @@ My Ads
 {{-- page level styles --}}
 @section('header_styles')
    <!--  <link href="{{ asset('assets/css/eventday/calendar.css') }}" rel="stylesheet"> -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <link href="{{ asset('assets/vendors/fullcalendar/css/fullcalendar.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/vendors/fullcalendar/css/fullcalendar.print.css') }}" rel="stylesheet"  media='print' type="text/css">
+    <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/pages/calendar_custom.css') }}" rel="stylesheet" type="text/css" />
     <!--page level css starts-->
     <!--end of page level css-->
 @stop
@@ -45,9 +50,99 @@ My Ads
         &nbsp;
         </div>
         <div class="col-sm-12">
-        <div class="col-sm-4">
-            {!!$calendar!!}
+        <div class="col-sm-8">
+          
+          <section class="content">
+                    <div class="row">
+                     
+                        <div class="col-md-9">
+                            <div class="box">
+                                <div class="box-body">
+                                    <div id="calendar"></div>
+                                    <div id="fullCalModal" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                                                    <h4 id="modalTitle" class="modal-title"></h4>
+                                                </div>
+                                                <div id="modalBody" class="modal-body">
+                                                    <i class="mdi-action-alarm-on"></i>&nbsp;&nbsp;Start: <span id="startTime"></span>&nbsp;&nbsp;- End: <span id="endTime"></span>
+                                                    <h4 id="eventInfo"></h4>
+                                                    <br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close reset" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        <i class="fa fa-plus"></i> Create Event
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group">
+                                        <input type="text" id="new-event" class="form-control" placeholder="Event">
+                                        <div class="input-group-btn">
+                                            <button type="button" id="color-chooser-btn" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                                Type
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" id="color-chooser">
+                                                <li>
+                                                    <a class="palette-primary" href="#">Primary</a>
+                                                </li>
+                                                <li>
+                                                    <a class="palette-success" href="#">Success</a>
+                                                </li>
+                                                <li>
+                                                    <a class="palette-info" href="#">Info</a>
+                                                </li>
+                                                <li>
+                                                    <a class="palette-warning" href="#">warning</a>
+                                                </li>
+                                                <li>
+                                                    <a class="palette-danger" href="#">Danger</a>
+                                                </li>
+                                                <li>
+                                                    <a class="palette-default" href="#">Default</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /btn-group -->
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger pull-right reset" data-dismiss="modal">
+                                        Close
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-success pull-left" id="add-new-event" data-dismiss="modal">
+                                        <i class="fa fa-plus"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
           </div>
+         
+
           <div class="col-sm-2">
               <span style="display: inline-block;width:10px;height:20px;background-color:#00ff00;"></span>&nbsp;Booked<br/>
                 <span style="display: inline-block;width:10px;height:20px;background-color:#ff0000;"></span>&nbsp;Blocked<br/>
@@ -156,7 +251,12 @@ My Ads
 @stop
 @section('footer_scripts')
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-<script src="{{ asset('assets/js/eventday/moment.js') }}"></script>
+<!-- <script src="{{ asset('assets/js/eventday/moment.js') }}"></script> -->
+<script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"  type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/fullcalendar/js/fullcalendar.min.js') }}"  type="text/javascript"></script> 
+<!-- <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script> -->
+<script src="{{ asset('assets/js/pages/calendar.js') }}"  type="text/javascript"></script>
+
 <script>
 var url = document.getElementById("url").textContent;
 var jdays = [];
@@ -166,9 +266,9 @@ var d;
 //cDate = moment();
 //$('#currentDate').text("Current Date is " + cDate.format("MMMM Do, YYYY") );
 
-$(document).ready(function($){
-  createCalendar();
-});
+// $(document).ready(function($){
+//   createCalendar();
+// });
 
 /**
  * Instantiates the calendar AFTER ajax call

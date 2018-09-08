@@ -883,7 +883,7 @@ time.comment-date {
 .flipInX form img{ padding-bottom: 10px; }
 
 .modal-body{     padding: inherit;}
-.modal-content { height: 600px; overflow-y: auto; padding-bottom: 20px;}
+.modal-content {     height: 256px; overflow-y: auto; padding-bottom: 20px;}
 .modal-content h3{ margin-top: 0; color: #8e063c;}
 .modal-body form,.modal-content form{padding-left: 20px; padding-right: 20px; border-top: 4px solid #ccc; padding-top: 20px;}
 .modal-body img, .modal-content  img{ margin-bottom: 10px;}
@@ -898,7 +898,7 @@ time.comment-date {
 .captcha{ width: 150px; margin-top: 10px;}
 .modal-header .close { color: #bc0034; opacity: inherit; margin-top: -9px; font-size: 25px;}
 .box { padding-top: 10px; display: inline-block; margin-left: 20px; width: 250px;}
-.box h2 { font-size: 16px; line-height: 21px; margin-top: 0; margin-bottom: 0; background: #bc0034; padding: 5px 20px; text-align: center;}
+.box h2 { font-size: 16px; line-height: 21px; margin-top: 0; margin-bottom: 0; background: #ffffff; padding: 5px 20px; text-align: center;}
 .box h2 a { color: white;}
 .box h2 a:hover { text-decoration: none;}
 .textsmall .box{ margin: 0 auto;    display: inherit;}
