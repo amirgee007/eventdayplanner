@@ -34,6 +34,7 @@ class APIController extends Controller
                 $data['end'] = $booking->book_date;
                 $data['backgroundColor'] = '#F44336'; //red
             }
+
             else{
 
                 $data['title'] = $booking->name;
