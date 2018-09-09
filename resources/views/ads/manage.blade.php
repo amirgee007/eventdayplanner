@@ -42,7 +42,7 @@
                 </div>
 
                 <br/>
-                <div class="col-sm-12">
+                <div class="col-sm-9">
                     <section class="content">
                         <div class="box">
                             <div class="box-body">
@@ -76,7 +76,7 @@
                     </section>
                 </div>
 
-                <div class="col-sm-12">
+                <div class="col-sm-3">
                     <ul>
                         @foreach($bookings as $booking)
                             @if($booking->user_id==$user->id)
