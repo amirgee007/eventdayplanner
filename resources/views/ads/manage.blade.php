@@ -1,7 +1,5 @@
 @extends('layouts/eventday')
 
-
-
 {{-- Page title --}}
 @section('title')
 My Ads
@@ -14,14 +12,9 @@ My Ads
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
      <link href="{{ asset('assets/vendors/fullcalendar/css/fullcalendar.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/fullcalendar/css/fullcalendar.print.css') }}" rel="stylesheet"  media='print' type="text/css">
-    <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
+{{--    <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />--}}
     <link href="{{ asset('assets/css/pages/calendar_custom.css') }}" rel="stylesheet" type="text/css" />
-    <!--page level css starts-->
-    <!--end of page level css-->
 @stop
-
-
-
 
 {{-- Page content --}}
 @section('content')
@@ -31,132 +24,57 @@ My Ads
       <div class="row">
             <div class="col-sm-12"><h3>Manage Ads -> {{ $ad->title }}</h3></div>
             @include('business.usermenu')
-           
             <div class="col-sm-9">
               @include('notifications')
-            
             </div>
-            
       </div>
-      <div class="row">
-      <div class="col-sm-6">
-          {{Form::open(array('url' => url('ads/block'),'id'=>'frmbook'))}}
-          <input type="hidden" name="ads" value="{{$ad->id}}" />
-          <input class="date" id="datepicker" name="date"/><input type="submit" value="Block date"/>
-          {{Form::close()}}
+        <br/><br/>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                {{Form::open(array('url' => url('ads/block'),'id'=>'frmbook'))}}
+                    <div class="input-group">
+                        <input type="hidden" name="ads" value="{{$ad->id}}" />
+                        <input class="date form-control" id="datepicker" name="date"/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Block Date!</button>
+                        </span>
+                    </div>
+                {{Form::close()}}
+            </div>
         </div>
 
+        <br/>
         <div class="col-sm-12">
-        &nbsp;
-        </div>
-        <div class="col-sm-12">
-        <div class="col-sm-8">
-          
           <section class="content">
-                    <div class="row">
-                     
-                        <div class="col-md-9">
-                            <div class="box">
-                                <div class="box-body">
-                                    <div id="calendar"></div>
-                                    <div id="fullCalModal" class="modal fade">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-                                                    <h4 id="modalTitle" class="modal-title"></h4>
-                                                </div>
-                                                <div id="modalBody" class="modal-body">
-                                                    <i class="mdi-action-alarm-on"></i>&nbsp;&nbsp;Start: <span id="startTime"></span>&nbsp;&nbsp;- End: <span id="endTime"></span>
-                                                    <h4 id="eventInfo"></h4>
-                                                    <br>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.box -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close reset" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">
-                                        <i class="fa fa-plus"></i> Create Event
-                                    </h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="input-group">
-                                        <input type="text" id="new-event" class="form-control" placeholder="Event">
-                                        <div class="input-group-btn">
-                                            <button type="button" id="color-chooser-btn" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                                Type
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right" id="color-chooser">
-                                                <li>
-                                                    <a class="palette-primary" href="#">Primary</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-success" href="#">Success</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-info" href="#">Info</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-warning" href="#">warning</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-danger" href="#">Danger</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-default" href="#">Default</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- /btn-group -->
-                                    </div>
-                                    <!-- /input-group -->
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger pull-right reset" data-dismiss="modal">
-                                        Close
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-success pull-left" id="add-new-event" data-dismiss="modal">
-                                        <i class="fa fa-plus"></i> Add
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-          </div>
-         
-
-          <div class="col-sm-2">
-              <span style="display: inline-block;width:10px;height:20px;background-color:#00ff00;"></span>&nbsp;Booked<br/>
-                <span style="display: inline-block;width:10px;height:20px;background-color:#ff0000;"></span>&nbsp;Blocked<br/>
-                <span style="display: inline-block;width:10px;height:20px;background-color:none;"></span>&nbsp;Available
-                
-              
-          </div>
+              <div class="box">
+                  <div class="box-body">
+                      <div id="calendar"></div>
+                      <div id="fullCalModal" class="modal fade">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                                      <h4 id="modalTitle" class="modal-title"></h4>
+                                  </div>
+                                  <div id="modalBody" class="modal-body">
+                                      <i class="mdi-action-alarm-on"></i>&nbsp;&nbsp;Start: <span id="startTime"></span>&nbsp;&nbsp;- End: <span id="endTime"></span>
+                                      <h4 id="eventInfo"></h4>
+                                      <br>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Close</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
         </div>
+
         <div  class="col-sm-12">
-
-
           <ul>
-
-          @foreach($bookings as $booking)
+            @foreach($bookings as $booking)
             @if($booking->user_id==$user->id)
               <li style="color:ORANGE;">
                 <div style='border-bottom: 1px solid #ccc;'>
@@ -178,7 +96,7 @@ My Ads
                     <br/>(contact: {{$booking->user->mobile_number." ".$booking->user->office_number}})
                     @endif
                     <br/>Price: {!! Helper::getPrice($booking->price) !!}<br/>
-                    
+
                     <!-- <a href="#">More Details</a> -->
                 </div>
                 </li>
@@ -187,12 +105,12 @@ My Ads
           </ul>
         </div>
         {{Form::open(array('url' => url('ads/book'),'id'=>'frmbook'))}}
-        <input type="hidden" id="date" value=""/>
+            <input type="hidden" id="date" value=""/>
          {{Form::close()}}
       </div>
     </div>
-  </div>
 </section>
+
 <div id="url" style="display:none">{{ url('/')}}</div>
 <section class="" style="display:none">
   <div class="contantWrapper innercontantWrapper">
@@ -200,24 +118,16 @@ My Ads
       <div class="row">
             <div class="col-sm-12"><h3>Manage Ads -> {{ $ad->title }}</h3></div>
             @include('business.usermenu')
-           
+
             <div class="col-sm-9">
               @include('notifications')
-              <!-- <ul class="adsNav-list">
-                <li><a href="#">Active</a></li> 
-                <li><a href="#">Pending Approval</a></li> 
-                <li><a href="#">Require Modification</a></li> 
-                <li><a href="#">Draft</a></li> 
-                <li><a href="#">Denied</a></li>
-              </ul> -->
             </div>
-            
+
       </div>
       <div class="row">
         <div id="calendar" class="col-sm-7"></div>
         {{Form::open(array('url' => url('ads/book'),'id'=>'frmbook'))}}
-        <input type="hidden" id="date" value=""/>
-         
+          <input type="hidden" id="date" value=""/>
          {{Form::close()}}
       </div>
 
@@ -241,20 +151,20 @@ My Ads
           <div class="alert alert-warning hide seldateerr">
             <strong>Warning!</strong> Date not selected.
           </div>
-       
+
       </div>
         </div>
-    <!-- /.modal-content --> 
+    <!-- /.modal-content -->
   </div>
-      <!-- /.modal-dialog --> 
+      <!-- /.modal-dialog -->
     </div>
 @stop
 @section('footer_scripts')
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <!-- <script src="{{ asset('assets/js/eventday/moment.js') }}"></script> -->
 <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"  type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/fullcalendar/js/fullcalendar.min.js') }}"  type="text/javascript"></script> 
-<!-- <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script> -->
+<script src="{{ asset('assets/vendors/fullcalendar/js/fullcalendar.min.js') }}"  type="text/javascript"></script>
+{{--<!-- <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script> -->--}}
 <script src="{{ asset('assets/js/pages/calendar.js') }}"  type="text/javascript"></script>
 
 <script>
@@ -273,7 +183,7 @@ var d;
 /**
  * Instantiates the calendar AFTER ajax call
  */
-function createCalendar() 
+function createCalendar()
 {
   $.get(url+"/api/get-appointments/{{$ad->id}}", function(data) {
     $.each(data, function(index, value) {
@@ -294,7 +204,7 @@ function createCalendar()
 /**
  * Highlights the days available for booking
  * @param  {datepicker date} date
- * @return {boolean, css}  
+ * @return {boolean, css}
  */
 function highlightDays(date)
 {
@@ -362,7 +272,7 @@ $('#date').val(d);
 
 function addDate(date) {
   alert(date)
-    if (jQuery.inArray(date, dates) < 0) 
+    if (jQuery.inArray(date, dates) < 0)
         dates.push(date);
 
 }
@@ -374,16 +284,16 @@ function removeDate(index) {
 // Adds a date if we don't have it yet, else remove it
 function addOrRemoveDate(date) {
     var index = jQuery.inArray(date, dates);
-    if (index >= 0) 
+    if (index >= 0)
         removeDate(index);
-    else 
+    else
         addDate(date);
 }
 
 // Takes a 1-digit number and inserts a zero before it
 function padNumber(number) {
     var ret = new String(number);
-    if (ret.length == 1) 
+    if (ret.length == 1)
         ret = "0" + ret;
     return ret;
 }

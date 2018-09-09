@@ -22,9 +22,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('get-available-days/{ads_id}', 'APIController@GetAvailableDays');
 
         Route::get('get-appointments/{ads_id}', 'APIController@GetAppointments');
+        Route::get('get-booked-events/{ads_id}', 'APIController@gteBookedEventsPerDay');
 
-        // Admin API Routes
-//        Route::get('get-all-appointments', 'AdminAPIController@GetAllAppointments');
     });
     Route::post('payment', [
         'as' => 'payment',

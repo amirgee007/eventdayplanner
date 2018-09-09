@@ -451,7 +451,7 @@ class AdsController extends Controller
         $ads_category = Ads_category::lists('name', 'id');
 
         foreach ($ads as $ad) {
-            $calendar[$ad->id] = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+            //$calendar[$ad->id] = $this->draw_calendar(date('m'), date('Y'), $ad->id);
         }
         //dd($ads_category[1]);
         return view('ads.managebooking', compact('ads', 'ads_category', 'calendar'));
@@ -806,6 +806,98 @@ class AdsController extends Controller
         return view('ads.edit', compact('ad', 'ads_category', 'calendar'));
     }
 
+    public function draw_calendar_old($month, $year, $id)
+    {
+        if (Sentinel::check()) {
+            $user = Sentinel::getUser();
+        }
+
+        /*$youttimestring=date('Y').'-'.date('m').'-28';
+        $currentday=Carbon::createFromFormat('Y-m-d',$youttimestring);
+        echo $currentday;
+        if($bookings->contains('book_date', $youttimestring)){
+            echo "here";
+        }else
+        echo "there";
+        exit;*/
+
+
+        /* draw table */
+        $calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
+
+        /* table headings */
+        $headings = array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
+        $calendar .= '<tr class="calendar-row"><td class="calendar-day-head">' . implode('</td><td class="calendar-day-head">', $headings) . '</td></tr>';
+
+        /* days and weeks vars now ... */
+        $running_day = date('w', mktime(0, 0, 0, $month, 1, $year));
+        $days_in_month = date('t', mktime(0, 0, 0, $month, 1, $year));
+        $days_in_this_week = 1;
+        $day_counter = 0;
+        $dates_array = array();
+
+        /* row for week one */
+        $calendar .= '<tr class="calendar-row">';
+
+        /* print "blank" days until the first of the current week */
+        for ($x = 0; $x < $running_day; $x++):
+            $calendar .= '<td class="calendar-day-np"> </td>';
+            $days_in_this_week++;
+        endfor;
+
+        /* keep going with days.... */
+        for ($list_day = 1; $list_day <= $days_in_month; $list_day++):
+            $calendar .= '<td class="calendar-day">';
+            /* add in the day number */
+
+            $youttimestring = date('Y') . '-' . date('m') . '-' . $list_day;
+            //$bookings=Booking::where('ads_id',$id)->groupBy('book_date')->whereMonth( DB::raw('book_date'), '=', date('m') )->with('user')->get();
+            $booking = Booking::where('ads_id', $id)->groupBy('book_date')->where(DB::raw('book_date'), '=', $youttimestring)->with('user')->get();
+            //$youttimestring
+            //$currentday=Carbon::parse(Carbon::createFromFormat('Y-m-d',$youttimestring));
+            if ($booking->contains('book_date', $youttimestring)) {
+                if ($booking->contains('user_id', $user->id))
+                    $calendar .= '<div class="day-number blocked"><a href="' . url('bookings-detail', array($id, $youttimestring)) . '"   data-id="{{ $id  }}">' . $list_day . '</a></div>';
+                else
+                    $calendar .= '<div class="day-number booked" ><a href="' . url('bookings-detail', array($id, $youttimestring)) . '">' . $list_day . '</a></div>';
+            } else
+                $calendar .= '<div class="day-number"><a href="' . url('bookings-detail', array($id, $youttimestring)) . '" data-post="data-php" data-action="empty"  data-id="{{ $id  }}"  >' . $list_day . '</a></div>';
+
+
+            /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
+            $calendar .= str_repeat('<p> </p>', 2);
+
+            $calendar .= '</td>';
+            if ($running_day == 6):
+                $calendar .= '</tr>';
+                if (($day_counter + 1) != $days_in_month):
+                    $calendar .= '<tr class="calendar-row">';
+                endif;
+                $running_day = -1;
+                $days_in_this_week = 0;
+            endif;
+            $days_in_this_week++;
+            $running_day++;
+            $day_counter++;
+        endfor;
+
+        /* finish the rest of the days in the week */
+        if ($days_in_this_week < 8):
+            for ($x = 1; $x <= (8 - $days_in_this_week); $x++):
+                $calendar .= '<td class="calendar-day-np"> </td>';
+            endfor;
+        endif;
+
+        /* final row */
+        $calendar .= '</tr>';
+
+        /* end the table */
+        $calendar .= '</table>';
+
+        /* all done, return result */
+        return $calendar;
+    }
+
     public function manageads($id, Request $request)
     {
 
@@ -821,10 +913,30 @@ class AdsController extends Controller
 
         $bookings = Booking::where('ads_id', $id)->groupBy('book_date')->orderBy('book_date', 'DESC')->with('user')->get();
 
-        $calendar = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+        $booking_events = [];
 
+        foreach($bookings as $booking){
 
-        return view('ads.manage', compact('ad', 'bookings', 'user', 'calendar'));
+            if ($booking->user_id == $user->id) {
+                    $data['title'] = $booking->name;
+                    $data['start'] = $booking->book_date;
+                    $data['end'] = $booking->book_date;
+                    $data['backgroundColor'] = '#F44336'; //red
+            }
+            else{
+
+                $data['title'] = $booking->name;
+                $data['start'] = $booking->book_date;
+                $data['end'] = $booking->book_date;
+                $data['backgroundColor'] = '#2bea0c'; //green
+            }
+
+            $booking_events[] = $data;
+        }
+
+//        $calendar = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+
+        return view('ads.manage', compact('ad', 'bookings', 'user' ,'booking_events'));
     }
 
     public function bookingdetail($id, $date, Request $request)
@@ -841,7 +953,7 @@ class AdsController extends Controller
             return redirect('ads')->with('error', 'Error');
 
         $bookings = Booking::where('ads_id', $id)->where('book_date', $date)->orderBy('book_date', 'DESC')->with('user')->first();
-        $calendar = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+        //$calendar = $this->draw_calendar(date('m'), date('Y'), $ad->id);
 
 
         return view('ads.bookingdetail', compact('ad', 'bookings', 'user', 'date', 'calendar'));
@@ -1263,104 +1375,12 @@ class AdsController extends Controller
 
     }
 
-    public function draw_calendar($month, $year, $id)
-    {
-        if (Sentinel::check()) {
-            $user = Sentinel::getUser();
-        }
-
-        /*$youttimestring=date('Y').'-'.date('m').'-28';
-        $currentday=Carbon::createFromFormat('Y-m-d',$youttimestring);
-        echo $currentday;
-        if($bookings->contains('book_date', $youttimestring)){
-            echo "here";
-        }else
-        echo "there";
-        exit;*/
-
-
-        /* draw table */
-        $calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
-
-        /* table headings */
-        $headings = array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
-        $calendar .= '<tr class="calendar-row"><td class="calendar-day-head">' . implode('</td><td class="calendar-day-head">', $headings) . '</td></tr>';
-
-        /* days and weeks vars now ... */
-        $running_day = date('w', mktime(0, 0, 0, $month, 1, $year));
-        $days_in_month = date('t', mktime(0, 0, 0, $month, 1, $year));
-        $days_in_this_week = 1;
-        $day_counter = 0;
-        $dates_array = array();
-
-        /* row for week one */
-        $calendar .= '<tr class="calendar-row">';
-
-        /* print "blank" days until the first of the current week */
-        for ($x = 0; $x < $running_day; $x++):
-            $calendar .= '<td class="calendar-day-np"> </td>';
-            $days_in_this_week++;
-        endfor;
-
-        /* keep going with days.... */
-        for ($list_day = 1; $list_day <= $days_in_month; $list_day++):
-            $calendar .= '<td class="calendar-day">';
-            /* add in the day number */
-
-            $youttimestring = date('Y') . '-' . date('m') . '-' . $list_day;
-            //$bookings=Booking::where('ads_id',$id)->groupBy('book_date')->whereMonth( DB::raw('book_date'), '=', date('m') )->with('user')->get();
-            $booking = Booking::where('ads_id', $id)->groupBy('book_date')->where(DB::raw('book_date'), '=', $youttimestring)->with('user')->get();
-            //$youttimestring
-            //$currentday=Carbon::parse(Carbon::createFromFormat('Y-m-d',$youttimestring));
-            if ($booking->contains('book_date', $youttimestring)) {
-                if ($booking->contains('user_id', $user->id))
-                    $calendar .= '<div class="day-number blocked"><a href="' . url('bookings-detail', array($id, $youttimestring)) . '"   data-id="{{ $id  }}">' . $list_day . '</a></div>';
-                else
-                    $calendar .= '<div class="day-number booked" ><a href="' . url('bookings-detail', array($id, $youttimestring)) . '">' . $list_day . '</a></div>';
-            } else
-                $calendar .= '<div class="day-number"><a href="' . url('bookings-detail', array($id, $youttimestring)) . '" data-post="data-php" data-action="empty"  data-id="{{ $id  }}"  >' . $list_day . '</a></div>';
-
-
-            /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
-            $calendar .= str_repeat('<p> </p>', 2);
-
-            $calendar .= '</td>';
-            if ($running_day == 6):
-                $calendar .= '</tr>';
-                if (($day_counter + 1) != $days_in_month):
-                    $calendar .= '<tr class="calendar-row">';
-                endif;
-                $running_day = -1;
-                $days_in_this_week = 0;
-            endif;
-            $days_in_this_week++;
-            $running_day++;
-            $day_counter++;
-        endfor;
-
-        /* finish the rest of the days in the week */
-        if ($days_in_this_week < 8):
-            for ($x = 1; $x <= (8 - $days_in_this_week); $x++):
-                $calendar .= '<td class="calendar-day-np"> </td>';
-            endfor;
-        endif;
-
-        /* final row */
-        $calendar .= '</tr>';
-
-        /* end the table */
-        $calendar .= '</table>';
-
-        /* all done, return result */
-        return $calendar;
-    }
 
     public function loadModal($id, $action)
     {
         //return view for specified action
         //if action is delete, call this view, etc...
         //return View::make('ads.modal_'.$action)->render();
-        $id = $id;
         return view('ads.modal_' . $action, compact('id'));
     }
 
