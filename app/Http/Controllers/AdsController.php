@@ -953,7 +953,7 @@ class AdsController extends Controller
             return redirect('ads')->with('error', 'Error');
 
         $bookings = Booking::where('ads_id', $id)->where('book_date', $date)->orderBy('book_date', 'DESC')->with('user')->first();
-        //$calendar = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+        $calendar = null;
 
 
         return view('ads.bookingdetail', compact('ad', 'bookings', 'user', 'date', 'calendar'));
