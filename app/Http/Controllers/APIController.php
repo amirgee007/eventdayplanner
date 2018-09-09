@@ -29,7 +29,7 @@ class APIController extends Controller
         foreach($bookings as $booking){
 
             if ($booking->user_id == $user->id) {
-                $data['title'] = $booking->name;
+                $data['title'] = 'Blocked by '.$booking->user->first_name;
                 $data['start'] = $booking->book_date;
                 $data['end'] = $booking->book_date;
                 $data['backgroundColor'] = '#F44336'; //red
@@ -37,7 +37,7 @@ class APIController extends Controller
 
             else{
 
-                $data['title'] = $booking->name;
+                $data['title'] = 'Booked by '.$booking->user->first_name;
                 $data['start'] = $booking->book_date;
                 $data['end'] = $booking->book_date;
                 $data['backgroundColor'] = '#2bea0c'; //green
@@ -49,12 +49,6 @@ class APIController extends Controller
         return response()->json($booking_events);
 
     }
-
-
-
-
-
-
 
 
     // Get available days

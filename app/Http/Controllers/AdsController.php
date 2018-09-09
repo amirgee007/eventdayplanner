@@ -361,14 +361,15 @@ class AdsController extends Controller
         $ad = Ad::find($id)->where('user_id', Sentinel::getUser()->id);
 
         if (!$ad) {
-            return redirect()->route('bookings-detail', array($id, $dates))->with('error', 'Ads Can\'t be blocked');
+
+            return back()->with('error', 'Ads Can\'t be blocked');
         }
 
         $booking = Booking::where('book_date', $dates)->where('ads_id', $id)->first();
 
 
         if ($booking) {
-            return redirect()->route('bookings-detail', array($id, $dates))->with('error', 'Ads Already Blocked or Booked');
+            return back()->with('error', 'Ads Already Blocked or Booked');
         }
 
 
@@ -379,9 +380,7 @@ class AdsController extends Controller
         $booking->user_id = Sentinel::getUser()->id;
         $booking->save();
 
-
-        return redirect()->route('bookings-detail', array($id, $dates))->with('success', 'Successfully Blocked');
-
+        return back()->with('success', 'Successfully Blocked');
 
     }
 

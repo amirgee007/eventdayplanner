@@ -25,9 +25,6 @@
                 <div class="row">
                     <div class="col-sm-12"><h3>Manage Ads -> {{ $ad->title }}</h3></div>
                     @include('business.usermenu')
-                    <div class="col-sm-9">
-                        @include('notifications')
-                    </div>
                 </div>
                 <br/><br/>
                 <div class="row">
@@ -59,7 +56,7 @@
                                                             class="sr-only">close</span></button>
                                                 <h4 id="modalTitle" class="modal-title"></h4>
                                             </div>
-                                            <div id="modalBody" class="modal-body">
+                                            <div id="modalBody" class="modal-body" style="padding: 10px">
                                                 <i class="mdi-action-alarm-on"></i>&nbsp;&nbsp;Start: <span
                                                         id="startTime"></span>&nbsp;&nbsp;- End: <span
                                                         id="endTime"></span>
