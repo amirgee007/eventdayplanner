@@ -451,7 +451,9 @@ class AdsController extends Controller
         $ads_category = Ads_category::lists('name', 'id');
 
         foreach ($ads as $ad) {
-            //$calendar[$ad->id] = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+            $calendar[$ad->id] = null;
+
+//            $calendar[$ad->id] = $this->draw_calendar(date('m'), date('Y'), $ad->id);
         }
         //dd($ads_category[1]);
         return view('ads.managebooking', compact('ads', 'ads_category', 'calendar'));
