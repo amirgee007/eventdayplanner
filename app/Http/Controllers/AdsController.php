@@ -450,9 +450,8 @@ class AdsController extends Controller
         $ads_category = Ads_category::lists('name', 'id');
 
         foreach ($ads as $ad) {
-            $calendar[$ad->id] = null;
-
-//            $calendar[$ad->id] = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+//            $calendar[$ad->id] = null;
+            $calendar[$ad->id] = $this->draw_calendar(date('m'), date('Y'), $ad->id);
         }
         //dd($ads_category[1]);
         return view('ads.managebooking', compact('ads', 'ads_category', 'calendar'));
@@ -807,7 +806,7 @@ class AdsController extends Controller
         return view('ads.edit', compact('ad', 'ads_category', 'calendar'));
     }
 
-    public function draw_calendar_old($month, $year, $id)
+    public function draw_calendar($month, $year, $id)
     {
         if (Sentinel::check()) {
             $user = Sentinel::getUser();
