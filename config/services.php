@@ -41,9 +41,9 @@ return [
         'redirect'      => env('FACEBOOK_REDIRECT','https://eventdayplanner.com/auth/callback/facebook')
     ],
     'google' => [
-        'client_id'     => env('GOOGLE_ID','521125266075-6a4lg5bsh6b924aq6igguu4rd960ejho.apps.googleusercontent.com'),
-        'client_secret' => env('GOOGLE_SECRET','enOpVGZe06dDZ66pVmuOkz46'),
-        'redirect'      => env('GOOGLE_REDIRECT','http://eventdayplanner.com/dev/public/auth/callback/google')
+        'client_id'     => env('GOOGLE_ID','386344207895-lk3of2jl4br4vsbg1jnvjuvaqf70esdu.apps.googleusercontent.com'),
+        'client_secret' => env('GOOGLE_SECRET','L5oAWOf9nb7fyWwAkDWEDcvl'),
+        'redirect'      => env('GOOGLE_REDIRECT','https://eventdayplanner.com/auth/callback/google')
     ],
     'twitter' => [
         'client_id'     => env('TWITTER_ID','ZgsQvF0e408PZ4CO7Q69zeOxb'),
