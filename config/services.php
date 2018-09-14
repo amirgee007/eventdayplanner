@@ -38,7 +38,7 @@ return [
     'facebook' => [
         'client_id'     => env('FACEBOOK_ID','1932067973737435'),
         'client_secret' => env('FACEBOOK_SECRET','a345c54f5d8ab2163945a6432668d016'),
-        'redirect'      => env('FACEBOOK_REDIRECT','http://eventdayplanner.com/test/public/auth/callback/facebook')
+        'redirect'      => env('FACEBOOK_REDIRECT','https://eventdayplanner.com/auth/callback/facebook')
     ],
     'google' => [
         'client_id'     => env('GOOGLE_ID','521125266075-6a4lg5bsh6b924aq6igguu4rd960ejho.apps.googleusercontent.com'),
