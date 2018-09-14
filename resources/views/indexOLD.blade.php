@@ -313,7 +313,7 @@
 @section('footer_scripts')
     <!-- page level js starts-->
 
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script type="text/javascript" src="{{ asset('assets/js/frontend/jquery.share.js') }}"></script>
     <script src="{{ asset('assets/js/eventday/moment.js') }}"></script>
     <script>
@@ -1072,7 +1072,7 @@
     <script type="text/javascript" src="{{ asset('assets/vendors/owl.carousel/js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/frontend/carousel.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/frontend/index.js') }}"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
     <script>
         $(function () {

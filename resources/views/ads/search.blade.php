@@ -319,7 +319,7 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
     <script src="{{ asset('assets/js/eventday/stars.js') }}" type="text/javascript"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script src="{{ asset('assets/js/eventday/moment.js') }}"></script>
     <script>
         $(function () {

@@ -85,7 +85,7 @@
     </section>
 @stop
 @section('footer_scripts')
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
     <script src="{{ asset('assets/js/eventday/moment.js') }}"></script>
     <script>
