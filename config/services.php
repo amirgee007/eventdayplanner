@@ -51,9 +51,9 @@ return [
         'redirect'      => env('TWITTER_REDIRECT','https://eventdayplanner.com/auth/callback/twitter')
     ],
     'linkedin' => [
-        'client_id'     => env('LINKEDIN_ID','81l9han96op5a7'),
-        'client_secret' => env('LINKEDIN_SECRET','dffszywxB9giUWrx'),
-        'redirect'      => env('LINKEDIN_REDIRECT','http://eventdayplanner.com/dev/public/auth/callback/linkedin')
+        'client_id'     => env('LINKEDIN_ID','86di1ce7mk7kji'),
+        'client_secret' => env('LINKEDIN_SECRET','MvZtYJqQdgYcYubx'),
+        'redirect'      => env('LINKEDIN_REDIRECT','https://eventdayplanner.com/auth/callback/linkedin')
     ],
 
 ];
