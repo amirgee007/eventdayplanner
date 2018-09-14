@@ -436,25 +436,38 @@ class AdsController extends Controller
         return view('ads.index', compact('ads', 'ads_category'));
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
+
+    public function bookingCounts($id ,$user){
+
+        $bookings = Booking::where('ads_id', $id)->groupBy('book_date')->with('user')->get();
+        $result['blocked'] = 0;
+        $result['booked'] = 0;
+
+       foreach ($bookings as $booking){
+           if ($booking->user_id == $user->id)
+               $result['blocked']++;
+           else
+               $result['booked']++;
+       }
+
+       return $result;
+    }
+
+
     public function bookingmanagement()
     {
         if (Sentinel::check()) {
             $user = Sentinel::getUser();
         }
+
         $ads = Ad::where('user_id', $user->id)->paginate(15);
         $ads_category = Ads_category::lists('name', 'id');
 
         foreach ($ads as $ad) {
-//            $calendar[$ad->id] = null;
-            $calendar[$ad->id] = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+            $ads_counters[$ad->id] = $this->bookingCounts($ad->id ,$user);
         }
-        //dd($ads_category[1]);
-        return view('ads.managebooking', compact('ads', 'ads_category', 'calendar'));
+
+        return view('ads.managebooking', compact('ads', 'ads_category', 'calendar','ads_counters'));
     }
 
     public function reviewsmanagement()
@@ -953,8 +966,9 @@ class AdsController extends Controller
             return redirect('ads')->with('error', 'Error');
 
         $bookings = Booking::where('ads_id', $id)->where('book_date', $date)->orderBy('book_date', 'DESC')->with('user')->first();
-        $calendar = null;
 
+//        $calendar = $this->draw_calendar(date('m'), date('Y'), $ad->id);
+        $calendar = [];
 
         return view('ads.bookingdetail', compact('ad', 'bookings', 'user', 'date', 'calendar'));
     }

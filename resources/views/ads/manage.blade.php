@@ -15,6 +15,12 @@
           type="text/css">
     {{--    <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />--}}
     <link href="{{ asset('assets/css/pages/calendar_custom.css') }}" rel="stylesheet" type="text/css"/>
+
+<style>.fc-day-grid-event > .fc-content {
+
+        overflow: hidden;
+    }
+</style>
 @stop
 
 {{-- Page content --}}

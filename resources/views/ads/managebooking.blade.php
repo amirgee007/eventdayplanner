@@ -48,28 +48,24 @@
                                             <div class="col-sm-3">
                                                 <ul class="ratingAds">
                                                     <li>{{$ad->title}}</li>
-
                                                 </ul>
-                                                <a href="{{ route('manage-ads',$ad) }}" class="manage">Manage
-                                                    Booking</a>
+                                                <a title="See More Detail" href="{{ route('manage-ads',$ad) }}" class="manage">Manage Booking</a>
                                             </div>
                                             <div class="col-sm-4">
-                                                {!!$calendar[$ad->id]!!}
+                                                <a title="See More Detail" href="{{ route('manage-ads',$ad) }}" class="manage">
+                                                <span style="display: inline-block;width:20px;height:10px;background-color:#00ff00;"></span>&nbsp;Total {{$ads_counters[$ad->id]['booked']}} Booked<br/>
+                                                </a>
                                             </div>
                                             <div class="col-sm-2">
-                                                <span style="display: inline-block;width:10px;height:20px;background-color:#00ff00;"></span>&nbsp;Booked<br/>
-                                                <span style="display: inline-block;width:10px;height:20px;background-color:#ff0000;"></span>&nbsp;Blocked<br/>
-                                                <span style="display: inline-block;width:10px;height:20px;background-color:none;"></span>&nbsp;Available
-
-
+                                                <a title="See More Detail" href="{{ route('manage-ads',$ad) }}" class="manage">
+                                                    <span style="display: inline-block;width:20px;height:10px;background-color:#ff0000;"></span>&nbsp; Total {{$ads_counters[$ad->id]['blocked']}} Blocked<br/>
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
 
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Edit">
-
-                                        <!-- <button class="btn btn-primary btn-xs" data-title="Edit" href="{!! route('edit-ads',$ad)!!}"  data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button> --></p>
                                     </td>
 
                                 </tr>

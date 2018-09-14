@@ -998,7 +998,7 @@ a.fc-more:hover {
 .fc .fc-axis { /* .fc to overcome default cell styles */
 	vertical-align: middle;
 	padding: 0 4px;
-	white-space: nowrap;
+
 }
 
 .fc-ltr .fc-axis {
