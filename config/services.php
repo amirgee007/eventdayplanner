@@ -46,9 +46,9 @@ return [
         'redirect'      => env('GOOGLE_REDIRECT','https://eventdayplanner.com/auth/callback/google')
     ],
     'twitter' => [
-        'client_id'     => env('TWITTER_ID','ZgsQvF0e408PZ4CO7Q69zeOxb'),
-        'client_secret' => env('TWITTER_SECRET','4I0RfrpN1RKWoSRTg5DbZYbCpTwhmzgIeMIdVXGV0r2onDe5pq'),
-        'redirect'      => env('TWITTER_REDIRECT','http://eventdayplanner.com/dev/public/auth/callback/twitter')
+        'client_id'     => env('TWITTER_ID','UMPEVjSDaAyxyYiwaDXAj3yJZ'),
+        'client_secret' => env('TWITTER_SECRET','X8RF6MmqbPghdV66RpV6y2hPg38Giric1Ur7V5RvYX03jqz4K5'),
+        'redirect'      => env('TWITTER_REDIRECT','https://eventdayplanner.com/auth/callback/twitter')
     ],
     'linkedin' => [
         'client_id'     => env('LINKEDIN_ID','81l9han96op5a7'),
