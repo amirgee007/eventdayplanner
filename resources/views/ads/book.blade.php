@@ -9,6 +9,7 @@ Book Now
 {{-- Page content --}}
 @section('content')
 
+
 <!-- Main content -->
 <section class="mainContainer">
 <div class="contantWrapper innercontantWrapper adsPage">

@@ -10,15 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/blog.css') }}">
     <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq0JqsNGNj54cF3Sb3FMNq3fPbdnpzZ2M"></script>
-   <style>
-
-       .modal-content {
-           height: auto;
-           overflow-y: auto;
-            padding-bottom: 0px;
-       }
-
-   </style>
+    <!--end of page level css-->
 @stop
 {{-- Page content --}}
 @section('content')
@@ -341,7 +333,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
         </div>
     </section>
