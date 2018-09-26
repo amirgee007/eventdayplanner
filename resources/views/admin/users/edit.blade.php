@@ -157,7 +157,7 @@ Edit User
                                                             @if($user->pic)
                                                                 <img src="{!! url('/').'/uploads/users/'.$user->pic !!}" alt="profile pic">
                                                             @else
-                                                                <img src="http://placehold.it/200x200" alt="profile pic">
+                                                                <img src="https://placehold.it/200x200" alt="profile pic">
                                                             @endif
                                                         </div>
                                                         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;"></div>

@@ -262,42 +262,42 @@
                                     <div class="carousel-inner">
                                         <div class="item active">
                                             <div class="col-xs-12 col-sm-6 col-md-3"><a href="#"><img
-                                                            src="http://placehold.it/500/0054A6/fff/&amp;text=1"
+                                                            src="https://placehold.it/500/0054A6/fff/&amp;text=1"
                                                             class="img-responsive"></a></div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-3"><a href="#"><img
-                                                            src="http://placehold.it/500/002d5a/fff/&amp;text=2"
+                                                            src="https://placehold.it/500/002d5a/fff/&amp;text=2"
                                                             class="img-responsive"></a></div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-3"><a href="#"><img
-                                                            src="http://placehold.it/500/d6d6d6/333&amp;text=3"
+                                                            src="https://placehold.it/500/d6d6d6/333&amp;text=3"
                                                             class="img-responsive"></a></div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-3"><a href="#"><img
-                                                            src="http://placehold.it/500/002040/eeeeee&amp;text=4"
+                                                            src="https://placehold.it/500/002040/eeeeee&amp;text=4"
                                                             class="img-responsive"></a></div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-3"><a href="#"><img
-                                                            src="http://placehold.it/500/0054A6/fff/&amp;text=5"
+                                                            src="https://placehold.it/500/0054A6/fff/&amp;text=5"
                                                             class="img-responsive"></a></div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-3"><a href="#"><img
-                                                            src="http://placehold.it/500/002d5a/fff/&amp;text=6"
+                                                            src="https://placehold.it/500/002d5a/fff/&amp;text=6"
                                                             class="img-responsive"></a></div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-3"><a href="#"><img
-                                                            src="http://placehold.it/500/eeeeee&amp;text=7"
+                                                            src="https://placehold.it/500/eeeeee&amp;text=7"
                                                             class="img-responsive"></a></div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-3"><a href="#"><img
-                                                            src="http://placehold.it/500/40a1ff/002040&amp;text=8"
+                                                            src="https://placehold.it/500/40a1ff/002040&amp;text=8"
                                                             class="img-responsive"></a></div>
                                         </div>
                                     </div>

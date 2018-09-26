@@ -55,7 +55,7 @@
                                                 <img src="{!! url('/').'/uploads/users/'.$user->pic !!}" alt="img"
                                                      class="img-responsive"/>
                                             @else
-                                                <img src="http://placehold.it/200x150" alt="..."
+                                                <img src="https://placehold.it/200x150" alt="..."
                                                      class="img-responsive"/>
                                             @endif
                                         </div>

@@ -105,7 +105,7 @@
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail" style="max-width: 200px; max-height: 150px;">
                                             
-                                                <img src="http://placehold.it/200x150" alt="..."
+                                                <img src="https://placehold.it/200x150" alt="..."
                                                      class="img-responsive" />
                                            
                                         </div>

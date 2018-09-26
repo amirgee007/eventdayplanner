@@ -90,7 +90,7 @@
                                         <img src="{{ URL::to('/uploads/crudfiles/'.$event->photo)  }}" alt="..."
                                              class="img-responsive"/>
                                     @else
-                                    <img src="http://placehold.it/200x150" alt="..."
+                                    <img src="https://placehold.it/200x150" alt="..."
                                              class="img-responsive"/>
                                     @endif
                                            
