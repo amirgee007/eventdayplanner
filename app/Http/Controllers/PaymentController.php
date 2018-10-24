@@ -183,20 +183,22 @@ class PaymentController extends BaseController
 
             $payment->save();
 
-            
-
 
             //$payment=Payment::save($paypalResponse);
 
+            $user = Sentinel::getUser();
+            $events_booked=\App\Booking::where('user_id',$user->id)->whereNotNull('event_id')->with('event')->get();
+            $ads_booked=\App\Booking::where('user_id',$user->id)->whereNotNull('ads_id')->with('ad')->get();
 
 
             Session::forget('bookData');
-            //dd($paypalResponse);
-            return view('user.mybookings');
+            return View::make('user.mybookings', compact('user','events_booked','ads_booked'));
+
+//            return view('user.mybookings');
 
         } 
         else { 
-            dd($paypalResponse);
+            //dd($paypalResponse);
             return redirect('ads/book')->with('failed', 'Payment Failed');
             // dd($paypalResponse);
             // Failed transaction ...
@@ -204,6 +206,7 @@ class PaymentController extends BaseController
     }
 
     public function done_event(Request $request){
+        $id = null;
         $params = session()->get('params');
         //echo $request->get('token');exit;
         $gateway = Omnipay::create('PayPal_Express');
@@ -217,7 +220,6 @@ class PaymentController extends BaseController
             return redirect('404');exit;
         }
 
-        
 
         $response = $gateway->completePurchase($params)->send(); 
         $paypalResponse = $response->getData(); // this is the raw response object 
@@ -248,7 +250,7 @@ class PaymentController extends BaseController
                 $booking->quantity=$params['quantity'];
                 //$booking->book_date=$date;
                 //$booking->price=$price;
-                $booking->price=$param['amount'];
+                $booking->price=$params['amount'];
                 $booking->user_id=Sentinel::getUser()->id;
                 $booking->save();
             }
@@ -316,9 +318,9 @@ class PaymentController extends BaseController
             
 
         } 
-        else { 
-            dd($paypalResponse);
-            return redirect('event/book',$id)->with('failed', 'Payment Failed');
+        else {
+            return redirect('events/book',$params['id'])->with('failed', 'Payment method not accepted');
+
             // dd($paypalResponse);
             // Failed transaction ...
         }
@@ -353,7 +355,7 @@ class PaymentController extends BaseController
         $data['total'] = $total;
 
         $response = $provider->setExpressCheckout($data);
-        dd($response);
+        dd($response ,'testing');
         return redirect($response['paypal_link']);
 
     }
