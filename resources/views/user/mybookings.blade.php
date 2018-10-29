@@ -52,7 +52,7 @@
     @if(count($ads_booked))
 	    @foreach($ads_booked as $ad)
 	    	<div>
-	    			<h3><a href="{{url('ads.details',$ad->ad->slug)}}">{{$ad->ad->title}}</a></h3>
+	    			<h3><a href="{{url('ads/details',$ad->ad->slug)}}">{{$ad->ad->title}}</a></h3>
 	    			<b>Date:</b>{{$ad->book_date}}<br/>
 	    			<b>Price:</b>{!! Helper::getPrice($ad->price) !!}
 	    		</div>

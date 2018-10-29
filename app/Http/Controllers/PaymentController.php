@@ -19,6 +19,7 @@ use Recca0120\LaravelPayum\Service\Payum as PayumService;*/
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Srmklive\PayPal\Services\AdaptivePayments;*/
 
+use Illuminate\Support\Facades\View;
 use Omnipay\Omnipay;
 use Omnipay\PayPal;
 use Omnipay\Common\CreditCard;
@@ -442,10 +443,6 @@ class PaymentController extends BaseController
             echo $response->getMessage();
         } 
 
-
-
-
-
             $data = $response->getData();
             echo "Gateway purchase response data == " . print_r($data, true) . "\n";
      
@@ -563,7 +560,7 @@ class PaymentController extends BaseController
 
    // $pdf = PDF::loadView('pdf.invoice', $data);
    // echo  $pdf->download('invoice.pdf');
-//exit;
+    //exit;
             $params = array( 
                 'cancelUrl' => url('event',$event->slug),//'http://localhost:8888/eventdayplanner/public/', 
                 'returnUrl' => url('payment/done_event'),//'http://localhost:8888/eventdayplanner/public/payment/done',
