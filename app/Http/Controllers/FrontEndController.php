@@ -860,13 +860,13 @@ class FrontEndController extends JoshController
         Mail::send('emails.career', compact('data'), function ($m) use ($data) {
             $m->from('info@eventdayplanner.com', "Event Day Planner");
             $m->to('info@eventdayplanner.comm', 'Eventdayplanner');
-            $m->cc('karki.kuber@gmail.com', 'Eventdayplanner');
+            $m->cc('amirgee007@yahoo.com', 'Eventdayplanner');
             $m->subject('Carrer contact mail from Eventdayplanner');
 
         });
 
         //Redirect to contact page
-        return Redirect::to("/")->with('success','Thankyou!!');
+        return Redirect::to("/")->with('success','Thank you!!');
     }
 
     /**
@@ -900,8 +900,8 @@ class FrontEndController extends JoshController
         Mail::send('emails.investor', compact('data'), function ($m) use ($data) {
             $m->from('info@eventdayplanner.com', "Event Day Planner");
             $m->to('info@eventdayplanner.com', 'Eventdayplanner');
-            $m->cc('karki.kuber@gmail.com', 'Eventdayplanner');
-            $m->subject('Inversor contact mail from Eventdayplanner');
+            $m->cc('amirgee007@yahoo.com', 'Eventdayplanner');
+            $m->subject('Investor contact mail from Eventdayplanner');
 
         });
 
@@ -937,7 +937,7 @@ class FrontEndController extends JoshController
         Mail::send('emails.partner', compact('data'), function ($m) use ($data) {
             $m->from('info@eventdayplanner.com', "Event Day Planner");
             $m->to('info@eventdayplanner.com', 'Eventdayplanner');
-            $m->cc('karki.kuber@gmail.com', 'Eventdayplanner');
+            $m->cc('amirgee007@yahoo.com', 'Eventdayplanner');
             $m->subject('Partner contact mail from Eventdayplanner');
 
         });
