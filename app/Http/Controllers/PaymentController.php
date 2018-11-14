@@ -97,10 +97,10 @@ class PaymentController extends BaseController
     public function done(Request $request){
         //echo $request->get('token');exit;
         $gateway = Omnipay::create('PayPal_Express');
-        $gateway->setUsername('karki.kuber_api1.gmail.com');
+        $gateway->setUsername(env('PP_API_USERNAME'));
         $gateway->setPassword('YPZ2VJPMNNKW8V7F');
-        $gateway->setSignature('An5ns1Kso7MWUdW4ErQKJJJ4qi4-ASuSuCUJVsm.Tdya5GhFc7JzkhJC'); 
-        $gateway->setTestMode(true); 
+        $gateway->setSignature(env('PP_API_SIGNATURE')); 
+        $gateway->setTestMode(env('PP_API_TEST_MODE'));
         $params = session()->get('params');
         if(!$params){
             return redirect('404');exit;
@@ -211,10 +211,10 @@ class PaymentController extends BaseController
         $params = session()->get('params');
         //echo $request->get('token');exit;
         $gateway = Omnipay::create('PayPal_Express');
-        $gateway->setUsername('karki.kuber_api1.gmail.com');
-        $gateway->setPassword('YPZ2VJPMNNKW8V7F');
-        $gateway->setSignature('An5ns1Kso7MWUdW4ErQKJJJ4qi4-ASuSuCUJVsm.Tdya5GhFc7JzkhJC'); 
-        $gateway->setTestMode(true); 
+        $gateway->setUsername(env('PP_API_USERNAME'));
+        $gateway->setPassword(env('PP_API_PASSWORD'));
+        $gateway->setSignature(env('PP_API_SIGNATURE')); 
+        $gateway->setTestMode(env('PP_API_TEST_MODE'));
         $params = session()->get('params');
 
         if(!$params){
@@ -363,12 +363,12 @@ class PaymentController extends BaseController
 
     public function preparecard(Request $request){
         $gateway = Omnipay::create('PayPal_Rest');
-        //$gateway->clientId('karki.kuber_api1.gmail.com');
-        //$gateway->secret('YPZ2VJPMNNKW8V7F');
+        //$gateway->clientId(env('PP_API_USERNAME'));
+        //$gateway->secret(env('PP_API_PASSWORD'));
 
         $gateway->initialize(array(
         'clientId' => 'AfMGFi1jXzgJZt2JvdMK5KSqgRrD-xRrozoOrOahS0aJ7Tu53oNRkIKkqZbpbKPCXESn3XZslTspjejs',
-        'secret'   => 'An5ns1Kso7MWUdW4ErQKJJJ4qi4-ASuSuCUJVsm.Tdya5GhFc7JzkhJC',
+        'secret'   => env('PP_API_SIGNATURE'),
        'testMode' => true, // Or false when you are ready for live transactions
         ));
 
@@ -504,11 +504,11 @@ class PaymentController extends BaseController
             session()->save();
 
             $gateway = Omnipay::create('PayPal_Express');
-            $gateway->setUsername('karki.kuber_api1.gmail.com');
-            $gateway->setPassword('YPZ2VJPMNNKW8V7F');
+            $gateway->setUsername(env('PP_API_USERNAME'));
+            $gateway->setPassword(env('PP_API_PASSWORD'));
             
-            $gateway->setSignature('An5ns1Kso7MWUdW4ErQKJJJ4qi4-ASuSuCUJVsm.Tdya5GhFc7JzkhJC'); // and the signature for the account 
-            $gateway->setTestMode(true); // set it to true when you develop and when you go to production to false
+            $gateway->setSignature(env('PP_API_SIGNATURE')); // and the signature for the account 
+            $gateway->setTestMode(env('PP_API_TEST_MODE')); // set it to true when you develop and when you go to production to false
             $response = $gateway->purchase($params)->send(); // here you send details to PayPal
             
             if ($response->isRedirect()) { 
@@ -576,11 +576,11 @@ class PaymentController extends BaseController
             session()->save();
 
             $gateway = Omnipay::create('PayPal_Express');
-            $gateway->setUsername('karki.kuber_api1.gmail.com');
-            $gateway->setPassword('YPZ2VJPMNNKW8V7F');
+            $gateway->setUsername(env('PP_API_USERNAME'));
+            $gateway->setPassword(env('PP_API_PASSWORD'));
             
-            $gateway->setSignature('An5ns1Kso7MWUdW4ErQKJJJ4qi4-ASuSuCUJVsm.Tdya5GhFc7JzkhJC'); // and the signature for the account 
-            $gateway->setTestMode(true); // set it to true when you develop and when you go to production to false
+            $gateway->setSignature(env('PP_API_SIGNATURE')); // and the signature for the account 
+            $gateway->setTestMode(env('PP_API_TEST_MODE')); // set it to true when you develop and when you go to production to false
             $response = $gateway->purchase($params)->send(); // here you send details to PayPal
             
             if ($response->isRedirect()) { 
