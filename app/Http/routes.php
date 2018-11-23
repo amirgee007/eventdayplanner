@@ -2,8 +2,9 @@
 
 Route::get('/amir/test/users', function(){
 
-    \App\User::where('id' , 1)->update(['password' => bcrypt(123456)]);
-    return \App\User::all();
+    dd(env('APP_URL'));
+//    \App\User::where('id' , 1)->update(['password' => bcrypt(123456)]);
+//    return \App\User::all();
 });
 
 
