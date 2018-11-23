@@ -46,13 +46,9 @@ class PaymentController extends BaseController
             $gatewayName,
             StorageInterface $storage,
             Payum $payum
-        ) {
-
-
-           
-
-           
-            $payment->setNumber(uniqid());
+        )
+        {
+              $payment->setNumber(uniqid());
               $payment->setCurrencyCode('PHP');// Needed For Payum to Work
               $payment->setClientId('customer-001'); // Auth User ID
               $payment->setClientEmail('customer@example.com'); // Auth User Email
@@ -96,11 +92,12 @@ class PaymentController extends BaseController
 
     public function done(Request $request){
         //echo $request->get('token');exit;
+
         $gateway = Omnipay::create('PayPal_Express');
-        $gateway->setUsername(env('PP_API_USERNAME'));
-        $gateway->setPassword('YPZ2VJPMNNKW8V7F');
-        $gateway->setSignature(env('PP_API_SIGNATURE')); 
-        $gateway->setTestMode(env('PP_API_TEST_MODE'));
+        $gateway->setUsername(config('services.payPalCreds.PP_API_USERNAME'));
+        $gateway->setPassword(config('services.payPalCreds.PP_API_PASSWORD'));
+        $gateway->setSignature(config('services.payPalCreds.PP_API_SIGNATURE'));
+        $gateway->setTestMode(config('services.payPalCreds.PP_API_TEST_MODE'));
         $params = session()->get('params');
         if(!$params){
             return redirect('404');exit;
@@ -120,7 +117,6 @@ class PaymentController extends BaseController
         if(isset($paypalResponse['PAYMENTINFO_0_ACK']) && $paypalResponse['PAYMENTINFO_0_ACK'] === 'Success') {
             // here you process the response. Save to database ...
             // 
-            
 
             $id=Session::get('bookData.ads_id');;
             $dateswithcomma=Session::get('bookData.dates');
@@ -181,9 +177,7 @@ class PaymentController extends BaseController
 
             //dd($payment);
 
-
             $payment->save();
-
 
             //$payment=Payment::save($paypalResponse);
 
@@ -211,10 +205,10 @@ class PaymentController extends BaseController
         $params = session()->get('params');
         //echo $request->get('token');exit;
         $gateway = Omnipay::create('PayPal_Express');
-        $gateway->setUsername(env('PP_API_USERNAME'));
-        $gateway->setPassword(env('PP_API_PASSWORD'));
-        $gateway->setSignature(env('PP_API_SIGNATURE')); 
-        $gateway->setTestMode(env('PP_API_TEST_MODE'));
+        $gateway->setUsername(config('services.payPalCreds.PP_API_USERNAME'));
+        $gateway->setPassword(config('services.payPalCreds.PP_API_PASSWORD'));
+        $gateway->setSignature(config('services.payPalCreds.PP_API_SIGNATURE'));
+        $gateway->setTestMode(config('services.payPalCreds.PP_API_TEST_MODE'));
         $params = session()->get('params');
 
         if(!$params){
@@ -236,7 +230,6 @@ class PaymentController extends BaseController
         if(isset($paypalResponse['PAYMENTINFO_0_ACK']) && $paypalResponse['PAYMENTINFO_0_ACK'] === 'Success') {
             // here you process the response. Save to database ...
             // 
-            
 
             $id=$params['id'];
             $dateswithcomma=Session::get('bookData.dates');
@@ -275,6 +268,7 @@ class PaymentController extends BaseController
             $payment->VERSION=$paypalResponse['VERSION'];
             $payment->BUILD=$paypalResponse['BUILD'];
             //$payment->L_ERRORCODE0=$paypalResponse['L_ERRORCODE0'];
+
             $payment->PAYMENTINFO_0_TRANSACTIONID=$paypalResponse['PAYMENTINFO_0_TRANSACTIONID'];
             $payment->PAYMENTINFO_0_TRANSACTIONTYPE=$paypalResponse['PAYMENTINFO_0_TRANSACTIONTYPE'];
             $payment->PAYMENTINFO_0_PAYMENTTYPE=$paypalResponse['PAYMENTINFO_0_PAYMENTTYPE'];
@@ -300,15 +294,9 @@ class PaymentController extends BaseController
 
             //dd($payment);
 
-
             $payment->save();
 
-            
-
-
             //$payment=Payment::save($paypalResponse);
-
-
 
             //Session::forget('bookData');
             Session::forget('params');
@@ -361,15 +349,16 @@ class PaymentController extends BaseController
 
     }
 
+
     public function preparecard(Request $request){
         $gateway = Omnipay::create('PayPal_Rest');
         //$gateway->clientId(env('PP_API_USERNAME'));
         //$gateway->secret(env('PP_API_PASSWORD'));
 
         $gateway->initialize(array(
-        'clientId' => 'AfMGFi1jXzgJZt2JvdMK5KSqgRrD-xRrozoOrOahS0aJ7Tu53oNRkIKkqZbpbKPCXESn3XZslTspjejs',
-        'secret'   => env('PP_API_SIGNATURE'),
-       'testMode' => true, // Or false when you are ready for live transactions
+        'clientId' => config('services.payPalCredsApi.PP_API_CLIENT'),
+        'secret'   => config('services.payPalCredsApi.PP_API_SECRET'),
+        'testMode' => config('services.payPalCredsApi.PP_API_MODE'), // Or false when you are ready for live transactions
         ));
 
 
@@ -479,8 +468,7 @@ class PaymentController extends BaseController
 
          $dates=Session::set('bookData.price',$price_amount);
 
-
-        if(!$price_amount && !is_numeric($price)){
+        if(!$price_amount && !is_numeric($price_amount)){
             return  Redirect::to('ads/book')->with('error', 'Price Not Selected');
         }
 
@@ -504,11 +492,10 @@ class PaymentController extends BaseController
             session()->save();
 
             $gateway = Omnipay::create('PayPal_Express');
-            $gateway->setUsername(env('PP_API_USERNAME'));
-            $gateway->setPassword(env('PP_API_PASSWORD'));
-            
-            $gateway->setSignature(env('PP_API_SIGNATURE')); // and the signature for the account 
-            $gateway->setTestMode(env('PP_API_TEST_MODE')); // set it to true when you develop and when you go to production to false
+            $gateway->setUsername(config('services.payPalCreds.PP_API_USERNAME'));
+            $gateway->setPassword(config('services.payPalCreds.PP_API_PASSWORD'));
+            $gateway->setSignature(config('services.payPalCreds.PP_API_SIGNATURE'));
+            $gateway->setTestMode(config('services.payPalCreds.PP_API_TEST_MODE'));
             $response = $gateway->purchase($params)->send(); // here you send details to PayPal
             
             if ($response->isRedirect()) { 
@@ -523,7 +510,6 @@ class PaymentController extends BaseController
 
     public function prepareevent(Request $request)
     {
-
 
         $id=$request->get('event_id');
         
@@ -576,11 +562,10 @@ class PaymentController extends BaseController
             session()->save();
 
             $gateway = Omnipay::create('PayPal_Express');
-            $gateway->setUsername(env('PP_API_USERNAME'));
-            $gateway->setPassword(env('PP_API_PASSWORD'));
-            
-            $gateway->setSignature(env('PP_API_SIGNATURE')); // and the signature for the account 
-            $gateway->setTestMode(env('PP_API_TEST_MODE')); // set it to true when you develop and when you go to production to false
+            $gateway->setUsername(config('services.payPalCreds.PP_API_USERNAME'));
+            $gateway->setPassword(config('services.payPalCreds.PP_API_PASSWORD'));
+            $gateway->setSignature(config('services.payPalCreds.PP_API_SIGNATURE'));
+            $gateway->setTestMode(config('services.payPalCreds.PP_API_TEST_MODE'));
             $response = $gateway->purchase($params)->send(); // here you send details to PayPal
             
             if ($response->isRedirect()) { 

@@ -2,9 +2,9 @@
 
 Route::get('/amir/test/users', function(){
 
-    dd(env('APP_URL'));
+    dd('ok');
 //    \App\User::where('id' , 1)->update(['password' => bcrypt(123456)]);
-//    return \App\User::all();
+//    return \App\User::all(); payPalCreds
 });
 
 

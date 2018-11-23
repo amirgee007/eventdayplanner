@@ -14,6 +14,21 @@ return [
     |
     */
 
+
+    'payPalCredsApi' => [
+        'PP_API_EMAIL' => env('PAYPAL_EMAIL'),
+        'PP_API_CLIENT' => env('PAYPAL_CLIENT_ID'),
+        'PP_API_SECRET' => env('PAYPAL_SECRET_ID'),
+        'PP_API_MODE' => env('PAYPAL_TEST_MODE'),
+    ],
+
+    'payPalCreds' => [
+        'PP_API_USERNAME' => env('PP_API_USERNAME'),
+        'PP_API_PASSWORD' => env('PP_API_PASSWORD'),
+        'PP_API_SIGNATURE' => env('PP_API_SIGNATURE'),
+        'PP_API_TEST_MODE' => env('PP_API_TEST_MODE'),
+    ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
