@@ -68,7 +68,6 @@ class FrontEndController extends JoshController
             Mail::send('emails.contact-us', compact('data'), function ($m) use ($data) {
                 $m->from('info@eventdayplanner.com', "Event Day Planner");
                 $m->to('info@eventdayplanner.comm', 'Event day planner');
-                $m->cc('amirgee007@yahoo.com', 'Event day planner');
                 $m->subject('Contact mail from Event day planner');
 
             });
@@ -860,7 +859,6 @@ class FrontEndController extends JoshController
         Mail::send('emails.career', compact('data'), function ($m) use ($data) {
             $m->from('info@eventdayplanner.com', "Event Day Planner");
             $m->to('info@eventdayplanner.comm', 'Eventdayplanner');
-            $m->cc('amirgee007@yahoo.com', 'Eventdayplanner');
             $m->subject('Carrer contact mail from Eventdayplanner');
 
         });
@@ -900,7 +898,6 @@ class FrontEndController extends JoshController
         Mail::send('emails.investor', compact('data'), function ($m) use ($data) {
             $m->from('info@eventdayplanner.com', "Event Day Planner");
             $m->to('info@eventdayplanner.com', 'Eventdayplanner');
-            $m->cc('amirgee007@yahoo.com', 'Eventdayplanner');
             $m->subject('Investor contact mail from Eventdayplanner');
 
         });
@@ -937,7 +934,6 @@ class FrontEndController extends JoshController
         Mail::send('emails.partner', compact('data'), function ($m) use ($data) {
             $m->from('info@eventdayplanner.com', "Event Day Planner");
             $m->to('info@eventdayplanner.com', 'Eventdayplanner');
-            $m->cc('amirgee007@yahoo.com', 'Eventdayplanner');
             $m->subject('Partner contact mail from Eventdayplanner');
 
         });
