@@ -36,7 +36,7 @@ Contact
 @section('content')
     <!-- Map Section Start -->
     <div class="">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6759.039608889927!2d72.65009212667256!3d32.10926146244241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392176f3c21fabed%3A0x7fceccc42306c7d5!2sAziz+Bhatti+Town%2C+Sargodha%2C+Pakistan!5e0!3m2!1sen!2s!4v1521829256965" width="100%" height="400px"  frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2495.440678005972!2d-0.762555284341237!3d51.28461397959923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48742b36e56927ab%3A0x7794a341f2df05b1!2sFowler+Ave%2C+Farnborough+GU14+7JP!5e0!3m2!1sen!2suk!4v1553882160494!5m2!1sen!2suk" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
     <!-- //map Section End -->
     <!-- Container Section Start -->
@@ -79,12 +79,12 @@ Contact
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">Address:</h4>
-                        <div class="danger">Jyostna</div>
+                        <div class="danger">Eventdayplanner</div>
                         <address>
-                            Pediatric Surgeons of Alaska
-                            <br> 3340 Providence Drive #565
-                            <br> Anchorage, AK(Alaska)
-                            <br> North Las Vegas, NV
+                            The Hub
+                            <br> Fowler Avenue
+                            <br> Farnborough, Hampshire
+                            <br> United Kingdom, GU14 7JP
                         </address>
                     </div>
                 </div>

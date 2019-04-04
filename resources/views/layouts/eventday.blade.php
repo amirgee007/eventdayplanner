@@ -7,8 +7,10 @@
    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <link href="{{ asset('assets/css/eventday/bootstrap.min.css') }}" rel="stylesheet">
+    <meta name="description" content="eventdayplanner is an online marketplace for event and supplier, eventmarketplace, eventsupplier, venue, artist, luxury car hire, event services hire, artist hire, wedding car hire,  Carhire, Florist, Stage decoration, hiredj, venue search london, Cheap supplier, freelancer artist, Staff for event, create event">
+<meta name="keywords" content="Eventsupplier,weddingvenue,venuehire,weddingcar,eventticket,createevent,supplier,drinksupplier,wedding cake,
+event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,eventplanner,weddingplanner,venue decorator, events this weekend, event today, event decor hire">    
+<link href="{{ asset('assets/css/eventday/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/eventday/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/eventday/mycss.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/eventday/font-awesome.css') }}" />
@@ -24,7 +26,7 @@
 
     <title>
     	@section('title')
-        | Eventdayplanner
+        | Eventdayplanner - Best Place to find event suppliers
         @show
     </title>
 
