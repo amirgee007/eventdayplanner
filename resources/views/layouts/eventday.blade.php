@@ -7,7 +7,8 @@
    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="title" content="Online marketplace for event and event's suppliers | Get Best Event supplier from your place">
+    <meta name="description" content="The eventdayplanner in london, online event marketplace, eventmarketplace, eventsupplier, venue, artist, carhire, securityhire, artisthire, weddingcarhire,  Carhire, Florist, Stagedecoration, hiredj, Sound system, Cheap supplier, freelancer artist, Staff for event">
     <link href="{{ asset('assets/css/eventday/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/eventday/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/eventday/mycss.css') }}" />
@@ -73,20 +74,16 @@
                       <h3>Create an Event</h3>
                     </div>
                       <div class="modal-body">                      
-                              <div class="row createEventPage">
-                                <ul>
-                                  <li><a href="#">I want to Book Event</a></li>
-                                  <li><a href="{!! route('create-event') !!}">I Want to Create Event</a></li>
-                                </ul>
-                              </div>
-                          
+                          <div class="row createEventPage">
+                            <ul>
+                              <li><a href="#">I want to Book Event</a></li>
+                              <li><a href="{!! route('create-event') !!}">I Want to Create Event</a></li>
+                            </ul>
+                          </div>
                       </div>
                   </div><!-- /.modal-content -->
               </div><!-- /.modal-dialog -->
           </div>
-
-
-
           </div>
         </div>
       </div>
