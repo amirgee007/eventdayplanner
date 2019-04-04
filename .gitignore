@@ -10,3 +10,4 @@ _ide_helper.php
 composer.phar
 /storage/logs
 /publicold
+/public/it_phpad
