@@ -53,8 +53,8 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
     <!--page level css-->
     @yield('header_styles')
     <!--end of page level css-->
-</head>
 
+</head>
 
 
 <body>
@@ -182,7 +182,7 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
     @include('layouts.footer')
 
 
-
+    @include('cookieConsent::index')
 <!--global js start-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="{{ asset('assets/js/eventday/bootstrap.min.js')}}"></script>
