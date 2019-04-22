@@ -168,7 +168,7 @@ return [
         yajra\Datatables\DatatablesServiceProvider::class,
         App\Providers\JoshCrudGeneratorServiceProvider::class,
         App\Providers\LocalServiceProvider::class,
-        Spatie\CookieConsent\CookieConsentServiceProvider::class,
+//        Spatie\CookieConsent\CookieConsentServiceProvider::class,
 
 
 
