@@ -2,11 +2,13 @@
 <html>
 
 <head>
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="title" content="Online marketplace for event and event's suppliers | Get Best Event supplier from your place">
-    <meta name="description" content="The eventdayplanner in london, online event marketplace, eventmarketplace, eventsupplier, venue, artist, carhire, securityhire, artisthire, weddingcarhire,  Carhire, Florist, Stagedecoration, hiredj, Sound system, Cheap supplier, freelancer artist, Staff for event">
+    <meta name="description" content="eventsupplier in london, online event marketplace, eventmarketplace, eventsupplier, venue, artist, car rental, security hire, artist hire, weddingcarhire,  Carhire, Florist, Stage decoration, hire dj, Sound system, Cheap supplier, freelancer artist, Staff for event">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -15,7 +17,7 @@
     <![endif]-->
     <title>
     	@section('title')
-        | Welcome to EventPlanner
+        | Find Best event suppliers
         @show
     </title>
     <!--global css starts-->
@@ -37,7 +39,6 @@
 
   gtag('config', 'UA-137268793-1');
 </script>
-
 
 </head>
 

@@ -2,13 +2,15 @@
 <html>
 
 <head>
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="eventdayplanner is an online marketplace for event and supplier, eventmarketplace, eventsupplier, venue, artist, luxury car hire, event services hire, artist hire, wedding car hire,  Carhire, Florist, Stage decoration, hiredj, venue search london, Cheap supplier, freelancer artist, Staff for event, create event">
+    <meta name="description" content="online marketplace for event and supplier, eventmarketplace, eventsupplier, venue, artist, luxury car hire, event services hire, artist hire, wedding car hire,  Carhire, Florist, Stage decoration, hiredj, venue search london, Cheap supplier, freelancer artist, Staff for event, create event">
     <meta name="keywords" content="Eventsupplier,weddingvenue,venuehire,weddingcar,eventticket,createevent,supplier,drinksupplier,wedding cake,
 event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,eventplanner,weddingplanner,venue decorator, events this weekend, event today, event decor hire">
     <link href="{{ asset('assets/css/eventday/bootstrap.min.css') }}" rel="stylesheet">
@@ -28,7 +30,7 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
 
     <title>
     	@section('title')
-        | Eventdayplanner - Best Place to find event suppliers
+        | Find Best event suppliers
         @show
     </title>
 
@@ -53,6 +55,17 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
     <!--page level css-->
     @yield('header_styles')
     <!--end of page level css-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137268793-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-137268793-1');
+</script>
+
 </head>
 
 
