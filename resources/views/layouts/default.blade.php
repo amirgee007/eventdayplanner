@@ -20,12 +20,14 @@
         | Find Best event suppliers
         @show
     </title>
+
     <!--global css starts-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fonts.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/custom.css') }}">
     <!--end of global css-->
+    @include('cookieConsent::index')
     <!--page level css-->
     @yield('header_styles')
     <!--end of page level css-->
