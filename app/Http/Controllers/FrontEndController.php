@@ -124,7 +124,7 @@ class FrontEndController extends JoshController
                 ->leftJoin('event_comments', 'events.id', '=', 'event_comments.event_id')
                 ->groupBy('events.id')
                 ->orderBy('total', 'DESC')
-                ->limit(5)->get();
+                ->limit(3)->get();
 
         $sponsoredevents=Event::where('issponsored','1')->where('type','Public')->where('date','>',$formatted_date)->orderByRaw("RAND()")->limit(6)->get();
 

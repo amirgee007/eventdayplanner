@@ -3,10 +3,9 @@
 
 <head>
 
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -68,9 +67,6 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
 
 </head>
 
-</head>
-
-
 <body>
 
     @include('layouts.modals')
@@ -85,12 +81,12 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
           <div id="creatEventPageModel" class="modal fade">
               <div class="modal-dialog" role="document">
                   <div class="modal-content modal-contentCreate">
-                      
+
                       <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">x</button>
                       <h3>Create an Event</h3>
                     </div>
-                      <div class="modal-body">                      
+                      <div class="modal-body">
                           <div class="row createEventPage">
                             <ul>
                               <li><a href="#">I want to Book Event</a></li>
@@ -132,21 +128,21 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
                             <li><a href="{{ URL::to('logout') }}">Logout</a>
                             </li>
                         @endif
-                       
+
                         @foreach($frontarray['mainmenu'] as $menu)
                         <li><a href="{{ route('page',$menu->slug)}}">{{$menu->name}}</a></li>
 
                         @endforeach
-                        <li><div class="dropdown">
+                        <li>
+                            <div class="dropdown">
                               <a onclick="myFunction()" class="dropbtn">Currency</a>
                               <div id="myDropdown" class="dropdown-content">
                                 <a {{ (session('currency')=='USD' || session('currency')=='')?'class="selected"':"" }} href="{{ URL::to('currency','USD') }}">USD</a>
                                 <a {{ (session('currency')=='EUR')?'class="selected"':"" }} href="{{ URL::to('currency','EUR') }}">EUR</a>
                                 <a {{ (session('currency')=='GBP')?'class="selected"':"" }} href="{{ URL::to('currency','GBP') }}">GBP</a>
                               </div>
-                            </div></li>
-                          
-                         
+                            </div>
+                        </li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
@@ -238,7 +234,7 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
     toastr.error("{{ Session::get('app_error') }}", "Message");
     @endif
 
-/* When the user clicks on the button, 
+/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
