@@ -41,7 +41,7 @@
 
   gtag('config', 'UA-137268793-1');
 </script>
-
+<meta name="msvalidate.01" content="CD1FC7F9F5DA97FC697B7D5CC177FDD9" />
 </head>
 
 <body>

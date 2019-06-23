@@ -10,9 +10,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="online marketplace for event and supplier, eventmarketplace, eventsupplier, venue, artist, luxury car hire, event services hire, artist hire, wedding car hire,  Carhire, Florist, Stage decoration, hiredj, venue search london, Cheap supplier, freelancer artist, Staff for event, create event">
-    <meta name="keywords" content="Eventsupplier,weddingvenue,venuehire,weddingcar,eventticket,createevent,supplier,drinksupplier,wedding cake,
-event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,eventplanner,weddingplanner,venue decorator, events this weekend, event today, event decor hire">
+    <meta name="description" content="online marketplace for event and supplier, eventmarketplace, eventsupplier, venue, vendor, event service, artist hire, wedding car hire,  Carhire, Florist, Stage decoration, hiredj, venue search london, Cheap supplier, freelancer artist, Staff for event, create event">
+    <meta name="keywords" content="Eventsupplier, weddingvenue, venuehire,weddingcar, eventticket, createevent, suppliers, main event, wedding cake,event vendor,
+event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,eventplanner,weddingplanner,venue decorator, events, eventbrite, eventhorizon, current event, event decor hire">
     <link href="{{ asset('assets/css/eventday/bootstrap.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/eventday/style.css') }}" />
@@ -65,6 +65,7 @@ event staff,Artist hire,wedding videographer,photographer,freelancer,organizer,e
 
 	  gtag('config', 'UA-137268793-1');
 	</script>
+<meta name="msvalidate.01" content="CD1FC7F9F5DA97FC697B7D5CC177FDD9" />
 
 </head>
 
