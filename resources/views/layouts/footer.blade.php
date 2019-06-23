@@ -1,69 +1,65 @@
+</br>
 <footer>
-    <div class="container col-xs-12">
-        <div class="row">
-            <div class="col-sm-3">
-                <h3>Our Expert Services</h3>
-                <ul>
-                    @foreach($frontarray['OurExpertServices'] as $menu)
-                        <li><a href="{{ route('page',$menu->slug)}}">{{$menu->name}}</a></li>
-                    @endforeach
-                <!-- <li><a href="#">Birthdays Party</a></li>
-                <li><a href="#">Wedding Arrangement</a></li>
-                <li><a href="#">Corporate Events</a></li>
-                <li><a href="#">Bachelor Parties</a></li>
-                <li><a href="#">Proposal Arrange</a></li>
-                <li><a href="#">Social Meetings</a></li> -->
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h3>Quick Links</h3>
-                <ul>
 
-                    @foreach($frontarray['quicklinks'] as $link)
-                        <li><a href="{{ route('page',$link->slug)}}">{{$link->name}}</a></li>
-                    @endforeach
-
-                </ul>
+    <div class="card" style="text-align: center">
+        <div class="row" style="margin-right:0px; margin-left:0px">
+            <div class="col-sm-6">
+                <h3>We Accept
+                    <img style="padding: 12px" src="{{asset('assets/images/eventday/americanexpress.png')}}" alt=""><img style="padding: 12px"  src="{{asset('assets/images/eventday/visa.png')}}" alt=""><img style="padding: 12px" src="{{ asset('assets/images/eventday/mastarcard.png')}}" alt=""><img style="padding: 12px" src="{{ asset('assets/images/eventday/paypal.png')}}" alt="">
+                </h3>
             </div>
-            <div class="col-sm-3">
+
+            <div class="col-sm-5">
                 <div class="newsLetter">
                     {!! Form::open(['url' => route('post.news.letter.email'),'id'=>'frm']) !!}
-                    <h3>News Letter</h3>
+                    <h3 style="text-align: left;">News Letter</h3>
                     <div class="input-group">
                         <input required name="email" type="email" class="form-control" placeholder="Enter Your Email">
                         <span class="input-group-btn">
-              <button class="btn btn-default" type="submit">Submit</button>
-            </span>
-                    </div><!-- /input-group -->
+                            <button class="btn btn-default" type="submit">Submit</button>
+                        </span>
+                    </div>
                     {!! Form::close() !!}
                 </div>
-                <div class="card">
-                    <h3>We Accept</h3>
-                    <img src="{{asset('assets/images/eventday/paypal.png')}}" alt=""><img src="{{asset('assets/images/eventday/visa.png')}}" alt=""><img src="{{ asset('assets/images/eventday/mastarcard.png')}}" alt=""><img src="{{ asset('assets/images/eventday/americanexpress.png')}}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <section class="contantWrapper testimonial" style="padding: 0px">
+        <section class="joinUs">
+            <div class="container"><br><br>
+                <div class="row">
+                    <div class="social">
+                        <ul>
+                            <a href="https://www.instagram.com/eventdayplanner/" target="_blank"><li><i class="fa fa-instagram" aria-hidden="true"></i></li></a>
+                            <a href="https://twitter.com/eventdayplanner/" target="_blank"><li><i class="fa fa-twitter" aria-hidden="true"></i></li></a>
+                            <a href="https://www.facebook.com/eventdayplanner/" target="_blank"><li><i class="fa fa-facebook" aria-hidden="true"></i></li></a>
+                            <a href="https://uk.pinterest.com/eventdayplanner/" target="_blank"><li><i class="fa fa-pinterest" aria-hidden="true"></i></li></a>
+                            <a href="https://www.linkedin.com/in/eventdayplanner/" target="_blank"><li><i class="fa fa-linkedin" aria-hidden="true"></i></li></a>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="{{route('user-support-tickets')}}">Help & Support</a></li>
-                    <li>Sell service</li>
-                    <li>Hire service</li>
 
-                </ul>
+        </section>
+
+
+        <div class="footerBottom">
+            <div class="container">
+                <div class="row">
+                    <ul>
+                        <li style="color: #ffffff">&copy; {{date('Y')}} <strong> Eventdayplanner</strong>. All Rights Reserved.</li>
+                        <br>
+                        <li><a href="{{ route('page','about-us')}}">About Us</a></li> |
+                        <li><a href="{{route('site.map')}}">Site Map</a></li> |
+                        <li><a href="{{ env('APP_URL'). 'page/terms-and-condition' }}">Terms & Conditions</a></li> |
+                        <li><a href="{{ env('APP_URL'). 'page/privacy-and-policy' }}">Privacy Policy</a></li> |
+                        <li><a href="{{route('contact.us')}}">Contact Us</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="footerBottom">
-        <div class="container">
-            <div class="row">
-                <ul>
-                    <li>&copy; {{date('Y')}} <b> Eventdayplanner</b>. All Rights Reserved.</li>
-                    <li><a href="{{route('site.map')}}">Site Map</a></li> |
-                    <li><a href="{{ env('APP_URL'). 'page/terms-and-condition' }}">Terms & Conditions</a></li> |
-                    <li><a href="{{ env('APP_URL'). 'page/privacy-and-policy' }}">Privacy Policy</a></li> |
-                    <li><a href="{{route('contact.us')}}">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    </section>
+
+
 </footer>

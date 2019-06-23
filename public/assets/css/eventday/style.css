@@ -243,11 +243,12 @@ footer a:hover{ color: #616161; text-decoration: none;}
 .newsLetter .btn{ background: #5d011a; color: white; border: 1px solid #5d011a;}
 .card img{ padding-right: 5px;}
 .card img:last-child{ padding-right: none;}
-.footerBottom { background: #fff; padding: 10px 0; text-align: center;}
+.footerBottom { padding: 10px 0; text-align: center;}
 .footerBottom ul{ list-style: none;}
 .footerBottom li{ display: inline-block;}
-.footerBottom li a{ color: #ababab}
-.footerBottom li a:hover{ color: #616161; text-decoration: none;}
+.footerBottom li a{ color: #ffffff
+}
+.footerBottom li a:hover{ color: #c8f9ff; text-decoration: none;}
 .popularPackage{ padding: 40px 0;}
 /********************Popular Package CSS**********************/
 .contantWrapper .panel.panel-default { margin-bottom: 0px; position: relative; border-radius: initial; margin-top: 40px;}

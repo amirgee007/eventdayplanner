@@ -9,17 +9,6 @@
 @section('header_styles')
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/jquery.share.css') }}"/>
-    <style>
-
-        .joinUs .btn{ display: block;  margin: 30px auto; padding: 0 30px; line-height: 60px; font-size: 40px; color: #bc0033; font-weight: 600; text-transform: uppercase;}
-        @media screen and (max-width: 767px){
-            .joinUs .btn{ padding: 0 20px; font-size: 30px; line-height: 40px;}
-        }
-        .social{}
-        .social ul{ list-style: none; text-align: center; padding-left: 0;}
-        .social li{ display: inline-block; border-radius:50px; height: 60px; width: 60px; text-align: center; border: 2px solid #fff; margin: 0 5px;}
-        .social li .fa{ font-size: 30px; color: white; padding-top: 13px;}
-    </style>
 @stop
 
 @section('top')
@@ -253,85 +242,43 @@
                         </div>
                     </div>
                 </div>
-                <div class="newSetion">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h3>latest News</h3>
-                            @foreach($news as $newsitem)
-                                <p>
-                                    <a href="{{ URL::to('newsitem/'.$newsitem->slug) }}"><strong> {{$newsitem->title}} </strong>
-                                        <span> {{$newsitem->created_at->diffForHumans()}}</span>
-
-                                        {!! str_limit($newsitem->content,150, '...') !!}
-                                    </a></p>
-                            @endforeach
-
-
-                        </div>
-                        <div class="col-sm-4">
-                            <h3>Popular Events</h3>
-
-
-                        </div>
-
-                        <div class="col-sm-4">
-                            <h3>Sponsored Events</h3>
-                            @if(count($sponsoredevents))
-                                @foreach($sponsoredevents as $event)
-                                    <p style="min-height: 100px;">
-                                        @if($event->photo)
-                                            <img class="img-responsive img-hover" src="thumbnail3/{!! $event->photo !!}"
-                                                 alt="">
-                                        @else
-                                            <img src="{{ asset('assets/images/eventday/news1.jpg')}}" alt="">
-                                        @endif
-
-                                        <a href="{{ URL::to('event/'.$event->slug) }}"><strong> {!! $event->name !!} </strong>
-                                            {!! str_limit($event->description,100, '...') !!}
-                                        </a></p>
-                                @endforeach
-                            @endif
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <div class="contantWrapper">
-            <div class="container">
-                <div class="row">
-                    <h2><span>How It Works ?</span></h2>
+        {{--<div class="contantWrapper">--}}
+            {{--<div class="container">--}}
+                {{--<div class="row">--}}
+                    {{--<h2><span>How It Works ?</span></h2>--}}
 
-                    <div class="col-sm-2">
-                        <h4><b>Sign up free</b></h4>
-                        <p>As <br> freelancer,<br>
-                            eventplanner,<br> business owner</p>
-                    </div>
+                    {{--<div class="col-sm-2">--}}
+                        {{--<h4><b>Sign up free</b></h4>--}}
+                        {{--<p>As <br> freelancer,<br>--}}
+                            {{--eventplanner,<br> business owner</p>--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-2">
-                        <h4><b>Create Ads</b></h4>
-                        <p>list your service using create ads</p>
-                    </div>
+                    {{--<div class="col-sm-2">--}}
+                        {{--<h4><b>Create Ads</b></h4>--}}
+                        {{--<p>list your service using create ads</p>--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-4">
-                        <h4><b>Booking</b></h4>
-                        <p>Service user select available date & proceed to payment</p>
-                    </div>
+                    {{--<div class="col-sm-4">--}}
+                        {{--<h4><b>Booking</b></h4>--}}
+                        {{--<p>Service user select available date & proceed to payment</p>--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-2">
-                        <h4><b>Payment</b></h4>
-                        <p>Take a payment from service user</p>
-                    </div>
+                    {{--<div class="col-sm-2">--}}
+                        {{--<h4><b>Payment</b></h4>--}}
+                        {{--<p>Take a payment from service user</p>--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-2">
-                        <h4><b>Complete</b></h4>
-                        <p>Order will be completed once event happen</p>
-                    </div>
-                </div>
-                <br>
-            </div>
-        </div>
+                    {{--<div class="col-sm-2">--}}
+                        {{--<h4><b>Complete</b></h4>--}}
+                        {{--<p>Order will be completed once event happen</p>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<br>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </section>
 
     <section class="contantWrapper testimonial">
@@ -344,9 +291,6 @@
                 <div class="col-xs-3"><span class="borderBtm"></span></div>
             </div>
             <div class="row">
-
-                <!-- <h2 class="padT6px"><span class="testiBG">What People Think</span></h2> -->
-
                 <div class="col-sm-2">
                     <p><i class="fa fa-quote-left" aria-hidden="true"></i></p>
                 </div>
@@ -358,25 +302,50 @@
                 <div class="col-sm-2"></div>
             </div>
         </div>
+    </section>
 
-        <section class="joinUs">
-            <div class="container"><br><br>
-                {{--<input type="button" class="btn btn-default" value="Join Us Today">--}}
+    <section class="mainContainer">
+        <div class="container">
+
+            <div class="newSetion">
                 <div class="row">
-                    <div class="social">
-                        <ul>
-                            <a href="https://www.instagram.com/eventdayplanner/" target="_blank"><li><i class="fa fa-instagram" aria-hidden="true"></i></li></a>
-                            <a href="https://twitter.com/eventdayplanner/" target="_blank"><li><i class="fa fa-twitter" aria-hidden="true"></i></li></a>
-                            <a href="https://www.facebook.com/eventdayplanner/" target="_blank"><li><i class="fa fa-facebook" aria-hidden="true"></i></li></a>
-                            <a href="https://uk.pinterest.com/eventdayplanner/" target="_blank"><li><i class="fa fa-pinterest" aria-hidden="true"></i></li></a>
-                            <a href="https://www.linkedin.com/in/eventdayplanner/" target="_blank"><li><i class="fa fa-linkedin" aria-hidden="true"></i></li></a>
-                        </ul>
+                    <div class="col-sm-4">
+                        <h3>latest News</h3>
+                        @foreach($news as $newsitem)
+                            <p>
+                                <a href="{{ URL::to('newsitem/'.$newsitem->slug) }}"><strong> {{$newsitem->title}} </strong>
+                                    <span> {{$newsitem->created_at->diffForHumans()}}</span>
+
+                                    {!! str_limit($newsitem->content,150, '...') !!}
+                                </a>
+                            </p>
+                        @endforeach
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        <h3>How it work</h3>
+
+                        <iframe width="99%" height="190"
+                                src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                        </iframe>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <h3>Support</h3>
+                        <p style="min-height: 100px;"> <a href="{{route('user-support-tickets')}}">Help & Support</a>
+                            <br>
+                            <span>Sell service </span>
+                            <br>
+                            <span>Hire service </span>
+                            <br>
+                        </p>
                     </div>
                 </div>
             </div>
-
-        </section>
+        </div>
     </section>
+
 @stop
 
 @section('footer_scripts')
