@@ -46,7 +46,7 @@
 
                         </div>
                     </div>
-                    <button type="button" class="btn btn-danger" style="background-color: black; margin-top: -20px;margin-bottom: 20px; width: 100%">Upcoming Events For You</button>
+                    <a type="button" href="{{route('events')}}" class="btn btn-danger" style="background-color: black; margin-top: -20px;margin-bottom: 20px; width: 100%">Upcoming Events For You</a>
 
                     <div class="navHighlight">
                         <ul>
