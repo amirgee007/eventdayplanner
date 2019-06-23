@@ -42,6 +42,7 @@ class FrontEndController extends JoshController
     public function __construct(){
         $this->frontarray['onenews'] = News::latest()->first();
         $this->frontarray['mainmenu']=Page::where('type','Main Menu')->get();
+        //NOT USING BELLOW ARE FROM NOW RO ONWARD
         $this->frontarray['OurExpertServices']=Page::where('type','Our Expert Services')->get();
         $this->frontarray['quicklinks']=Page::where('type','quick links')->get();
     }
@@ -124,15 +125,15 @@ class FrontEndController extends JoshController
                 ->leftJoin('event_comments', 'events.id', '=', 'event_comments.event_id')
                 ->groupBy('events.id')
                 ->orderBy('total', 'DESC')
-                ->limit(5)->get();
+                ->limit(3)->get();
 
         $sponsoredevents=Event::where('issponsored','1')->where('type','Public')->where('date','>',$formatted_date)->orderByRaw("RAND()")->limit(6)->get();
 
 
-        $newss = News::latest()->simplePaginate(6);
+        $newss = News::latest()->simplePaginate(3);
         $newss->setPath('news');
 
-        $ads_category = Ads_category::where('homepage',true)->get();
+        $ads_category = Ads_category::where('homepage',true)->limit(6)->get();
 
         $testimonial=\App\Testimonial::inRandomOrder()->first();
 
