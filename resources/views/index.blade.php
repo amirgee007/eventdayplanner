@@ -23,7 +23,6 @@
                             <a href="#adds1"><img src="{{ asset('assets/images/eventday/ads1.jpg')}}" class="img-responsive"></a>
                         </div>
 
-
                         <div class="adsBannerBtm">
 
                             <p style="color: white"><strong>Popular Events</strong></p>
@@ -166,8 +165,15 @@
                                             <div class="eventPrice">
                                                 Price: {!! Helper::getPrice($event->ticket_price) !!}</div>
                                             <div class="eventLogoWrap">
-                                                <div class="eventlogo"><img class="img-responsive img-circle"
-                                                                            src="{{url('user_circularthumb',$event->organizer()->first()->pic)}}"/>
+                                                <div class="eventlogo">
+                                                    @if($event->organizer()->first())
+                                                        <img class="img-responsive img-circle"
+                                                             src="{{url('user_circularthumb',$event->organizer()->first()->pic)}}"/>
+                                                    @else
+                                                        <img class="img-responsive img-circle"
+                                                             src="thumbnail2/lfgRuzbVrvzTfc2vwqnJ.jpg" alt="">
+                                                    @endif
+
                                                 </div>
                                             </div>
                                             <a href="{{ URL::to('event/'.$event->slug) }}">
